@@ -1,0 +1,2 @@
+{{- /* Homelab project glyph, rule braces and a check: detections written and tested. Drawn for the site (not a tool logo); styled by .kit in assets/css/lab/homelab.css. */ -}}
+<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 10c-4 0-4 3-4 7s-1 6-4 7c3 1 4 3 4 7s0 7 4 7"/><path d="M31 10c4 0 4 3 4 7s1 6 4 7c-3 1-4 3-4 7s0 7-4 7"/><path d="M18 24l4.5 4.5L30 20"/></svg>

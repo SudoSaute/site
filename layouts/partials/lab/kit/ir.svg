@@ -1,0 +1,2 @@
+{{- /* Homelab project glyph, a case file and a magnifier: an investigation written up. Drawn for the site (not a tool logo); styled by .kit in assets/css/lab/homelab.css. */ -}}
+<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="9" width="24" height="32" rx="3"/><path d="M14 6h10v6H14z"/><path d="M12 20h12M12 26h8M12 32h6"/><circle cx="33" cy="31" r="6.5"/><path d="M37.8 35.8l5 5"/></svg>

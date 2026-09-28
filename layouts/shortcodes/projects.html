@@ -10,8 +10,23 @@
        {{< /projects >}}
 
        keys: the program slots (data/program.yaml), in row order. Delete the
-       shortcode lines and the table renders as a plain table again. */ -}}
+       shortcode lines and the table renders as a plain table again.
+
+       style: "tools" (default) draws each card's panel as a security glyph
+       (layouts/partials/lab/kit/<key>.svg) over the tools the project uses:
+       logos from assets/img/logos/ where the tool has one, a name tag where
+       it does not. "art" switches back to the writeup illustrations
+       (layouts/partials/art/). The tool list per project is $kits below. */ -}}
 {{- $keys := split (.Get "keys" | default "") "," -}}
+{{- $style := .Get "style" | default "tools" -}}
+{{- $kits := dict
+      "siem"   (slice "elastic" "kibana" "text:Security Onion")
+      "atomic" (slice "text:Atomic Red Team" "elastic")
+      "phish"  (slice "text:REMnux" "python")
+      "ir"     (slice "hackthebox" "cyberdefenders" "text:TheHive")
+      "intel"  (slice "text:ATT&CK" "elastic")
+      "rules"  (slice "text:Sigma" "text:YARA" "elastic")
+-}}
 {{- $rows := slice -}}
 {{- range split (trim .Inner "\n ") "\n" -}}
   {{- $l := trim . " " -}}
@@ -28,8 +43,31 @@
     {{- $title := replaceRE `^\d+\.\s+` "" $name }}
     {{- $written := index (where (where site.RegularPages "Section" "writeups") "Params.project" $key) 0 }}
     {{- $art := cond (templates.Exists (printf "partials/art/%s.svg" $key)) $key "ir" }}
-  <article class="proj glass lit calm" data-nav>
+    {{- $kit := index $kits $key }}
+  <article class="proj glass lit calm{{ if and (eq $style "tools") $kit }} proj--kit{{ end }}" data-nav>
+    {{- if and (eq $style "tools") $kit }}
+    <div class="stage kit" aria-hidden="true">
+      {{- with templates.Exists (printf "partials/lab/kit/%s.svg" $key) }}<span class="kit__glyph">{{ partial (printf "lab/kit/%s.svg" $key) $ }}</span>{{ end }}
+      <span class="kit__marks">
+        {{- range $kit }}
+          {{- if hasPrefix . "text:" }}
+        <span class="kit__m kit__m--txt">{{ strings.TrimPrefix "text:" . }}</span>
+          {{- else }}{{ with resources.Get (printf "img/logos/%s.svg" .) }}
+            {{- $svg := .Content }}
+            {{- $name := replaceRE `(?s).*?<title>(.*?)</title>.*` "$1" $svg }}
+            {{- $svg = replaceRE `<title>.*?</title>` "" $svg }}
+            {{- /* drop any embedded metadata (some tools add a provenance block) */ -}}
+            {{- $svg = replaceRE `(?s)<metadata>.*?</metadata>` "" $svg }}
+            {{- $svg = replaceRE ` xmlns:[a-z0-9]+="[^"]*"` "" $svg }}
+            {{- $svg = replace $svg `role="img" ` "" }}
+        <span class="kit__m">{{ $svg | safeHTML }}{{ $name }}</span>
+          {{- end }}{{ end }}
+        {{- end }}
+      </span>
+    </div>
+    {{- else }}
     <div class="stage">{{ partial (printf "art/%s.svg" $art) . }}</div>
+    {{- end }}
     <div class="proj__txt">
       {{- if ne $n $name }}<p class="proj__n">project {{ $n }}</p>{{ end }}
       <h3 class="card-title">{{ with $written }}<a href="{{ .RelPermalink }}">{{ $.Page.RenderString $title }}</a>{{ else }}{{ $.Page.RenderString $title }}{{ end }}</h3>

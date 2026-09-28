@@ -75,6 +75,24 @@ html:not(.dark) .lab .net text[fill="#5EEAD4"] { fill: #0F766E; }
 .lab .proj__uses { margin: .35rem 0 0 !important; font: 400 .74rem var(--mono); color: rgb(var(--muted)) !important; }
 .lab .proj__uses span { color: var(--lx-violet, #B7A6F7); }
 
+/* project panels in "tools" style: a security glyph over the project's
+   tools, each a tag with its logo (one colour) where the tool has one */
+.lab .proj--kit { grid-template-columns: 11rem minmax(0, 1fr); }
+.lab .proj--kit .stage { aspect-ratio: auto; align-self: stretch; min-height: 7rem; padding: .8rem .6rem; flex-direction: column; gap: .6rem; }
+.lab .kit__glyph { display: block; line-height: 0; color: var(--lx-magenta, #E483C3); }
+.lab .kit__glyph svg { width: 2.9rem; height: 2.9rem; }
+.lab .kit__marks { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+.lab .kit__m {
+  display: inline-flex; align-items: center; gap: .35rem; height: 1.6rem; padding: 0 .5rem;
+  border-radius: .4rem; border: 1px solid rgba(183, 166, 247, .32); background: rgba(13, 11, 25, .4);
+  font: 500 .66rem var(--mono); color: var(--lx-violet, #B7A6F7); white-space: nowrap; line-height: 1;
+}
+.lab .kit__m svg { width: .95rem; height: .95rem; flex: none; fill: currentColor; }
+html:not(.dark) .lab .kit__m { background: rgba(255, 255, 255, .75); border-color: rgba(93, 66, 190, .3); }
+.lab .proj--kit:hover .kit__glyph { filter: drop-shadow(0 0 6px rgba(228, 131, 195, .45)); }
+@media (max-width: 760px) { .lab .proj--kit { grid-template-columns: 9rem minmax(0, 1fr); } .lab .kit__m { font-size: .6rem; } }
+@media (prefers-reduced-motion: reduce) { .lab .proj--kit:hover .kit__glyph { filter: none; } }
+
 /* resource plan (shortcodes/resource-plan.html) */
 .lab .mems { display: flex; flex-direction: column; gap: .7rem; margin: 1rem 0; }
 .lab .mems__scale { display: flex; justify-content: space-between; margin: 0 !important; font: 400 .7rem var(--mono); color: rgb(var(--muted)) !important; }

@@ -1,6 +1,5 @@
 {{- /* whoami, "How I work": wraps the paragraphs that open with a bold line
-       and turns each into a card, the bold line as its heading and a doodle
-       beside it (layouts/partials/lab/about/principle-N.svg, in order).
+       and turns each into a card, the bold line as its heading.
 
        {{< principles >}}
        **A finding is only as useful as the owner it reaches.** At ...
@@ -11,13 +10,11 @@
        The words stay exactly as written in the markdown. */ -}}
 {{- $html := .Page.RenderString (dict "display" "block") (trim .Inner "\n ") -}}
 <div class="prins not-prose">
-  {{- range $i, $p := findRE `(?s)<p>.*?</p>` $html }}
-    {{- $head := replaceRE `(?s)^<p><strong>(.*?)</strong>.*$` "$1" $p }}
-    {{- $text := replaceRE `(?s)^<p><strong>.*?</strong>\s*(.*)</p>$` "$1" $p }}
-    {{- $doo := printf "lab/about/principle-%d.svg" (add $i 1) }}
+  {{- range findRE `(?s)<p>.*?</p>` $html }}
+    {{- $head := replaceRE `(?s)^<p><strong>(.*?)</strong>.*$` "$1" . }}
+    {{- $text := replaceRE `(?s)^<p><strong>.*?</strong>\s*(.*)</p>$` "$1" . }}
   <article class="prin glass lit" data-nav>
-    {{- if templates.Exists (printf "partials/%s" $doo) }}<div class="prin__doo">{{ partial $doo . }}</div>{{ end }}
-    <div><h3>{{ $head | safeHTML }}</h3><p>{{ $text | safeHTML }}</p></div>
+    <h3>{{ $head | safeHTML }}</h3><p>{{ $text | safeHTML }}</p>
   </article>
   {{- end }}
 </div>

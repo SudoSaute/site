@@ -1,0 +1,2 @@
+{{- /* Homelab project glyph, a shield with a pulse line: logs in, activity watched. Drawn for the site (not a tool logo); styled by .kit in assets/css/lab/homelab.css. */ -}}
+<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M13 25h6l3-7 4 13 3-6h6"/></svg>

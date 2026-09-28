@@ -263,10 +263,10 @@ How to write a writeup or a post: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
 | `connect url label` | Home | `> connect --linkedin` card |
 | `connect-mini url label` | whoami | `> connect --linkedin` sign-off card at the end of the page |
 | `intro image alt` | whoami | Portrait in an aurora halo beside the opening statement |
-| `principles` | whoami | Wraps the "How I work" paragraphs; each bold opening line becomes a card heading, with a doodle (`partials/lab/about/principle-N.svg`, in order) |
+| `principles` | whoami | Wraps the "How I work" paragraphs; each bold opening line becomes a card heading |
 | `off-clock` | whoami | The house scene (doodles, parrot, spring) and the parrot button (`p`) |
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."`. `role` picks the hover icon (`partials/lab/hw/`) |
-| `projects keys` | Homelab | Wraps the Six Projects table and draws each row as a card with its writeup illustration; links to the writeup once one is published with that `project:` |
+| `projects keys style` | Homelab | Wraps the Six Projects table and draws each row as a card; links to the writeup once one is published with that `project:`. `style="tools"` (default) shows a security glyph (`partials/lab/kit/`) over the project's tools, with logos from `assets/img/logos/` where a tool has one; the tool list is at the top of the shortcode. `style="art"` uses the writeup illustrations instead |
 | `resource-plan cap` | Homelab | Wraps the Resource Plan table and draws each row as a bar against the memory cap |
 | `rules file` | Homelab | Wraps the Operating Constraints list as `$ cat /etc/lab/rules.conf` |
 | `proof items="Label :: file.jpg :: alt \| ..."` | Resume | Thumbnails at the bottom of a card that open a popup viewer (`assets/js/proof.js`). Images live in the page bundle |

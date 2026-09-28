@@ -1,0 +1,10 @@
+{{- /* Writeup illustration, threat intel: a telescope and stars. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-intel" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<path d="M252 44L292 30 326 58 312 100 268 104 246 74Z" stroke-width="1.6" stroke-dasharray="3 6" opacity=".55"/>
+<path d="M268 104l-6 28M312 100l8 30" stroke-width="1.6" stroke-dasharray="3 6" opacity=".45"/>
+<path class="tw tw-1" d="M252 37L253.96 42.04L259 44L253.96 45.96L252 51L250.04 45.96L245 44L250.04 42.04Z" fill="var(--amber)" stroke="none"/><path class="tw tw-2" d="M292 22L294.24 27.759999999999998L300 30L294.24 32.24L292 38L289.76 32.24L284 30L289.76 27.759999999999998Z" fill="var(--amber)" stroke="none"/><path class="tw tw-3" d="M326 52L327.68 56.32L332 58L327.68 59.68L326 64L324.32 59.68L320 58L324.32 56.32Z" fill="var(--amber)" stroke="none"/><path class="tw tw-4" d="M312 93L313.96 98.04L319 100L313.96 101.96L312 107L310.04 101.96L305 100L310.04 98.04Z" fill="var(--amber)" stroke="none"/><path class="tw tw-5" d="M268 98L269.68 102.32L274 104L269.68 105.68L268 110L266.32 105.68L262 104L266.32 102.32Z" fill="var(--amber)" stroke="none"/><path class="tw tw-6" d="M246 69L247.4 72.6L251 74L247.4 75.4L246 79L244.6 75.4L241 74L244.6 72.6Z" fill="var(--amber)" stroke="none"/>
+<path d="M86 204l34-60 34 60M120 144v60" />
+<g class="scope"><path d="M96 158L206 96l10 18-110 62z" fill="var(--art-bg)"/><path d="M206 96l8-4 12 22-8 4" fill="var(--art-bg)"/><path d="M96 158l-14 8 8 14 14-8" fill="var(--art-bg)"/><path d="M150 128l6 10" stroke-width="2.2"/></g>
+<circle cx="120" cy="144" r="5" fill="currentColor" stroke="none"/>
+</svg>

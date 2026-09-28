@@ -1,0 +1,18 @@
+{{- /* Writeup illustration, SIEM: logs dropping into a funnel, a dashboard and a gauge. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-siem" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<g class="drop drop-1"><rect x="134" y="4" width="28" height="20" rx="3" fill="var(--art-bg)"/><path d="M140 11h16M140 17h10" stroke-width="2.2"/></g>
+<g class="drop drop-2"><rect x="166" y="4" width="28" height="20" rx="3" fill="var(--art-bg)"/><path d="M172 11h16M172 17h10" stroke-width="2.2"/></g>
+<g class="drop drop-3"><rect x="198" y="4" width="28" height="20" rx="3" fill="var(--art-bg)"/><path d="M204 11h16M204 17h10" stroke-width="2.2"/></g>
+<path d="M112 44h136l-46 40v18h-44V84z" fill="var(--art-bg)"/>
+<rect x="66" y="112" width="228" height="98" rx="12" fill="var(--art-bg)"/>
+<path d="M84 192h104" stroke-width="2.2" opacity=".5"/>
+<rect class="bar bar-1" x="92" y="160" width="16" height="32" rx="2" fill="var(--sec-soft)"/>
+<rect class="bar bar-2" x="116" y="138" width="16" height="54" rx="2" fill="var(--sec-soft)"/>
+<rect class="bar bar-3" x="140" y="168" width="16" height="24" rx="2" fill="var(--sec-soft)"/>
+<rect class="bar bar-4" x="164" y="148" width="16" height="44" rx="2" fill="var(--sec-soft)"/>
+<path d="M208 190a36 36 0 0 1 72 0"/>
+<path d="M214 170l6 4M244 150v7M274 170l-6 4" stroke-width="2.2"/>
+<g class="needle"><path d="M244 190l-22-18" stroke="var(--sec)"/></g>
+<circle cx="244" cy="190" r="4.5" fill="currentColor" stroke="none"/>
+</svg>

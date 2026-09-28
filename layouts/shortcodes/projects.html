@@ -1,0 +1,41 @@
+{{- /* Homelab, "The Six Projects": wraps the markdown table (Project | What it
+       proves | Uses) and draws each row as a card with that project's writeup
+       illustration. A project links to its writeup once one is published
+       with `project:` set to the matching key.
+
+       {{< projects keys="siem,atomic,phish,ir,intel,rules" >}}
+       | Project | What it proves | Uses |
+       |---|---|---|
+       | 1. SIEM deployment and dashboards | I can ... | Corporate, ... |
+       {{< /projects >}}
+
+       keys: the program slots (data/program.yaml), in row order. Delete the
+       shortcode lines and the table renders as a plain table again. */ -}}
+{{- $keys := split (.Get "keys" | default "") "," -}}
+{{- $rows := slice -}}
+{{- range split (trim .Inner "\n ") "\n" -}}
+  {{- $l := trim . " " -}}
+  {{- if and (hasPrefix $l "|") (not (findRE `^\|[\s:|-]+\|$` $l)) -}}
+    {{- $cells := slice }}{{ range after 1 (split (strings.TrimSuffix "|" $l) "|") }}{{ $cells = $cells | append (trim . " ") }}{{ end -}}
+    {{- $rows = $rows | append (dict "c" $cells) -}}
+  {{- end -}}
+{{- end -}}
+<div class="projs not-prose">
+  {{- range $i, $row := after 1 $rows }}{{ $r := $row.c }}
+    {{- $key := trim (index $keys $i | default "") " " }}
+    {{- $name := index $r 0 }}
+    {{- $n := replaceRE `^(\d+)\.\s.*$` "$1" $name }}
+    {{- $title := replaceRE `^\d+\.\s+` "" $name }}
+    {{- $written := index (where (where site.RegularPages "Section" "writeups") "Params.project" $key) 0 }}
+    {{- $art := cond (templates.Exists (printf "partials/art/%s.svg" $key)) $key "ir" }}
+  <article class="proj glass lit calm" data-nav>
+    <div class="stage">{{ partial (printf "art/%s.svg" $art) . }}</div>
+    <div class="proj__txt">
+      {{- if ne $n $name }}<p class="proj__n">project {{ $n }}</p>{{ end }}
+      <h3 class="card-title">{{ with $written }}<a href="{{ .RelPermalink }}">{{ $.Page.RenderString $title }}</a>{{ else }}{{ $.Page.RenderString $title }}{{ end }}</h3>
+      <p class="proj__proves">{{ $.Page.RenderString (index $r 1) }}</p>
+      {{- with index $r 2 }}<p class="proj__uses"><span>uses</span> {{ $.Page.RenderString . }}</p>{{ end }}
+    </div>
+  </article>
+  {{- end }}
+</div>

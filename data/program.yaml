@@ -1,0 +1,16 @@
+# The lab program: nine writeups that follow one plan. The /writeups/ page
+# draws its program map from this file, in this order, grouped by phase.
+#
+# status: planned or drafting. A slot shows "Published" on its own once a
+# non-draft writeup has `project:` set to its key, so never set that here.
+# Drafts are not built on the live site, which is why "drafting" has to be
+# set by hand.
+- { key: seg,    name: "Network segmentation",       phase: "Build the lab",        status: planned }
+- { key: siem,   name: "SIEM and dashboards",        phase: "Build the lab",        status: planned }
+- { key: atomic, name: "Adversary emulation",        phase: "Attack it on purpose", status: planned }
+- { key: phish,  name: "Phishing analysis",          phase: "Investigate",          status: planned }
+- { key: ir,     name: "Incident response reports",  phase: "Investigate",          status: planned }
+- { key: intel,  name: "Threat intel brief",         phase: "Detect and hunt",      status: planned }
+- { key: rules,  name: "Detection rules",            phase: "Detect and hunt",      status: planned }
+- { key: vuln,   name: "Vulnerability management",   phase: "Beyond the roadmap",   status: planned }
+- { key: ctf,    name: "CTF writeups",               phase: "Beyond the roadmap",   status: planned }

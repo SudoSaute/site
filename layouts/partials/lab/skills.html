@@ -1,0 +1,10 @@
+{{- /* Writeup skills: the `skill:` front matter key, the label the filters
+       and fact box show, and the colour of its tag dot. One place, so the
+       /writeups/ filters and each writeup page agree. */ -}}
+{{- return dict
+    "detection" (dict "label" "Detection engineering" "short" "Detection" "tag" "t-detection")
+    "response"  (dict "label" "Incident response" "short" "Incident response" "tag" "t-response")
+    "network"   (dict "label" "Network security" "short" "Network security" "tag" "t-build")
+    "vuln"      (dict "label" "Vulnerability management" "short" "Vuln mgmt" "tag" "t-vuln")
+    "ctf"       (dict "label" "CTF and competitions" "short" "CTF" "tag" "t-ctf")
+-}}

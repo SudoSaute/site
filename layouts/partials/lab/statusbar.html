@@ -1,0 +1,44 @@
+{{- /* Keyboard status bar for the lab pages: a thin bar fixed to the bottom
+       of the window with a position readout, a message area and key hints.
+       Desktop only (fine pointer, 760px and up) and only once
+       assets/js/spotlight.js has run, so it never promises keys that do
+       nothing. Hints for things a page does not have (no items to move
+       between, nothing to roll) are hidden by the script.
+
+       data-items  what j and k move between
+       data-rand   what r picks from
+       data-label  the word in the readout ("writeup 2/5") */ -}}
+{{- $key := partial "lab/room.html" . -}}
+{{- $cfg := dict
+      "writeups" (dict "label" "writeup" "items" "[data-nav]" "rand" "[data-roll]:not(.is-hidden)" "noun" "writeup")
+      "writeup"  (dict "label" "section" "items" ".lab-article h2" "rand" "" "noun" "section")
+      "blog"     (dict "label" "post" "items" "[data-nav]" "rand" "[data-roll]" "noun" "post")
+      "post"     (dict "label" "section" "items" "#main-content article h2" "rand" "" "noun" "section")
+      "homelab"  (dict "label" "card" "items" "[data-nav]" "rand" "" "noun" "card")
+      "about"    (dict "label" "card" "items" "[data-nav]" "rand" "" "noun" "card")
+-}}
+{{- $c := index $cfg $key | default (dict "label" "item" "items" "[data-nav]" "rand" "" "noun" "item") -}}
+{{- $subscribe := and (eq $key "blog") (.Store.Get "labSubscribe") -}}
+{{- $parrot := eq $key "about" -}}
+<div class="vim" role="region" aria-label="Keyboard shortcuts" data-keys data-label="{{ $c.label }}" data-items="{{ $c.items }}" data-rand="{{ $c.rand }}">
+  <span class="vim__mode">keys</span>
+  <span class="vim__pos" data-pos data-need="items"></span>
+  <span class="vim__msg" data-msg aria-live="polite"></span>
+  <span class="vim__keys">
+    <span data-need="items"><kbd>j</kbd><kbd>k</kbd> move</span>
+    {{- with $c.rand }}<span data-need="rand"><kbd>r</kbd> random</span>{{ end }}
+    <span><kbd>t</kbd> lights</span>
+    {{- if $subscribe }}<span><kbd>s</kbd> subscribe</span>{{ end }}
+    {{- if $parrot }}<span data-need="parrot"><kbd>p</kbd> parrot</span>{{ end }}
+    <button type="button" class="vim__help" data-help aria-expanded="false" aria-controls="lab-keys-help" aria-label="Keyboard shortcuts help"><kbd>?</kbd></button>
+  </span>
+  <div class="vim__pop" id="lab-keys-help" data-help-pop hidden>
+    <p data-need="items"><kbd>j</kbd><kbd>k</kbd> next and previous {{ $c.noun }}</p>
+    {{- with $c.rand }}<p data-need="rand"><kbd>r</kbd> a random {{ $c.noun }}</p>{{ end }}
+    <p><kbd>t</kbd> lights on or off</p>
+    {{- if $subscribe }}<p><kbd>s</kbd> jump to subscribe</p>{{ end }}
+    {{- if $parrot }}<p><kbd>p</kbd> make the parrot talk</p>{{ end }}
+    <p><kbd>esc</kbd> close this</p>
+  </div>
+</div>
+{{- if $subscribe }}<a href="#subscribe" data-key="s" data-say="subscribe" hidden tabindex="-1"></a>{{ end }}

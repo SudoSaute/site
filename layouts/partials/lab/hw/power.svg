@@ -1,0 +1,2 @@
+{{- /* Homelab hardware icon, a battery; it charges on hover (assets/css/lab/homelab.css). */ -}}
+<svg class="hw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="14" width="32" height="20" rx="3"/><path d="M38 20h4v8h-4"/><rect class="hw-charge" x="10" y="18" width="24" height="12" rx="1.5" fill="var(--led)" stroke="none" opacity=".75"/></svg>

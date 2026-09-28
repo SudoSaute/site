@@ -1,0 +1,19 @@
+{{- /* Writeup illustration, network segmentation: three segments, and a bug pacing the bars of the malware cell. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-seg" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<rect x="18" y="58" width="92" height="104" rx="12" fill="var(--art-bg)"/>
+<rect x="134" y="58" width="92" height="104" rx="12" fill="var(--art-bg)"/>
+<rect x="250" y="58" width="92" height="104" rx="12" fill="var(--art-bg)"/>
+<rect x="40" y="84" width="48" height="32" rx="3"/><path d="M32 124h64"/>
+<rect x="154" y="78" width="52" height="18" rx="3"/><rect x="154" y="102" width="52" height="18" rx="3"/><rect x="154" y="126" width="52" height="18" rx="3"/>
+<circle class="led led-1" cx="197" cy="87" r="3" fill="var(--led)" stroke="none"/>
+<circle class="led led-2" cx="197" cy="111" r="3" fill="var(--led)" stroke="none"/>
+<circle class="led led-3" cx="197" cy="135" r="3" fill="var(--amber)" stroke="none"/>
+<path class="flow" d="M110 110h24" stroke-dasharray="4 6"/>
+<path d="M226 110h24" stroke-dasharray="4 6" opacity=".35"/>
+<circle cx="238" cy="110" r="10" fill="var(--art-bg)" stroke="var(--sec)"/><path d="M231 103l14 14" stroke="var(--sec)"/>
+<path d="M342 110h12" stroke-dasharray="3 5" opacity=".35"/>
+<g class="seg-bug"><ellipse cx="296" cy="124" rx="9" ry="12" fill="var(--sec-soft)"/><circle cx="296" cy="107" r="6" fill="var(--art-bg)"/><path d="M287 118l-8-4M287 126l-9 1M288 134l-7 5M305 118l8-4M305 126l9 1M304 134l7 5M293 102l-4-7M299 102l4-7" stroke-width="2.4"/></g>
+<path d="M268 58v104M286 58v104M304 58v104M322 58v104" stroke-width="2.4" opacity=".6"/>
+<g class="seg-bonk" stroke="var(--amber)" stroke-width="2.4"><path d="M330 96l7-6M332 108h9M330 120l7 6"/></g>
+</svg>

@@ -10,6 +10,31 @@
     {{- $items = printf "%s | %s :: %s :: %s" $items .name $status $note -}}
   {{- end -}}
 {{- end -}}
+{{- if partial "lab/room.html" .Page }}
+{{- /* Lab pages (Homelab): one glass row per stage, with the pan icon for
+       work on the stove and a dashed ring for what is queued. Same items. */ -}}
+<div class="pipe not-prose">
+  {{- range split $items "|" -}}
+    {{- $parts := split (trim . " ") "::" -}}
+    {{- if ge (len $parts) 2 -}}
+      {{- $status := trim (index $parts 1) " " -}}
+      {{- $s := lower $status -}}
+      {{- $queued := or (hasPrefix $s "target") (hasPrefix $s "queued") (hasPrefix $s "planned") }}
+  <div class="pipe__row glass lit" data-nav>
+    <span class="pipe__ico{{ if not $queued }} ico--stove{{ end }}" aria-hidden="true">
+      {{- if $queued -}}
+      <svg viewBox="0 0 120 68" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" focusable="false"><circle cx="60" cy="36" r="14" stroke-dasharray="6 7"/></svg>
+      {{- else -}}
+      {{ partial "lab/pan.svg" . }}
+      {{- end -}}
+    </span>
+    <div><b>{{ trim (index $parts 0) " " }}</b><small>{{ $status }}</small>
+      {{- if ge (len $parts) 3 }}<p>{{ trim (index $parts 2) " " }}</p>{{ end }}</div>
+  </div>
+    {{- end -}}
+  {{- end }}
+</div>
+{{- else }}
 <div class="pipeline not-prose my-8">
   <ul class="pipeline__list">
     {{- range split $items "|" -}}
@@ -78,3 +103,4 @@
     {{- end -}}
   </ul>
 </div>
+{{- end }}

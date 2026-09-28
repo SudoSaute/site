@@ -1,0 +1,37 @@
+{{- /* Homelab, "Resource Plan": wraps the markdown table (Project | Runs |
+       Planned memory) and draws each row as a bar against the memory cap. A
+       range such as "8 to 20GB" draws the low end solid and the rest hatched.
+
+       {{< resource-plan cap="32" >}}
+       | Project | Runs | Planned memory |
+       |---|---|---|
+       | SIEM and dashboards | OPNsense, ... | About 27GB |
+       {{< /resource-plan >}}
+
+       Delete the shortcode lines and the table renders as a plain table again. */ -}}
+{{- $cap := float (.Get "cap" | default 32) -}}
+{{- $rows := slice -}}
+{{- range split (trim .Inner "\n ") "\n" -}}
+  {{- $l := trim . " " -}}
+  {{- if and (hasPrefix $l "|") (not (findRE `^\|[\s:|-]+\|$` $l)) -}}
+    {{- $cells := slice }}{{ range after 1 (split (strings.TrimSuffix "|" $l) "|") }}{{ $cells = $cells | append (trim . " ") }}{{ end -}}
+    {{- $rows = $rows | append (dict "c" $cells) -}}
+  {{- end -}}
+{{- end -}}
+<div class="mems not-prose">
+  <p class="mems__scale" aria-hidden="true"><span>0</span><span>{{ div $cap 2 }}GB</span><span>{{ $cap }}GB cap</span></p>
+  {{- range after 1 $rows }}{{ $r := .c }}
+    {{- $mem := index $r 2 }}
+    {{- $nums := findRE `\d+` $mem }}
+    {{- $lo := float (index $nums 0 | default 0) }}
+    {{- $hi := float (index $nums 1 | default 0) }}
+  <div class="mem glass lit" data-nav>
+    <div class="mem__top"><b>{{ index $r 0 }}</b><span>{{ $mem }}</span></div>
+    <div class="mem__bar" role="img" aria-label="{{ $mem }} of {{ $cap }}GB">
+      <i class="mem__lo" style="width:{{ lang.FormatNumber 1 (mul 100 (div $lo $cap)) }}%"></i>
+      {{- if gt $hi $lo }}<i class="mem__hi" style="left:{{ lang.FormatNumber 1 (mul 100 (div $lo $cap)) }}%;width:{{ lang.FormatNumber 1 (mul 100 (div (sub $hi $lo) $cap)) }}%"></i>{{ end }}
+    </div>
+    <p>{{ $.Page.RenderString (index $r 1) }}</p>
+  </div>
+  {{- end }}
+</div>

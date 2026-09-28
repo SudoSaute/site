@@ -15,6 +15,7 @@ A blue team lab on one repurposed workstation: a small corporate network, the to
 {{< pipeline items="Lab foundation :: In progress :: Proxmox and OPNsense first, then the three segments and the corporate network | Portfolio projects :: Planned :: Six projects from the roadmap, plus vulnerability management, each ending in a writeup" >}}
 
 I call the lab done when each project has a published writeup, not when every tool is installed.
+{.callout}
 
 ## Hardware
 
@@ -86,6 +87,7 @@ Sysmon and Elastic Defend do different jobs. Sysmon records process, network and
 
 These six come straight from the roadmap, in the order they come off the lab. Each one ends in a writeup.
 
+{{< projects keys="siem,atomic,phish,ir,intel,rules" >}}
 | Project | What it proves | Uses |
 |---|---|---|
 | 1. SIEM deployment and dashboards | I can get Windows, Sysmon and network logs into one place and make them readable | Corporate, Elastic Security, Security Onion |
@@ -94,6 +96,7 @@ These six come straight from the roadmap, in the order they come off the lab. Ea
 | 4. Incident response reports | I can write up an investigation the way a client would receive it: summary, timeline, IOCs, ATT&CK mapping, remediation | Retired HTB Sherlocks and CyberDefenders labs, FLARE-VM, TheHive |
 | 5. Threat intelligence brief | I can turn one threat group's TTPs into detections I test myself | Public reporting, Elastic Security |
 | 6. Detection rules in the open | I can write Sigma and YARA rules, test them here, and submit them upstream | Elastic Security, REMnux |
+{{< /projects >}}
 
 ### One addition: vulnerability management
 
@@ -110,28 +113,33 @@ ServiceNow Vulnerability Response is on hold as the system of record. It replace
 {{< vm-loop >}}
 
 A finding is closed when a rescan proves it, not when a ticket says so.
+{.callout}
 
 ## Resource Plan {.h-minor}
 
 The whole stack does not fit in 32GB at once, and it does not have to. Each project powers on its own machines and leaves the rest off.
 
+{{< resource-plan cap="32" >}}
 | Project | Runs | Planned memory |
 |---|---|---|
 | SIEM and dashboards | OPNsense, domain controller, one Windows endpoint, Ubuntu, Elastic Security, Security Onion | About 27GB |
 | Adversary emulation | OPNsense, domain controller, one Windows endpoint, Elastic Security | About 17GB |
 | Phishing, IR reports, YARA | FLARE-VM or REMnux, TheHive when a case needs it | 8 to 20GB |
 | Vulnerability management | OPNsense, the Corporate hosts, the Qualys scanner appliance, DefectDojo | About 19GB |
+{{< /resource-plan >}}
 
 The heaviest pieces set those numbers. Security Onion's evaluation mode asks for 8GB, and TheHive asks for about 4GB for each of its three services. I plan Elastic Security at 8GB for Elasticsearch, Kibana and Fleet Server on one VM, and the Qualys scanner appliance at 4GB. Those last two are my own allowances: Elastic publishes no lab-sized minimum, and the Qualys appliance ships at 8GB but runs on as little as 2GB.
 
 ## Operating Constraints {.h-minor}
 
+{{< rules >}}
 - I schedule projects instead of stacking them. Nothing runs that the current project does not need.
 - No inbound port forwards. The lab is never reachable from the internet.
 - The malware segment has no uplink, no shared folders and no shared clipboard, and every analysis VM reverts to a clean snapshot after use.
 - I only run attack techniques against machines in this lab, and Elastic Defend stays in detect-only mode on the endpoint under test, so it records the technique instead of stopping it.
 - Qualys Community Edition keeps scan data for 90 days, so I export any scan worth writing up the week it runs.
 - I do not publish addresses, hostnames, or topology specifics here. That is deliberate.
+{{< /rules >}}
 
 
 {{< wip title="Still cooking" >}}

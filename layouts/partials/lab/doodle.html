@@ -1,0 +1,6 @@
+{{- /* A blog post's doodle, from layouts/partials/doodles/: the post's
+       `doodle:` key, else a doodle named after the post's file or folder,
+       else default.svg. */ -}}
+{{- $k := .Params.doodle | default .File.ContentBaseName -}}
+{{- if not (templates.Exists (printf "partials/doodles/%s.svg" $k)) }}{{ $k = "default" }}{{ end -}}
+{{- partial (printf "doodles/%s.svg" $k) . -}}

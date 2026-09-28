@@ -1,10 +1,22 @@
+{{- /* Site override. Lab pages (Writeups, Blog, Homelab, whoami) get
+       data-room="lab" and data-lab="<page key>" on <html>, the spotlight
+       layer and the keyboard status bar; see partials/lab/room.html. Every
+       spotlight rule is scoped to html[data-room="lab"], so Home, Resume and
+       /ctf render exactly as before. labDefaultDark in params.toml opens lab
+       pages dark for visitors who have not picked a theme yet.
+       The cursor spotlight alone (no other lab styling) also runs on Home and
+       Resume while homeSpotlight is on; those pages get data-spot only. */ -}}
+{{- $lab := partial "lab/room.html" . -}}
+{{- $spot := or $lab (and site.Params.homeSpotlight (or .IsHome (eq .RelPermalink ("resume/" | relURL)))) -}}
 <!doctype html>
 <html
   lang="{{ with site.Params.isoCode | default (site.Language.Locale | default `en`) }}{{- . -}}{{ end }}"
   dir="{{ cond (site.Params.rtl | default false) `rtl` `ltr` }}"
   class="scroll-smooth{{ if eq .Layout "ctf" }} dark{{ end }}"
   {{ if eq .Layout "ctf" }}data-page="ctf"{{ end }}
-  data-default-appearance="{{ site.Params.defaultAppearance | default `light` }}"
+  {{- with $lab }} data-room="lab" data-lab="{{ . }}"{{ end }}
+  {{- if $spot }} data-spot{{ end }}
+  data-default-appearance="{{ if and $lab site.Params.labDefaultDark }}dark{{ else }}{{ site.Params.defaultAppearance | default `light` }}{{ end }}"
   data-auto-appearance="{{ site.Params.autoSwitchAppearance | default `true` }}"
   {{ if site.Params.astral }}data-astral="true"{{ end }}
   {{ with site.Params.headingFont }}data-heading-font="{{ . }}"{{ end }}
@@ -39,6 +51,7 @@
         {{ end }}
       </main>
       {{- partial "footer.html" . -}}
+      {{- with $lab }}{{ partial "lab/statusbar.html" $ }}{{ end -}}
       {{ if site.Params.enableSearch | default false }}
         {{- partial "search.html" . -}}
       {{ end }}
@@ -64,6 +77,13 @@
         </div>
       {{ end }}
     {{ end }}
+    {{- if $spot }}
+    <div class="spot" aria-hidden="true"></div>
+    {{- $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+    {{- with resources.Get "js/spotlight.js" | resources.Minify | resources.Fingerprint $alg }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+    {{- end }}
+    {{- end }}
   </body>
   {{ if site.Params.buymeacoffee.globalWidget | default false }}
     <script

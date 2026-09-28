@@ -1,0 +1,14 @@
+{{- /* Homelab, "Operating Constraints": wraps the markdown list and shows it as
+       a config file (`$ cat /etc/lab/rules.conf`), each rule numbered #01,
+       #02 ... by CSS. The list text stays exactly as written.
+
+       {{< rules >}}
+       - I schedule projects instead of stacking them. ...
+       {{< /rules >}} */ -}}
+{{- $file := .Get "file" | default "/etc/lab/rules.conf" -}}
+<div class="lrules glass lit not-prose">
+  <p class="lrules__cmd" aria-hidden="true"><b>$</b> cat {{ $file }}</p>
+  {{- $list := .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}
+  {{- $list = replace (replace $list "<ul>" "<ol>") "</ul>" "</ol>" }}
+  {{ $list | safeHTML }}
+</div>

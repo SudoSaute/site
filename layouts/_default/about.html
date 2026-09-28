@@ -1,0 +1,19 @@
+{{- /* whoami (content/about.md, `layout: about`): the page's own markdown in
+       the spotlight theme. The portrait intro sits under the title; each h2
+       becomes a numbered section beside a sticky "$ cat ~/.whoami" list.
+       The shortcodes on the page (intro, principles, off-clock,
+       connect-mini) draw the cards and the scene.
+       Styles: assets/css/lab/about.css. */ -}}
+{{ define "main" }}
+{{- $parts := split .Content "<h2" -}}
+{{- $intro := index $parts 0 -}}
+{{- $body := delimit (after 1 $parts) "<h2" -}}
+<div class="lab"><div class="lab__in">
+  <header>
+    {{- if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
+    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+  </header>
+  {{ $intro | safeHTML }}
+  {{ partial "lab/sections.html" (dict "page" . "prompt" "cat ~/.whoami" "body" (printf "<h2%s" $body)) }}
+</div></div>
+{{ end }}

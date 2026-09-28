@@ -1,0 +1,90 @@
+/* --- /about/ (whoami) ------------------------------------------------------------
+   Loaded only on whoami, after sections.css (the numbered sections and the
+   sticky list it shares with Homelab). Shared parts live in
+   assets/css/site/95-spotlight.css. Light-mode label colours use the --lx-*
+   tokens set there, falling back to the dark values. */
+
+/* portrait and opening line (shortcodes/intro.html) */
+.lab .lintro { display: grid; grid-template-columns: 16rem minmax(0, 1fr); gap: 2.4rem; align-items: center; margin-top: 1.4rem; }
+.lab .lintro__frame { position: relative; border-radius: 1.2rem; isolation: isolate; }
+.lab .lintro__frame::before {
+  content: ""; position: absolute; inset: -14px; border-radius: 1.6rem; z-index: -1; opacity: .55;
+  background: conic-gradient(from 200deg, #B7A6F7, #E483C3, #5EEAD4, #9F7BE8, #B7A6F7);
+  filter: blur(22px); animation: lx-halo 12s linear infinite;
+}
+html:not(.dark) .lab .lintro__frame::before { opacity: .4; }
+@keyframes lx-halo { to { filter: blur(22px) hue-rotate(360deg); } }
+.lab .lintro__img, .lab .lintro__frame picture { display: block; width: 100%; height: auto; border-radius: 1.2rem; }
+.lab .lintro__img { border: 1px solid rgba(183, 166, 247, .4); }
+.lab .lintro__placeholder { display: grid; place-items: center; aspect-ratio: 4 / 5; border-radius: 1.2rem; border: 1px dashed rgba(183, 166, 247, .5); color: rgb(var(--muted)); }
+.lab .lintro__placeholder svg { width: 2.6rem; }
+.lab .lintro__txt p { margin: 0; font: 500 clamp(1.25rem, 2.4vw, 1.6rem)/1.45 var(--display); color: rgb(var(--ink)); }
+@media (max-width: 760px) { .lab .lintro { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; } .lab .lintro__frame { max-width: 15rem; } }
+
+/* how I work (shortcodes/principles.html) */
+.lab .prins { display: flex; flex-direction: column; gap: .8rem; }
+.lab .prin { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1.1rem; align-items: center; padding: 1rem 1.2rem; }
+.lab .prin__doo { padding: .3rem; border-radius: .7rem; background: var(--panel); }
+html:not(.dark) .lab .prin__doo { background-color: var(--art-bg); }
+.lab .prin h3 { margin: 0 0 .3rem; font-size: 1.15rem; }
+.lab .prin p { margin: 0; font-size: .93rem; }
+.lab .pdoo { width: 6rem; height: auto; display: block; color: var(--lx-violet, #B7A6F7); }
+.lab .pdoo * { transform-box: fill-box; }
+.lab .pd-move { animation: lx-pdflow 1.2s linear infinite; }
+.lab .pd-tick { animation: lx-tickon 3s ease-out infinite; }
+.lab .pd-spin { transform-origin: center; animation: lx-pdspin 2s linear infinite; }
+.lab :is(.pd-b1, .pd-b2, .pd-b3) { animation: lx-pdbob 2.4s ease-in-out infinite; }
+.lab .pd-b2 { animation-delay: .3s; }
+.lab .pd-b3 { animation-delay: .6s; }
+.lab .pd-p { animation: lx-pdbob 1.6s ease-in-out infinite; }
+.lab .pd-p1 { animation-delay: .15s; }
+.lab .pd-p2 { animation-delay: .3s; }
+.lab .pd-p3 { animation-delay: .45s; }
+.lab .pd-p4 { animation-delay: .6s; }
+.lab .pd-pager { animation: lx-blink .6s steps(1) infinite; }
+.lab .pd-hand { transform-origin: bottom center; animation: lx-pdspin 3s linear infinite; }
+/* the doodles wait for hover or focus */
+.lab .pdoo * { animation-play-state: paused; }
+.lab :is(.prin:hover, .prin:focus-within) .pdoo * { animation-play-state: running; }
+@keyframes lx-pdflow { to { stroke-dashoffset: -18; } }
+@keyframes lx-tickon { 0% { stroke-dashoffset: 30; } 30%, 80% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 30; } }
+@keyframes lx-pdspin { to { transform: rotate(-360deg); } }
+@keyframes lx-pdbob { 50% { transform: translateY(-4px); } }
+
+/* off the clock (shortcodes/off-clock.html): the featured scene, always playing */
+.lab .homefig { margin: 0 0 1.2rem; padding: 1.2rem 1.2rem .8rem; }
+.lab .home { width: 100%; height: auto; display: block; color: var(--lx-violet, #B7A6F7); overflow: visible; }
+.lab .home * { transform-box: fill-box; }
+.lab .home .sq { font: 500 13px var(--mono); fill: #ece8fa; stroke: none; }
+html:not(.dark) .lab .home .sq { fill: #1c1a2c; }
+.lab .tail { transform-origin: 0% 100%; animation: lx-wag .35s ease-in-out infinite alternate; }
+.lab .t2 { animation-duration: .5s; }
+@keyframes lx-wag { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
+.lab .dog1 { animation: lx-hop 2.8s ease-in-out infinite; }
+@keyframes lx-hop { 0%, 70%, 100% { transform: none; } 80% { transform: translateY(-6px); } }
+.lab .parrot { transform-origin: 50% 100%; animation: lx-parrot 2.2s ease-in-out infinite; }
+@keyframes lx-parrot { 50% { transform: rotate(-4deg); } }
+.lab .squawk { transform-origin: 0% 100%; }
+.lab .squawk.pop { animation: lx-popb .35s ease-out; }
+@keyframes lx-popb { 0% { transform: scale(.6); } 70% { transform: scale(1.08); } 100% { transform: scale(1); } }
+.lab .rip { transform-origin: center; animation: lx-ripple 3s ease-out infinite; }
+.lab .r2 { animation-delay: 1.5s; }
+@keyframes lx-ripple { 0% { transform: scale(.4); opacity: 1; } 100% { transform: scale(3.4); opacity: 0; } }
+html:not(.dark) .lab .home ellipse[fill="#0f2f33"] { fill: #d5f5f0; }
+.lab .parrot__btn {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 2.4rem; margin-top: .4rem; padding: 0 .8rem;
+  border-radius: .5rem; border: 1px dashed rgba(183, 166, 247, .55); background: none; color: rgb(var(--ink)); font: 500 .8rem var(--mono); cursor: pointer;
+}
+html:not(.dark) .lab .parrot__btn { border-color: rgba(93, 66, 190, .5); }
+.lab .parrot__btn:hover { background: rgba(183, 166, 247, .12); }
+.lab .parrot__btn kbd { font: 500 .7rem var(--mono); padding: 0 .3rem; border: 1px solid rgba(183, 166, 247, .45); border-radius: .2rem; background: none; box-shadow: none; color: inherit; }
+
+/* what you'll find here (shortcodes/connect-mini.html) */
+.lab .lconnect { padding: 1.2rem 1.3rem; }
+.lab .lconnect p { margin: 0 0 .8rem; }
+.lab .lconnect__cmd { font: 500 .95rem var(--mono); color: rgb(var(--ink)) !important; }
+.lab .lconnect__cmd span { color: var(--lx-teal, #5EEAD4); }
+.lab .lconnect__caret { display: inline-block; width: .5rem; height: 1rem; margin-left: .3rem; vertical-align: -2px; background: #B7A6F7; animation: lx-blink 1s steps(1) infinite; }
+html:not(.dark) .lab .lconnect__caret { background: #5D42BE; }
+
+@media (max-width: 760px) { .lab .prin { grid-template-columns: 4.5rem minmax(0, 1fr); } .lab .pdoo { width: 4.2rem; } }

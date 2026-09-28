@@ -1,0 +1,8 @@
+{{- /* Blog doodle: a rack server with a swinging price tag and a power bolt. Plays on hover in the list, always on the lead post;
+       styles in assets/css/lab/blog.css. */ -}}
+<svg class="dz dz-dell" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<rect x="12" y="32" width="58" height="16" rx="3" fill="var(--art-bg)"/><rect x="12" y="52" width="58" height="16" rx="3" fill="var(--art-bg)"/>
+<path d="M20 40h22M20 60h22" stroke-width="2" opacity=".6"/><circle class="dz-led" cx="62" cy="40" r="2.4" fill="var(--led)" stroke="none"/><circle cx="62" cy="60" r="2.4" fill="var(--led)" stroke="none"/>
+<path d="M70 34c6-4 8-8 10-12" stroke-width="1.8"/>
+<g class="dz-tag"><path d="M80 14h18l7 7-7 7H80z" fill="var(--amber)"/><circle cx="85" cy="21" r="2" fill="var(--art-bg)" stroke="none"/><path d="M90 18v6M88 21h5" stroke-width="1.8"/></g>
+<path class="dz-bolt" d="M100 42l-8 13h8l-6 13" stroke="var(--sec)"/></svg>

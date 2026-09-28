@@ -1,0 +1,2 @@
+{{- /* The steaming pan: "on the stove", the site's word for work in progress. */ -}}
+<svg viewBox="0 0 120 68" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><g><path class="wisp w1" d="M42 34c-4-5 4-8 0-13s3-7 3-7"/><path class="wisp w2" d="M58 30c-4-6 4-9 0-14s3-8 3-8"/><path class="wisp w3" d="M74 34c-4-5 4-8 0-13s3-7 3-7"/></g><path d="M30 42h60c0 11-8 19-19 19H49c-11 0-19-8-19-19z"/><path d="M26 42h68"/><path d="M94 44l14-5"/></svg>

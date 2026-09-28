@@ -7,6 +7,8 @@ showReadingTime: false
 showTableOfContents: true
 showWordCount: false
 showPagination: false
+layout: "about"   # layouts/_default/about.html, the spotlight theme
+room: "lab"
 ---
 
 {{< intro image="img/author.jpg" alt="Christian Carrasco" >}}
@@ -23,6 +25,7 @@ The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This pa
 
 ## How I work
 
+{{< principles >}}
 **A finding is only as useful as the owner it reaches.** At TelevisaUnivision, my part of the program came after the scan: tracing each finding to the team that owned the system and following exception requests through to a decision. At Toyota, the same discipline carried into cloud audits, where misconfigurations stayed on my list until they were closed.
 
 **The underrated part of an incident is the review afterward.** For over five years I assigned severity, coordinated the response, and decided when to escalate when production went down. The work that lasts is the post-incident review that stops the same failure from paging anyone again.
@@ -32,9 +35,12 @@ The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This pa
 **A good team spends its time on what matters.** Five engineers, a shared backlog, an on-call rotation, and SLA commitments somebody is measuring. The job is triage discipline, clear ownership, and removing the recurring noise.
 
 **Uptime and exposure are the same conversation.** A rushed change can become the next outage, and an expired certificate or a stale DNS record can become the next incident. I treat change windows, certificates, and cloud permissions as one discipline, not two.
+{{< /principles >}}
 
 
 ## Off the clock
+
+{{< off-clock >}}
 
 I've known my beautiful wife for quite a while, and winning her over took longer than any incident I ever managed. Once I finally did, we dated for four years, and as of 2026 we've been happily married for more than three. We recently welcomed our son, and I am grateful to the Lord Jesus Christ for blessing us with him.
 

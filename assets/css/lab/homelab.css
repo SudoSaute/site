@@ -1,0 +1,113 @@
+/* --- /homelab/ ------------------------------------------------------------------
+   Loaded only on Homelab, after sections.css (the numbered sections and the
+   sticky list it shares with whoami). Shared parts live in
+   assets/css/site/95-spotlight.css. Light-mode label colours use the --lx-*
+   tokens set there, falling back to the dark values. */
+
+/* build status (shortcodes/pipeline.html) */
+.lab .pipe { display: flex; flex-direction: column; gap: .7rem; margin: 0 0 1rem; }
+.lab .pipe__row { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .9rem 1.1rem; }
+.lab .pipe__ico { color: var(--lx-violet, #B7A6F7); }
+.lab .pipe__ico svg { width: 3.4rem; height: auto; display: block; }
+.lab .pipe__ico.ico--stove { color: var(--lx-magenta, #E483C3); }
+.lab .pipe__row b { font: 600 1.1rem var(--display); color: rgb(var(--ink)); }
+.lab .pipe__row small { margin-left: .6rem; font: 500 .72rem var(--mono); color: var(--lx-teal, #5EEAD4); }
+.lab .pipe__row p { margin: .2rem 0 0; font-size: .92rem; }
+
+/* hardware (shortcodes/specs.html, spec.html) */
+.lab .lspecs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.lab .lspec { padding: 1.1rem 1.2rem; }
+.lab .lspec__head { display: flex; gap: .8rem; align-items: center; margin-bottom: .6rem; }
+.lab .lspec__role { margin: 0 !important; font: 500 .7rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--lx-teal, #5EEAD4) !important; }
+.lab .lspec h3 { margin: 0; font-size: 1.2rem; }
+.lab .lspec dl { margin: 0 0 .6rem; display: grid; gap: .25rem; }
+.lab .lspec dl div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .5rem; font-size: .86rem; }
+.lab .lspec dt { font: 500 .75rem var(--mono); color: rgb(var(--muted)); }
+.lab .lspec dd { margin: 0; color: rgb(var(--ink)); }
+.lab .lspec__note p { font-size: .88rem; line-height: 1.55; margin: 0 0 .7rem; }
+.lab .lspec__tags { display: flex; flex-wrap: wrap; gap: .3rem; list-style: none; margin: 0; padding: 0; }
+.lab .lspec__tags li { margin: 0; font: 500 .7rem var(--mono); padding: .12rem .45rem; border-radius: .3rem; border: 1px solid rgba(183, 166, 247, .35); color: var(--lx-violet, #B7A6F7); }
+html:not(.dark) .lab .lspec__tags li { border-color: rgba(93, 66, 190, .4); }
+.lab .hw { width: 2.6rem; height: 2.6rem; flex: none; color: var(--lx-violet, #B7A6F7); }
+.lab .hw * { transform-box: fill-box; }
+.lab .lspec:hover .hw-core { animation: lx-pulse 1s ease-in-out infinite; }
+.lab .lspec:hover .hw-fill { transform-origin: left center; animation: lx-fill 1.6s ease-in-out infinite; }
+.lab .lspec:hover .hw-led { animation: lx-blink .9s steps(1) infinite; }
+.lab .lspec:hover .l2 { animation-duration: .6s; }
+.lab .lspec:hover .l3 { animation-duration: 1.3s; }
+.lab .lspec:hover .hw-cursor { animation: lx-blink 1s steps(1) infinite; }
+.lab .lspec:hover .hw-charge { transform-origin: left center; animation: lx-fill 2s ease-in-out infinite; }
+.lab .lspec:hover .hw-q { transform-origin: center; animation: lx-wobble .8s ease-in-out infinite alternate; }
+@keyframes lx-pulse { 50% { opacity: .35; } }
+@keyframes lx-fill { 0% { transform: scaleX(.15); } 100% { transform: scaleX(1); } }
+@keyframes lx-wobble { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }
+
+/* diagrams (shortcodes/network-diagram.html, vm-loop.html) */
+.lab .fig { margin: 1rem 0; padding: 1rem; }
+.lab .fig__scroll { overflow-x: auto; }
+.lab .net { width: 100%; min-width: 560px; height: auto; color: var(--lx-violet, #B7A6F7); display: block; }
+.lab .net .nt { font: 600 15px var(--display); fill: #ece8fa; stroke: none; }
+.lab .net .ns { font: 400 10px var(--mono); fill: #a49cc4; stroke: none; }
+.lab .net text[fill="#5EEAD4"] { fill: #5EEAD4; }
+.lab .nflow { animation: lx-nflow 1.4s linear infinite; }
+.lab .nflow--r { animation-direction: reverse; }
+.lab .nlog { animation: lx-nflow 2.2s linear infinite; }
+@keyframes lx-nflow { to { stroke-dashoffset: -26; } }
+.lab .vmn { animation: lx-vmstep 6s steps(1) infinite; }
+.lab .vmn-1 { animation-delay: 1s; }
+.lab .vmn-2 { animation-delay: 2s; }
+.lab .vmn-3 { animation-delay: 3s; }
+.lab .vmn-4 { animation-delay: 4s; }
+.lab .vmn-5 { animation-delay: 5s; }
+@keyframes lx-vmstep { 0%, 16% { stroke: #E483C3; stroke-width: 3; } 17%, 100% { stroke: currentColor; stroke-width: 2.4; } }
+html:not(.dark) .lab .net rect, html:not(.dark) .lab .net circle { fill: #f7f5fe; }
+html:not(.dark) .lab .net .nt { fill: #1c1a2c; }
+html:not(.dark) .lab .net .ns { fill: #5d587c; }
+html:not(.dark) .lab .net text[fill="#5EEAD4"] { fill: #0F766E; }
+
+/* the six projects (shortcodes/projects.html) */
+.lab .projs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 0 1rem; }
+.lab .proj { position: relative; display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; align-items: center; padding: .8rem; }
+.lab .proj .stage { border-radius: .6rem; aspect-ratio: 360 / 220; padding: .35rem; }
+.lab .proj__n { margin: 0 !important; font: 500 .7rem var(--mono); color: var(--lx-teal, #5EEAD4) !important; }
+.lab .proj .card-title { margin: .15rem 0 .3rem; font-size: 1.08rem; }
+.lab .proj__proves { margin: 0 !important; font-size: .86rem; line-height: 1.5; }
+.lab .proj__uses { margin: .35rem 0 0 !important; font: 400 .74rem var(--mono); color: rgb(var(--muted)) !important; }
+.lab .proj__uses span { color: var(--lx-violet, #B7A6F7); }
+
+/* resource plan (shortcodes/resource-plan.html) */
+.lab .mems { display: flex; flex-direction: column; gap: .7rem; margin: 1rem 0; }
+.lab .mems__scale { display: flex; justify-content: space-between; margin: 0 !important; font: 400 .7rem var(--mono); color: rgb(var(--muted)) !important; }
+.lab .mem { padding: .8rem 1rem; }
+.lab .mem__top { display: flex; justify-content: space-between; gap: 1rem; font-size: .95rem; }
+.lab .mem__top b { font-weight: 600; color: rgb(var(--ink)); }
+.lab .mem__top span { font: 500 .78rem var(--mono); color: var(--lx-teal, #5EEAD4); white-space: nowrap; }
+.lab .mem__bar { position: relative; height: .6rem; margin: .5rem 0; border-radius: 999px; background: rgba(183, 166, 247, .12); overflow: hidden; }
+html:not(.dark) .lab .mem__bar { background: rgba(93, 66, 190, .12); }
+.lab .mem__bar::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(183, 166, 247, .35); }
+.lab .mem__lo { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, #9F7BE8, #E483C3); }
+.lab .mem__hi { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, rgba(228, 131, 195, .55) 0 4px, transparent 4px 8px); }
+.lab .mem p { margin: 0 !important; font-size: .82rem; }
+
+/* operating constraints (shortcodes/rules.html) */
+.lab .lrules { padding: 1rem 1.2rem; }
+.lab .lrules__cmd { margin: 0 0 .6rem !important; font: 400 .8rem var(--mono); color: rgb(var(--muted)) !important; }
+.lab .lrules__cmd b { color: var(--lx-teal, #5EEAD4); }
+.lab .lrules ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .55rem; counter-reset: rule; }
+.lab .lrules li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); margin: 0; font-size: .92rem; color: rgb(var(--body)); }
+.lab .lrules li::before { counter-increment: rule; content: "#" counter(rule, decimal-leading-zero); font: 500 .78rem/1.9 var(--mono); color: var(--lx-magenta, #E483C3); }
+
+/* still cooking (shortcodes/wip.html) */
+.lab .lwip { margin-top: 1rem; padding: 2rem 1.6rem; text-align: center; border-style: dashed; }
+.lab .lwip__art { display: block; width: min(88%, 24rem); margin: 0 auto 1.2rem; color: var(--lx-violet, #B7A6F7); }
+.lab .lwip__title { margin: 0 0 .5rem; font-size: 1.5rem; }
+.lab .lwip__text p { margin: 0 auto .5rem; max-width: 34rem; font-size: .95rem; color: rgb(var(--body)); }
+
+@media (max-width: 760px) {
+  .lab .lspecs, .lab .projs { grid-template-columns: minmax(0, 1fr); }
+  .lab .proj { grid-template-columns: 6.5rem minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lab .lspec:hover :is(.hw-core, .hw-fill, .hw-led, .hw-cursor, .hw-charge, .hw-q) { animation: none; }
+}
+.lab .sect .mems__scale, .lab .sect .lrules__cmd { max-width: none; }

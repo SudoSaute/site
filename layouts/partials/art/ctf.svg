@@ -1,0 +1,10 @@
+{{- /* Writeup illustration, CTF: a flag on a summit and confetti. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-ctf" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<path d="M24 204L142 70l48 56 38-36 108 114z" fill="var(--art-bg)"/>
+<path d="M124 92l18-22 18 22-9-4-9 8-9-8z" fill="currentColor" stroke-width="2" opacity=".22"/>
+<path d="M58 198c24-20 44-44 60-72" stroke-width="2.4" stroke-dasharray="2 9" opacity=".7"/>
+<path d="M142 72V18"/>
+<g class="flag"><path d="M142 20h48l-11 13 11 13h-48z" fill="var(--sec)"/></g>
+<rect class="cf cf-1" x="60" y="30" width="7" height="11" rx="1.5" fill="var(--amber)" stroke="none"/><rect class="cf cf-2" x="96" y="14" width="7" height="11" rx="1.5" fill="var(--sec)" stroke="none"/><rect class="cf cf-3" x="210" y="20" width="7" height="11" rx="1.5" fill="var(--led)" stroke="none"/><rect class="cf cf-4" x="250" y="36" width="7" height="11" rx="1.5" fill="var(--amber)" stroke="none"/><rect class="cf cf-5" x="296" y="18" width="7" height="11" rx="1.5" fill="var(--sec)" stroke="none"/><rect class="cf cf-6" x="326" y="44" width="7" height="11" rx="1.5" fill="var(--led)" stroke="none"/><rect class="cf cf-7" x="28" y="60" width="7" height="11" rx="1.5" fill="var(--sec)" stroke="none"/>
+</svg>

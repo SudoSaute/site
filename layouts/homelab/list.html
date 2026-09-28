@@ -1,0 +1,19 @@
+{{- /* /homelab/: the page's own markdown (content/homelab/_index.md) in the
+       spotlight theme. The intro becomes the lede; each h2 becomes a numbered
+       section beside a sticky "$ ls ~/homelab" list. The shortcodes on the
+       page (pipeline, specs/spec, network-diagram, projects, vm-loop,
+       resource-plan, rules, wip) draw the cards and diagrams.
+       Styles: assets/css/lab/homelab.css. */ -}}
+{{ define "main" }}
+{{- $parts := split .Content "<h2" -}}
+{{- $intro := index $parts 0 -}}
+{{- $body := delimit (after 1 $parts) "<h2" -}}
+<div class="lab"><div class="lab__in">
+  <header>
+    {{- if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
+    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+    {{- with $intro }}<div class="lede">{{ . | safeHTML }}</div>{{ end }}
+  </header>
+  {{ partial "lab/sections.html" (dict "page" . "prompt" "ls ~/homelab" "body" (printf "<h2%s" $body)) }}
+</div></div>
+{{ end }}

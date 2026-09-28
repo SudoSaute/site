@@ -1,0 +1,6 @@
+{{- /* ```mermaid fences (the writeup archetype's "Attack flow") render as a
+       Mermaid diagram. The theme only loads Mermaid for its {{< mermaid >}}
+       shortcode, so this marks the page and layouts/writeups/single.html
+       loads the same self-hosted bundle after the content. */ -}}
+{{- .Page.Store.Set "hasMermaid" true -}}
+<pre class="not-prose mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>

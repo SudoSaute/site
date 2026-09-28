@@ -1,4 +1,6 @@
-{{- /* One piece of homelab hardware as a spec card.
+{{- /* One piece of homelab hardware as a spec card: an icon for its role
+       (layouts/partials/lab/hw/, animated on hover), the role and title, the
+       rows, the note and the tags.
 
        {{< spec role="Host" title="Proxmox Hypervisor"
                 rows="CPU: Ryzen 9 5900X | Memory: 64GB DDR4-3200"
@@ -7,31 +9,34 @@
        {{< /spec >}}
 
        rows: "Label: value" pairs separated by "|". Only the first ":" splits,
-       so values may contain colons. */ -}}
+       so values may contain colons. role picks the icon: Host, Storage,
+       Network, Access, Power; anything else gets the question mark. */ -}}
 {{- $role := .Get "role" -}}
 {{- $title := .Get "title" -}}
 {{- $rows := .Get "rows" | default "" -}}
 {{- $tags := .Get "tags" | default "" -}}
-<article class="spec">
-  <header class="spec__head">
-    <h3 class="spec__title">{{ $title }}</h3>
-    {{- with $role }}<span class="spec__role">{{ . }}</span>{{ end }}
-  </header>
+{{- $icon := lower $role -}}
+{{- if not (templates.Exists (printf "partials/lab/hw/%s.svg" $icon)) }}{{ $icon = "open" }}{{ end -}}
+<article class="lspec glass lit" data-nav>
+  <div class="lspec__head">
+    {{ partial (printf "lab/hw/%s.svg" $icon) . }}
+    <div>{{ with $role }}<p class="lspec__role">{{ . }}</p>{{ end }}<h3>{{ $title }}</h3></div>
+  </div>
   {{- with $rows }}
-  <dl class="spec__rows">
+  <dl>
     {{- range split . "|" }}
       {{- $pair := trim . " " -}}
       {{- $label := index (split $pair ":") 0 | strings.TrimSpace -}}
       {{- $value := strings.TrimPrefix (printf "%s:" (index (split $pair ":") 0)) $pair | strings.TrimSpace -}}
-      <div class="spec__row"><dt>{{ $label }}</dt><dd>{{ $value }}</dd></div>
+      <div><dt>{{ $label }}</dt><dd>{{ $value }}</dd></div>
     {{- end }}
   </dl>
   {{- end }}
   {{- with trim .Inner "\n " }}
-  <div class="spec__body">{{ $.Page.RenderString (dict "display" "block") . }}</div>
+  <div class="lspec__note">{{ $.Page.RenderString (dict "display" "block") . }}</div>
   {{- end }}
   {{- with $tags }}
-  <ul class="spec__tags">
+  <ul class="lspec__tags" aria-label="Tags">
     {{- range split . "," }}<li>{{ trim . " " }}</li>{{ end }}
   </ul>
   {{- end }}

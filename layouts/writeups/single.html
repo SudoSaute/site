@@ -1,0 +1,57 @@
+{{- /* One writeup, the standard layout for every writeup: the illustration
+       as a banner, then the article beside a fact box (date, source, case
+       type, ATT&CK techniques, tools, and the link to the artifacts repo).
+       The body is the writeup's own markdown in the theme's prose styles, so
+       tables, code, figures and Mermaid diagrams render as they would
+       anywhere else. Front matter contract: CONTENT-GUIDE.md. */ -}}
+{{ define "main" }}
+{{- $skills := partial "lab/skills.html" . -}}
+{{- $sk := index $skills (.Params.skill | default "") -}}
+{{- $slot := index (where (hugo.Data.program | default slice) "key" (.Params.project | default "")) 0 -}}
+{{- $date := .Date | time.Format "Jan 2, 2006" -}}
+<div class="lab"><div class="lab__in">
+  {{- if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
+  <div class="banner glass"><div class="stage">{{ partial "lab/art.html" . }}</div></div>
+  <div class="ecols">
+    <article class="lab-article">
+      <div class="meta">
+        <span>{{ $date }}</span>
+        {{- with $sk }}<span class="tag {{ .tag }}"><i></i>{{ .short }}</span>{{ end }}
+        {{- with $slot }}<span>{{ .name }}</span>{{ end }}
+        <span>{{ .ReadingTime }} min read</span>
+        {{- if .Draft }}<span class="tag"><i></i>draft</span>{{ end }}
+      </div>
+      <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+      {{- with .Params.summary }}<p class="elede">{{ . }}</p>{{ end }}
+      <div class="prose dark:prose-invert max-w-full">
+        {{ .Content }}
+      </div>
+      {{- if .Store.Get "hasMermaid" }}
+        {{- $lib := resources.Get "lib/mermaid/mermaid.min.js" }}
+        {{- $cfg := resources.Get "js/mermaid.js" | resources.Minify }}
+        {{- $js := slice $lib $cfg | resources.Concat "js/mermaid.bundle.js" | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+      <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+      {{- end }}
+      {{ partial "article-pagination.html" . }}
+    </article>
+    <dl class="facts glass lit">
+      <dt>Date</dt><dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ $date }}</time></dd>
+      {{- with .Params.source }}<dt>Source</dt><dd>{{ . }}</dd>{{ end }}
+      {{- with $sk }}<dt>Case type</dt><dd>{{ .label }}</dd>{{ end }}
+      {{- with .Params.attack }}
+      <dt>ATT&amp;CK</dt>
+      <dd class="chips">
+        {{- range . }}
+        <a href="https://attack.mitre.org/techniques/{{ replace (upper .) "." "/" }}/" target="_blank" rel="noopener noreferrer">{{ upper . }}</a>
+        {{- end }}
+      </dd>
+      {{- end }}
+      {{- with .Params.tools }}<dt>Tools</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
+      {{- with .Params.repo }}
+      {{- $url := cond (hasPrefix . "http") . (printf "https://%s" .) }}
+      <dt>Artifacts</dt><dd><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "https://" (strings.TrimPrefix "github.com/labwithchristian/" .) }}</a></dd>
+      {{- end }}
+    </dl>
+  </div>
+</div></div>
+{{ end }}

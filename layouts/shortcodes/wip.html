@@ -1,8 +1,10 @@
+{{- /* "Still cooking": the end-of-page note while the lab is being built,
+       with the grill cook (partials/grill-art.html) in a dashed glass card. */ -}}
 {{- $title := .Get "title" | default "More to come" -}}
-<div class="wip not-prose">
-  <span class="wip__art" aria-hidden="true">
+<div class="lwip glass lit not-prose">
+  <span class="wip__art lwip__art" aria-hidden="true">
     {{ partial "grill-art.html" . }}
   </span>
-  <h3 class="wip__title">{{ $title }}</h3>
-  <div class="wip__text">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
+  <h3 class="lwip__title">{{ $title }}</h3>
+  <div class="lwip__text">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
 </div>

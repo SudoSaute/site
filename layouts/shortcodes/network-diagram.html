@@ -1,65 +1,26 @@
 {{/*
-  Lab network as inline SVG, instead of a Mermaid bundle. Colors come from the
-  theme's CSS variables (see "Network diagram" in assets/css/site/60-pages.css),
-  so it follows light and dark mode. Edit labels here as the lab changes.
-  Segments follow the Blue Team Roadmap's Phase 9 lab, plus Management.
+  Lab network as inline SVG, drawn for the spotlight theme: OPNsense in the
+  middle as the only path between the four segments, traffic flowing along
+  the links, and the Malware segment with no uplink. Colours come from
+  assets/css/lab/homelab.css (light mode swaps to light boxes with dark text).
+  Deliberately generic: no addresses, hostnames or topology specifics.
+  Edit labels here as the lab changes.
 */}}
-<figure class="netdiagram not-prose">
-  <div class="netdiagram__scroll" tabindex="0" role="group" aria-label="Network diagram">
-    <svg viewBox="0 0 640 300" role="img" aria-labelledby="netdiagram-title netdiagram-desc" focusable="false">
-      <title id="netdiagram-title">Lab network segmentation</title>
-      <desc id="netdiagram-desc">Internet traffic enters OPNsense, which is the only path between segments. Four segments sit behind it: Management, on the onboard NIC; VLAN 10 Corporate, the network being defended; VLAN 20 SOC, the monitoring tools; and VLAN 30 Malware, which has no uplink and is reachable only through rules in OPNsense.</desc>
-      <defs>
-        <marker id="netdiagram-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0 0 10 5 0 10z" class="nd-arrowhead"/>
-        </marker>
-      </defs>
-
-      <!-- edges -->
-      <g class="nd-edge" fill="none" marker-end="url(#netdiagram-arrow)">
-        <path d="M78 157H100"/>
-        <path d="M232 157C262 157 258 63 288 63"/>
-        <path d="M232 157C262 157 258 126 288 126"/>
-        <path d="M232 157C262 157 258 189 288 189"/>
-        <path d="M232 157C262 157 258 252 288 252"/>
-      </g>
-
-      <!-- internet -->
-      <circle cx="42" cy="157" r="34" class="nd-node nd-node--edge"/>
-      <text x="42" y="162" text-anchor="middle" class="nd-label">Internet</text>
-
-      <!-- firewall -->
-      <rect x="104" y="127" width="128" height="60" rx="10" class="nd-node nd-node--host"/>
-      <text x="168" y="152" text-anchor="middle" class="nd-label">OPNsense</text>
-      <text x="168" y="171" text-anchor="middle" class="nd-sub">the only path between</text>
-
-      <!-- segments -->
-      <text x="292" y="26" class="nd-sub">Proxmox bridges</text>
-
-      <rect x="292" y="40" width="330" height="46" rx="10" class="nd-node"/>
-      <text x="306" y="62" class="nd-label">Management</text>
-      <text x="306" y="78" class="nd-sub">hypervisor, console, backups</text>
-      <text x="608" y="68" text-anchor="end" class="nd-sub">Onboard NIC</text>
-
-      <rect x="292" y="103" width="330" height="46" rx="10" class="nd-node"/>
-      <text x="306" y="125" class="nd-label">Corporate</text>
-      <text x="306" y="141" class="nd-sub">domain controller, endpoints, Linux</text>
-      <text x="608" y="131" text-anchor="end" class="nd-sub">VLAN 10</text>
-
-      <rect x="292" y="166" width="330" height="46" rx="10" class="nd-node"/>
-      <text x="306" y="188" class="nd-label">SOC</text>
-      <text x="306" y="204" class="nd-sub">SIEM, network monitoring, cases</text>
-      <text x="608" y="194" text-anchor="end" class="nd-sub">VLAN 20</text>
-
-      <rect x="292" y="229" width="330" height="46" rx="10" class="nd-node nd-node--isolated"/>
-      <text x="306" y="251" class="nd-label">Malware</text>
-      <text x="306" y="267" class="nd-sub">FLARE-VM, REMnux, samples</text>
-      <text x="608" y="257" text-anchor="end" class="nd-sub">VLAN 30</text>
-
-      <!-- isolation note -->
-      <text x="42" y="226" class="nd-note">Dashed: no uplink.</text>
-      <text x="42" y="244" class="nd-note">Reachable only through</text>
-      <text x="42" y="262" class="nd-note">rules in OPNsense.</text>
-    </svg>
+<figure class="fig glass lit not-prose">
+  <div class="fig__scroll" tabindex="0" role="group" aria-label="Network diagram, scrolls sideways on small screens">
+    <svg class="net doo" viewBox="0 0 720 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="net-t net-d" focusable="false">
+<title id="net-t">Lab network</title><desc id="net-d">OPNsense sits in the middle and is the only path between four segments: Management on the onboard NIC, Corporate and SOC on the Intel I350, and Malware with no uplink. Corporate sends logs to the SOC through one allowed rule, and Security Onion watches Corporate from a mirrored port.</desc>
+<path class="nflow" d="M180 70C250 70 245 125 300 125M420 150h120M180 230C250 230 245 175 300 175" stroke-dasharray="5 8"/>
+<path class="nflow nflow--r" d="M300 150H180" stroke-dasharray="5 8"/>
+<path d="M420 185C440 185 445 230 468 230" stroke-dasharray="5 8" opacity=".3"/><circle cx="480" cy="230" r="11" stroke="#E483C3" fill="#0d0b19"/><path d="M472 222l16 16" stroke="#E483C3"/>
+<path class="nlog" d="M120 190C120 270 600 270 600 190" stroke="#5EEAD4" stroke-dasharray="3 7" stroke-width="2"/>
+<rect x="300" y="100" width="120" height="100" rx="14" fill="#15122a"/>
+<text x="360" y="145" text-anchor="middle" class="nt">OPNsense</text><text x="360" y="166" text-anchor="middle" class="ns">only path</text>
+<rect x="40" y="40" width="140" height="60" rx="12" fill="#15122a"/><text x="110" y="66" text-anchor="middle" class="nt">Management</text><text x="110" y="86" text-anchor="middle" class="ns">onboard NIC</text>
+<rect x="40" y="120" width="140" height="60" rx="12" fill="#15122a"/><text x="110" y="146" text-anchor="middle" class="nt">Corporate</text><text x="110" y="166" text-anchor="middle" class="ns">VLAN 10, the defended</text>
+<rect x="540" y="120" width="140" height="60" rx="12" fill="#15122a"/><text x="610" y="146" text-anchor="middle" class="nt">SOC</text><text x="610" y="166" text-anchor="middle" class="ns">VLAN 20, the watchers</text>
+<rect x="40" y="200" width="140" height="60" rx="12" fill="#15122a" stroke="#E483C3"/><text x="110" y="226" text-anchor="middle" class="nt">Malware</text><text x="110" y="246" text-anchor="middle" class="ns">VLAN 30, no uplink</text>
+<text x="360" y="285" text-anchor="middle" class="ns" fill="#5EEAD4">logs to the SIEM over one allowed rule, plus a mirrored port for Security Onion</text>
+</svg>
   </div>
 </figure>

@@ -20,3 +20,15 @@
   <link rel="stylesheet" href="{{ $ctfCSS.RelPermalink }}" integrity="{{ $ctfCSS.Data.Integrity }}">
   <script>(function(d){d.classList.add("dark");new MutationObserver(function(){if(!d.classList.contains("dark"))d.classList.add("dark")}).observe(d,{attributes:true,attributeFilter:["class"]})})(document.documentElement);</script>
 {{ end }}
+{{/* Lab pages (Writeups, Blog, Homelab, whoami): the page's own layout styles
+     from assets/css/lab/. The shared spotlight theme is in the site bundle
+     (95-spotlight.css); see partials/lab/room.html for which pages these are. */ -}}
+{{- with partial "lab/room.html" . -}}
+  {{- $files := index (dict "writeups" "writeups" "writeup" "writeups" "blog" "blog" "post" "blog" "homelab" "sections homelab" "about" "sections about") . -}}
+  {{- $res := slice }}{{ range split ($files | default "") " " }}{{ with resources.Get (printf "css/lab/%s.css" .) }}{{ $res = $res | append . }}{{ end }}{{ end -}}
+  {{- with $res -}}
+    {{- $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+    {{- $labCSS := . | resources.Concat (printf "css/lab-%s.bundle.css" (replace $files " " "-")) | resources.Minify | resources.Fingerprint $alg }}
+<link rel="stylesheet" href="{{ $labCSS.RelPermalink }}" integrity="{{ $labCSS.Data.Integrity }}">
+  {{- end -}}
+{{- end -}}

@@ -1,7 +1,6 @@
 {{- /*
-  Compact version of the homepage {{< connect >}} card for the end of a page:
-  one short row with the wave, the terminal prompt, a line of text and the
-  LinkedIn button. Stacks on phones.
+  The closing card on whoami: a terminal prompt, a line of text and the
+  LinkedIn button, in the spotlight theme.
 
     {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
     Thanks for stopping by. Let's connect.
@@ -9,29 +8,8 @@
 */ -}}
 {{- $url := .Get "url" | default "https://linkedin.com/in/cybercc" -}}
 {{- $label := .Get "label" | default "Connect on LinkedIn" -}}
-<div class="connect connect--compact not-prose">
-  <span class="connect__wave" aria-hidden="true">
-    <svg viewBox="0 0 48 52" fill="none" stroke="currentColor" stroke-width="2.6"
-         stroke-linecap="round" stroke-linejoin="round">
-      <path d="M17 27V9.5a4 4 0 0 1 8 0V25"/>
-      <path d="M25 24V7a4 4 0 0 1 8 0v20"/>
-      <path d="M33 27V13a4 4 0 0 1 8 0v18c0 10-7.5 18-17 18s-17-7-17-16V22a4 4 0 0 1 8 0v6"/>
-      <path d="M40 4c2.6 1.4 4.2 3.6 4.6 6.4M44.6 1.6c3.6 2 5.8 5.2 6.4 9" stroke-width="2" class="connect__wave-lines"/>
-    </svg>
-  </span>
-  <div class="connect__copy">
-    <div class="connect__prompt">
-      <span class="connect__cue">&gt;</span>
-      <span class="connect__cmd">connect --linkedin</span>
-      <span class="connect__caret" aria-hidden="true"></span>
-    </div>
-    <p class="connect__line">{{ trim .Inner "\n " | .Page.RenderString }}</p>
-  </div>
-  <a class="connect__btn" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
-    <svg class="connect__in" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22.5H1.77C.79.5 0 1.27 0 2.22v20.56C0 23.73.79 24.5 1.77 24.5h20.45c.98 0 1.78-.77 1.78-1.72V2.22C24 1.27 23.2.5 22.22.5z"/>
-    </svg>
-    <span>{{ $label }}</span>
-    <span class="connect__arrow" aria-hidden="true">&rarr;</span>
-  </a>
+<div class="lconnect glass lit not-prose">
+  <p class="lconnect__cmd"><span aria-hidden="true">&gt;</span> connect --linkedin<i class="lconnect__caret" aria-hidden="true"></i></p>
+  <p class="lconnect__line">{{ trim .Inner "\n " | .Page.RenderString }}</p>
+  <a class="btn btn--aur" href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ $label }} <span aria-hidden="true">&rarr;</span></a>
 </div>

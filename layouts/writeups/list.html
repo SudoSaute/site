@@ -1,0 +1,174 @@
+{{- /* /writeups/: the spotlight index.
+
+       While nothing is published it renders the section's _index.md exactly
+       as before (partials/list-default.html): the intro, the "What's planned"
+       table and the soon block. From the first published writeup on:
+
+         1. Title, the intro from _index.md (everything above its first
+            heading) and the counts
+         2. The latest writeup as a hero
+         3. The lab program map (data/program.yaml), published slots linked
+         4. "Start here": writeups with `pick: true`
+         5. All writeups with a skill filter, and a sidebar with a tool
+            filter and a note for hiring managers
+
+       Every list, count and filter comes from real writeups; a part with
+       nothing to show is left out. Front matter contract: CONTENT-GUIDE.md.
+       Styles: assets/css/lab/writeups.css. Behaviour: assets/js/spotlight.js. */ -}}
+{{ define "main" }}
+{{- $all := .RegularPages.ByDate.Reverse -}}
+{{- if not $all }}
+  {{- partial "list-default.html" . }}
+{{- else }}
+{{- $skills := partial "lab/skills.html" . -}}
+{{- $program := hugo.Data.program | default slice -}}
+{{- /* slot key -> its newest published writeup (oldest first, so newer wins) */ -}}
+{{- $published := dict -}}
+{{- range $all.Reverse }}{{ $p := . }}{{ with .Params.project }}{{ $published = merge $published (dict . $p) }}{{ end }}{{ end -}}
+{{- $nPub := 0 }}{{ $nDraft := 0 }}{{ $nPlan := 0 -}}
+{{- range $program }}
+  {{- if index $published .key }}{{ $nPub = add $nPub 1 }}{{ else if eq .status "drafting" }}{{ $nDraft = add $nDraft 1 }}{{ else }}{{ $nPlan = add $nPlan 1 }}{{ end -}}
+{{- end -}}
+{{- $intro := index (split .Content "<h2") 0 -}}
+<div class="lab"><div class="lab__in">
+  <header>
+    {{- if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
+    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+    {{- with $intro }}<div class="lede">{{ . | safeHTML }}</div>{{ end }}
+    <p class="stats">
+      <span><b>{{ len $all }}</b> published</span>
+      {{- with $nDraft }}<span><b>{{ . }}</b> drafting</span>{{ end }}
+      {{- with $nPlan }}<span><b>{{ . }}</b> planned</span>{{ end }}
+    </p>
+  </header>
+
+  {{- /* 2 · latest writeup */ -}}
+  {{- with index $all 0 }}
+  {{- $sk := index $skills (.Params.skill | default "") }}
+  <article class="hero glass lit" data-nav>
+    <div class="stage">{{ partial "lab/art.html" . }}</div>
+    <div class="hero__txt">
+      <span class="eyebrow">{{ partial "lab/pan.svg" . }}Latest writeup, {{ .Date | time.Format "Jan 2, 2006" }}</span>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Params.summary }}<p class="summary">{{ . }}</p>{{ end }}
+      <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ .ReadingTime }} min read</span></div>
+      {{- if or $sk .Params.tools }}
+      <div class="evidence">{{ with $sk }}<span class="skill">{{ .label }}</span>{{ end }}{{ range .Params.tools }}<span class="t">{{ . }}</span>{{ end }}</div>
+      {{- end }}
+      <a class="btn" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">Read the writeup <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </article>
+  {{- end }}
+
+  {{- /* 3 · the lab program */ -}}
+  {{- with $program }}
+  {{- $phases := slice }}{{ range . }}{{ if not (in $phases .phase) }}{{ $phases = $phases | append .phase }}{{ end }}{{ end }}
+  <section class="pm glass lit" aria-labelledby="pm-h">
+    <div class="pm__head">
+      <div><h2 id="pm-h">The lab program</h2>
+        <p>Nine writeups that follow one plan: build a lab, attack it, investigate, then write the detections.</p></div>
+      <div class="pm__meter"><span>{{ $nPub }} of {{ len . }} published</span>
+        <div class="prog__bar" role="img" aria-label="{{ $nPub }} of {{ len . }} published"><i style="width:{{ div (mul 100.0 $nPub) (len .) | lang.FormatNumber 1 }}%"></i></div></div>
+    </div>
+    <ol class="pm__cols">
+      {{- range $i, $ph := $phases }}
+      {{- $slots := where $program "phase" $ph }}
+      {{- $done := true }}{{ range $slots }}{{ if not (index $published .key) }}{{ $done = false }}{{ end }}{{ end }}
+      <li class="pm__col{{ if $done }} pm__col--done{{ end }}">
+        <p class="pm__n" aria-hidden="true">{{ if hasPrefix $ph "Beyond" }}+{{ else }}{{ printf "%02d" (add $i 1) }}{{ end }}</p>
+        <h3>{{ $ph }}</h3>
+        <ul>
+          {{- range $slots }}
+          {{- with index $published .key }}
+          <li class="pm--plated"><i aria-hidden="true"></i><a href="{{ .RelPermalink }}">{{ (index (where $program "key" .Params.project) 0).name }}</a><small>Published</small></li>
+          {{- else }}
+          <li class="pm--{{ cond (eq .status "drafting") "stove" "prep" }}"><i aria-hidden="true"></i><span>{{ .name }}</span><small>{{ cond (eq .status "drafting") "Drafting" "Planned" }}</small></li>
+          {{- end }}
+          {{- end }}
+        </ul>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+
+  {{- /* 4 · start here */ -}}
+  {{- $picks := where $all "Params.pick" true }}
+  {{- with $picks }}
+  <section class="picks" aria-labelledby="pk-h">
+    <h2 id="pk-h" class="sec-h">Short on time? Start here</h2>
+    <div class="picks__grid">
+      {{- range . }}
+      <article class="pick glass lift calm lit">
+        <div class="stage">{{ partial "lab/art.html" . }}</div>
+        <div>
+          {{- with .Params.pick_reason }}<p class="pick__why">{{ . }}</p>{{ end }}
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <div class="meta"><span>{{ .ReadingTime }} min read</span></div>
+        </div>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- /* 5 · all writeups, with filters. A single writeup is already the hero. */ -}}
+  {{- if gt (len $all) 1 }}
+  {{- $skillN := dict }}{{ $toolN := dict }}{{ $toolName := dict }}
+  {{- range $all }}
+    {{- with .Params.skill }}{{ $skillN = merge $skillN (dict . (add (index $skillN . | default 0) 1)) }}{{ end }}
+    {{- range .Params.tools }}{{ $k := urlize . }}{{ $toolN = merge $toolN (dict $k (add (index $toolN $k | default 0) 1)) }}{{ $toolName = merge $toolName (dict $k .) }}{{ end }}
+  {{- end }}
+  {{- $tools := slice }}{{ range $k, $n := $toolN }}{{ $tools = $tools | append (dict "k" $k "n" $n "name" (index $toolName $k)) }}{{ end }}
+  {{- $tools = sort (sort $tools "name") "n" "desc" }}
+  <div class="cols">
+    <section id="list" aria-labelledby="list-h">
+      <h2 id="list-h" class="sec-h">All writeups</h2>
+      {{- if gt (len $skillN) 1 }}
+      <div class="fbar" role="group" aria-label="Filter by skill">
+        <span class="fbar__label">Skill:</span>
+        <button class="chip chip--sm" type="button" data-f="all" aria-pressed="true">All<small>{{ len $all }}</small></button>
+        {{- range $k, $s := $skills }}{{ with index $skillN $k }}
+        <button class="chip chip--sm" type="button" data-f="skill:{{ $k }}" aria-pressed="false">{{ $s.label }}<small>{{ . }}</small></button>
+        {{- end }}{{ end }}
+      </div>
+      {{- end }}
+      <div class="rows">
+        {{- range $all }}
+        {{- $sk := index $skills (.Params.skill | default "") }}
+        {{- $tags := slice }}{{ with .Params.skill }}{{ $tags = $tags | append (printf "skill:%s" .) }}{{ end }}{{ range .Params.tools }}{{ $tags = $tags | append (printf "tool:%s" (urlize .)) }}{{ end }}
+        <article class="row glass lift calm lit" data-nav data-roll data-tags="{{ delimit $tags " " }}">
+          <div class="stage">{{ partial "lab/art.html" . }}</div>
+          <div>
+            <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ .ReadingTime }} min read</span></div>
+            <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{- with .Params.summary }}<p class="summary">{{ . }}</p>{{ end }}
+            {{- if or $sk .Params.tools }}
+            <div class="evidence">{{ with $sk }}<span class="skill">{{ .label }}</span>{{ end }}{{ range .Params.tools }}<span class="t">{{ . }}</span>{{ end }}</div>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+      <p class="empty is-hidden" data-empty>Nothing matches that filter yet. The lab program above shows what is coming.</p>
+    </section>
+    <aside class="side" aria-label="Filters and contact">
+      {{- if gt (len $tools) 1 }}
+      <div class="tf glass lit"><h2>Filter by tool</h2>
+        <div class="tf__list" role="group" aria-label="Filter by tool">
+          <button class="chip chip--sm" type="button" data-f="all" aria-pressed="true">Any tool</button>
+          {{- range $tools }}
+          <button class="chip chip--sm" type="button" data-f="tool:{{ .k }}" aria-pressed="false">{{ .name }}<small>{{ .n }}</small></button>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+      {{ partial "lab/hiring.html" . }}
+    </aside>
+  </div>
+  {{- else }}
+  <div class="solo">{{ partial "lab/hiring.html" . }}</div>
+  {{- end }}
+</div></div>
+{{- end }}
+{{ end }}

@@ -1,0 +1,2 @@
+{{- /* Homelab hardware icon, a drive; the capacity bar fills on hover (assets/css/lab/homelab.css). */ -}}
+<svg class="hw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="16" width="40" height="16" rx="2"/><rect x="10" y="20" width="8" height="8" rx="1"/><rect x="21" y="20" width="8" height="8" rx="1"/><path d="M40 20v8" stroke-width="3"/><rect class="hw-fill" x="6" y="36" width="36" height="4" rx="2" fill="var(--amber)" stroke="none"/></svg>

@@ -1,0 +1,6 @@
+{{- /* The illustration for a writeup: `art:` if set, else its program slot
+       (`project:`), from layouts/partials/art/. An unknown key falls back to
+       the investigation scene rather than leaving a hole. */ -}}
+{{- $k := .Params.art | default .Params.project | default "ir" -}}
+{{- if not (templates.Exists (printf "partials/art/%s.svg" $k)) }}{{ $k = "ir" }}{{ end -}}
+{{- partial (printf "art/%s.svg" $k) . -}}

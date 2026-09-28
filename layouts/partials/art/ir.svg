@@ -1,0 +1,17 @@
+{{- /* Writeup illustration, incident response: a checklist, a magnifier and coffee. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-ir" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<rect x="58" y="40" width="134" height="164" rx="12" fill="var(--art-bg)"/>
+<rect x="98" y="28" width="54" height="20" rx="6" fill="var(--art-bg)"/>
+<rect x="78" y="70" width="16" height="16" rx="3"/><path d="M104 78h68" stroke-width="2.4" opacity=".6"/>
+<rect x="78" y="100" width="16" height="16" rx="3"/><path d="M104 108h56" stroke-width="2.4" opacity=".6"/>
+<rect x="78" y="130" width="16" height="16" rx="3"/><path d="M104 138h64" stroke-width="2.4" opacity=".6"/>
+<rect x="78" y="160" width="16" height="16" rx="3"/><path d="M104 168h44" stroke-width="2.4" opacity=".6"/>
+<path class="chk chk-1" d="M81 78l4 4 8-9" stroke="var(--sec)" stroke-dasharray="22" stroke-dashoffset="22"/>
+<path class="chk chk-2" d="M81 108l4 4 8-9" stroke="var(--sec)" stroke-dasharray="22" stroke-dashoffset="22"/>
+<path class="chk chk-3" d="M81 138l4 4 8-9" stroke="var(--sec)" stroke-dasharray="22" stroke-dashoffset="22"/>
+<path class="chk chk-4" d="M81 168l4 4 8-9" stroke="var(--sec)" stroke-dasharray="22" stroke-dashoffset="22"/>
+<g class="mag"><circle cx="232" cy="96" r="30" fill="var(--art-glass)"/><path d="M254 118l28 28" stroke-width="7"/><path d="M216 84c4-6 10-9 16-9" stroke-width="2.2" opacity=".7"/></g>
+<rect x="286" y="160" width="34" height="36" rx="6" fill="var(--art-bg)"/><path d="M320 170c10 0 10 16 0 16"/>
+<g stroke="var(--sec)" stroke-width="2.4" opacity=".7"><path class="steam steam-1" d="M296 150c-4-5 4-8 0-13"/><path class="steam steam-2" d="M308 148c-4-6 4-9 0-15"/></g>
+</svg>

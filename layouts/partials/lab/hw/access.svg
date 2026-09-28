@@ -1,0 +1,2 @@
+{{- /* Homelab hardware icon, a remote console; the cursor blinks on hover (assets/css/lab/homelab.css). */ -}}
+<svg class="hw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="8" width="36" height="24" rx="3"/><path d="M18 40h12M24 32v8"/><path class="hw-cursor" d="M14 16h8M14 22h5" stroke="var(--led)"/></svg>

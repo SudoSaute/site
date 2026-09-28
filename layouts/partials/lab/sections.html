@@ -1,0 +1,31 @@
+{{- /* The body of Homelab and whoami: the page's own markdown, cut at each
+       h2 into numbered sections, with a sticky "on this page" list beside
+       it (a terminal command as its heading). Tables get the glass frame.
+
+       Takes: page, prompt (the TOC heading, e.g. "ls ~/homelab"), and body
+       (the rendered content after the intro). The copy is untouched; only
+       wrappers are added. Section numbers are a CSS counter. */ -}}
+{{- $parts := after 1 (split .body "<h2") -}}
+{{- $toc := slice -}}
+{{- $html := "" -}}
+{{- range $parts -}}
+  {{- $id := replaceRE `(?s)^.*?<span id="([^"]+)" class="anchor".*$` "$1" . -}}
+  {{- $title := replaceRE `(?s)^[^>]*>(.*?)<span id=.*$` "$1" . | plainify | htmlUnescape | strings.TrimSpace -}}
+  {{- $toc = $toc | append (dict "id" $id "title" $title) -}}
+  {{- $html = printf `%s<section class="sect" data-sect="%s"><h2%s</section>` $html $id . -}}
+{{- end -}}
+{{- $html = replace $html "<table>" `<div class="tbl glass lit"><table>` -}}
+{{- $html = replace $html "</table>" "</table></div>" -}}
+<div class="layout">
+  <div class="lab-body">{{ $html | safeHTML }}</div>
+  {{- with $toc }}
+  <nav class="ltoc glass lit" aria-label="On this page">
+    <p aria-hidden="true"><b>$</b> {{ $.prompt }}</p>
+    <ol>
+      {{- range $i, $t := . }}
+      <li><a href="#{{ $t.id }}"><span aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>{{ $t.title }}</a></li>
+      {{- end }}
+    </ol>
+  </nav>
+  {{- end }}
+</div>

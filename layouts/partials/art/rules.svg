@@ -1,0 +1,13 @@
+{{- /* Writeup illustration, detection rules: a trap snapping on a bug. Animated by the art rules in
+       assets/css/site/95-spotlight.css; decorative, so hidden from screen readers. */ -}}
+<svg class="art art-rules" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<rect x="84" y="150" width="212" height="28" rx="7" fill="var(--art-bg)"/>
+<path d="M96 186h188" stroke-width="2.2" opacity=".4"/>
+<path d="M216 150l44-26v26z" fill="var(--amber)"/><circle cx="238" cy="142" r="3" fill="var(--art-bg)" stroke="none"/><circle cx="250" cy="136" r="2.4" fill="var(--art-bg)" stroke="none"/>
+<g class="rbug"><ellipse cx="196" cy="140" rx="12" ry="8" fill="var(--sec-soft)"/><circle cx="210" cy="139" r="5" fill="var(--art-bg)"/><path d="M190 147l-4 7M196 148v8M202 147l4 7M213 135l5-6M214 138l7-2" stroke-width="2.4"/></g>
+<path d="M140 150c0-9 12-9 12 0s12 9 12 0" stroke-width="2.6"/>
+<g class="snap"><path d="M150 147h110" stroke-width="4.2"/><path d="M260 147v-6" stroke-width="4.2"/></g>
+<circle cx="150" cy="147" r="5" fill="currentColor" stroke="none"/>
+<g class="caught" stroke="var(--sec)" stroke-width="2.6"><path d="M200 112v-12M184 118l-7-9M216 118l7-9"/></g>
+<g opacity=".5" stroke-width="2.2"><path d="M44 60h52M44 72h36M44 84h44"/><path d="M36 50h68v44H36z" stroke-dasharray="2 6"/></g>
+</svg>

@@ -1,0 +1,8 @@
+{{- /* Blog doodle: a spreadsheet row found, struck through and closed. Plays on hover in the list, always on the lead post;
+       styles in assets/css/lab/blog.css. */ -}}
+<svg class="dz dz-find" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+<rect x="10" y="8" width="72" height="64" rx="5" fill="var(--art-bg)"/>
+<rect class="dz-row" x="10" y="36" width="72" height="12" fill="var(--sec-soft)" stroke="none"/>
+<path d="M10 22h72M10 36h72M10 48h72M10 60h72M32 8v64M58 8v64" stroke-width="1.8" opacity=".55"/>
+<path class="dz-strike" d="M14 42h64" stroke="var(--sec)" stroke-dasharray="64" stroke-dashoffset="64"/>
+<g class="dz-mag"><circle cx="94" cy="42" r="12" fill="var(--art-glass)"/><path d="M103 51l10 10" stroke-width="5"/></g></svg>

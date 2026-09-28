@@ -1,0 +1,23 @@
+{{- /* Which "room" a page belongs to. The lab pages (Writeups, Blog, Homelab
+       and whoami) share the spotlight theme (on the same grain background as Home): a cursor spotlight,
+       aurora titles and the keyboard status bar. Everything else (Home,
+       Resume, /ctf, tags) returns "" and renders exactly as before.
+
+       Returns the page key the lab stylesheet and the status bar use:
+         writeups  the /writeups/ index     writeup  one writeup
+         blog      the /blog/ index         post     one blog post
+         homelab   /homelab/                about    /about/ (whoami)
+       A page outside these sections joins with `room: lab` in its front
+       matter; its key is then its layout name (whoami's is "about"). */ -}}
+{{- $key := "" -}}
+{{- if ne .Layout "ctf" -}}
+  {{- if in (slice "writeups" "blog" "homelab") .Section -}}
+    {{- $key = .Section -}}
+    {{- if .IsPage -}}
+      {{- $key = cond (eq .Section "blog") "post" (cond (eq .Section "writeups") "writeup" "homelab") -}}
+    {{- end -}}
+  {{- else if eq .Params.room "lab" -}}
+    {{- $key = .Layout | default "page" -}}
+  {{- end -}}
+{{- end -}}
+{{- return $key -}}

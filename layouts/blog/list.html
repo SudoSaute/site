@@ -1,0 +1,117 @@
+{{- /* /blog/: the spotlight index.
+
+       While nothing is published it renders the section's _index.md exactly
+       as before (partials/list-default.html): the intro, the drafts table and
+       the soon block. From the first published post on:
+
+         1. Title, the intro from _index.md (everything above its first
+            heading) and the counts
+         2. The lead post (the one marked `featured: true`, else the newest),
+            quoting its first sentence
+         3. The rest as a list, one doodle per post, beside "Pick for me"
+         4. Subscribe: the RSS addresses with copy buttons
+         5. A pointer to Writeups
+
+       Doodles come from layouts/partials/doodles/: the post's `doodle:` key,
+       else a doodle named after the post, else default.svg. Front matter
+       contract: CONTENT-GUIDE.md. Styles: assets/css/lab/blog.css. */ -}}
+{{ define "main" }}
+{{- $posts := .RegularPages.ByDate.Reverse -}}
+{{- if not $posts }}
+  {{- partial "list-default.html" . }}
+{{- else }}
+{{- .Store.Set "labSubscribe" true -}}
+{{- $lead := index (where $posts "Params.featured" true | default $posts) 0 -}}
+{{- $rest := slice }}{{ range $posts }}{{ if ne . $lead }}{{ $rest = $rest | append . }}{{ end }}{{ end -}}
+{{- $minutes := 0 }}{{ range $posts }}{{ $minutes = add $minutes .ReadingTime }}{{ end -}}
+{{- $words := slice "zero" "one" "two" "three" "four" "five" "six" "seven" "eight" "nine" "ten" -}}
+{{- $intro := index (split .Content "<h2") 0 -}}
+<div class="lab"><div class="lab__in">
+  <header>
+    {{- if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
+    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+    {{- with $intro }}<div class="lede">{{ . | safeHTML }}</div>{{ end }}
+    <p class="stats"><span><b>{{ len $posts }}</b> {{ cond (eq (len $posts) 1) "post" "posts" }}</span><span><b>{{ $minutes }}</b> {{ cond (eq $minutes 1) "minute" "minutes" }} to read {{ cond (eq (len $posts) 1) "it" "them all" }}</span></p>
+  </header>
+
+  {{- /* 2 · lead post */ -}}
+  {{- with $lead }}
+  {{- $first := index (findRE `^[^.!?]+[.!?]` (.Plain | strings.TrimSpace) 1) 0 }}
+  <article class="lead glass lit" data-nav>
+    <div>
+      <span class="lead__eb">{{ partial "lab/pan.svg" . }}Worth your {{ if le .ReadingTime 10 }}{{ index $words .ReadingTime }}{{ else }}{{ .ReadingTime }}{{ end }} {{ cond (eq .ReadingTime 1) "minute" "minutes" }}</span>
+      {{- with $first }}<blockquote>&ldquo;{{ . }}&rdquo;</blockquote>{{ end }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Description }}<p class="arg">{{ . }}</p>{{ end }}
+      <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</span></div>
+      <a class="btn" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">Read the post <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="lead__dz">{{ partial "lab/doodle.html" . }}</div>
+  </article>
+  {{- end }}
+
+  <div class="cols{{ if not $rest }} cols--solo{{ end }}">
+    {{- with $rest }}
+    <section aria-labelledby="more-h">
+      <h2 id="more-h" class="sec-h">More short takes</h2>
+      <div class="bls">
+        {{- range . }}
+        <article class="bl glass lift hov lit" data-nav data-roll>
+          <div class="bl__dz">{{ partial "lab/doodle.html" . }}</div>
+          <div>
+            <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</span></div>
+            <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{- with .Description }}<p class="arg">{{ . }}</p>{{ end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+    <aside class="side" aria-label="Pick a post and subscribe">
+      <div class="pick glass">
+        <h2>{{ if gt (len $rest) 1 }}Pick for me{{ else }}Reading time{{ end }}</h2>
+        <p>{{ len $posts }} {{ cond (eq (len $posts) 1) "post" "posts" }}, {{ $minutes }} {{ cond (eq $minutes 1) "minute" "minutes" }} of reading, about {{ cond (le $minutes 10) "one coffee" (cond (le $minutes 45) "one lunch break" "a few lunch breaks") }}.</p>
+        {{- if gt (len $rest) 1 }}
+        <button class="btn btn--aur" type="button" data-shuf>Roll a random post</button>
+        <p class="pick__out" data-shuf-out aria-live="polite"></p>
+        {{- end }}
+        {{- with (hugo.Data.blog).stove }}
+        <p class="pick__row">{{ partial "lab/pan.svg" . }}<span>On the stove: {{ . }}</span></p>
+        {{- end }}
+        <a class="pick__sub" href="#subscribe"><span>$</span> subscribe --rss</a>
+      </div>
+    </aside>
+  </div>
+
+  {{- /* 4 · subscribe */ -}}
+  <section id="subscribe" class="sub glass lit" aria-labelledby="sub-h">
+    <div class="sub__row">
+      <div class="sub__txt">
+        <p class="sub__cmd"><b>$</b> subscribe --rss</p>
+        <h2 id="sub-h" class="sub__h">New posts, straight to your reader</h2>
+        <p class="sub__lede">No email, no account, no tracking.</p>
+      </div>
+      <div class="sub__feeds">
+        {{- with .OutputFormats.Get "rss" }}
+        <div class="feed"><span class="feed__n">blog</span><code data-url>{{ .Permalink }}</code><button type="button" class="feed__copy" data-copy aria-label="Copy the blog feed address">copy</button></div>
+        {{- end }}
+        {{- with site.Home.OutputFormats.Get "rss" }}
+        <div class="feed"><span class="feed__n">all</span><code data-url>{{ .Permalink }}</code><button type="button" class="feed__copy" data-copy aria-label="Copy the feed address for everything">copy</button></div>
+        {{- end }}
+      </div>
+    </div>
+    <details class="sub__what"><summary>What&rsquo;s RSS?</summary><p>A feed your reader app checks for you. Paste an address into NetNewsWire, Feedly or Inoreader and new posts show up on their own.</p></details>
+  </section>
+
+  {{- /* 5 · the other half */ -}}
+  {{- with site.GetPage "/writeups" }}
+  <aside class="xlink glass" aria-label="Writeups">
+    <div class="stage">{{ partial "art/ir.svg" . }}</div>
+    <div><h2>Want the work, not the thinking?</h2>
+      <p>The technical detail lives in <a href="{{ .RelPermalink }}">Writeups</a>: investigations, detections and lab builds with the evidence attached.</p></div>
+  </aside>
+  {{- end }}
+</div></div>
+{{- end }}
+{{ end }}

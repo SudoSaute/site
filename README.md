@@ -71,6 +71,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `80-intro.css` | Homepage intro overlay |
 | `85-transitions.css` | The "lights out" transition into /ctf (flicker, black, power on) and "monitor off" on the way out (collapse to a line, then a dot). Cross-document view transitions: Chrome, Edge, Safari 18.2+; other browsers load the page normally. Off for reduced motion |
 | `90-print.css` | Print and Save as PDF layout, mainly for the resume |
+| `95-spotlight.css` | The lab pages' shared theme (see Lab pages below): tokens, cursor spotlight (the grain background is the same as Home and Resume), lit card borders, aurora titles, illustration motion, light-mode contrast fixes and the keyboard status bar. Every rule is scoped to `html[data-room="lab"]` |
 
 Colors come from the scheme in `assets/css/schemes/nebula-stone.css` (`colorScheme` in `params.toml`).
 Use its variables, for example `rgb(var(--color-primary-600))`, rather than hex values, so light and
@@ -219,6 +220,31 @@ themselves. Set both back to turn it on again.
 **Rolling back entirely:** revert the commit that added /ctf (GitHub Desktop: History, right-click the
 commit, "Revert Changes in Commit", then Push). `DEPLOYMENT-SOP.md` Phase 8 has the command-line version.
 
+### Lab pages (the spotlight theme)
+
+Writeups, Blog, Homelab and whoami share a look of their own; Home, Resume and /ctf keep theirs.
+`layouts/partials/lab/room.html` decides which pages are lab pages, and `baseof.html` then sets
+`data-room="lab"` and `data-lab="<page>"` on `<html>`, adds the spotlight layer and the status bar, and
+loads `assets/js/spotlight.js`. Each page also gets its own stylesheet from `assets/css/lab/`
+(`writeups.css`, `blog.css`, and `sections.css` plus `homelab.css` or `about.css`).
+
+- **Dark by default?** `labDefaultDark` in `params.toml`. `false` follows the visitor's site-wide
+  choice; `true` opens lab pages dark until the visitor picks a theme.
+- **Spotlight on Home and Resume**: `homeSpotlight` in `params.toml`. `true` gives those two pages the
+  cursor glow alone (no other lab styling); `false` takes it off.
+- **Keys** (desktop, 760px and up, mouse or trackpad): `j`/`k` next and previous item, `r` random
+  (Writeups, Blog), `t` lights on or off, `s` subscribe (Blog), `p` the parrot (whoami), `?` help.
+- **Motion**: titles flow, featured illustrations play, list illustrations wait for hover or focus.
+  Reduced motion stops everything.
+- **Empty states**: while Writeups or Blog has nothing published, the section's `_index.md` renders
+  as before (`partials/list-default.html`). The new index takes over with the first published post.
+- **Illustrations**: `layouts/partials/art/<key>.svg`, one per program slot. Blog doodles:
+  `layouts/partials/doodles/<key>.svg`, with `default.svg` as the fallback.
+- **Data**: `data/program.yaml` (the nine-slot lab program on /writeups/) and `data/blog.yaml`
+  ("On the stove" on /blog/).
+
+How to write a writeup or a post: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
+
 ## Shortcodes
 
 | Shortcode | Used on | Purpose |
@@ -231,15 +257,20 @@ commit, "Revert Changes in Commit", then Push). `DEPLOYMENT-SOP.md` Phase 8 has 
 | `job id company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags. Optional `id` makes the card a link target (`/resume/#ncl-2020`), used by the /ctf proof links |
 | `role title dates promoted tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first; `promoted="2023"` on the newer title draws the promotion comet) |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
-| `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges. The status word picks the icon: a steaming pan for anything else, a lidded stockpot for `Ongoing` or `Continuous`, and a cold pan on an unlit burner for `Planned`, `Queued` or `Target`. Only the first two move |
+| `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges. The status word picks the icon: a steaming pan for anything else, a lidded stockpot for `Ongoing` or `Continuous`, and a cold pan on an unlit burner for `Planned`, `Queued` or `Target`. Only the first two move. On Homelab it draws spotlight rows instead (pan, or a dashed ring for queued) |
 | `xp` | Resume | Wrapper that stacks `job` cards |
 | `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |
-| `connect-mini url label` | whoami | One-line LinkedIn sign-off at the end of a page |
-| `intro image alt` | whoami | Portrait beside the opening statement |
-| `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."` |
+| `connect-mini url label` | whoami | `> connect --linkedin` sign-off card at the end of the page |
+| `intro image alt` | whoami | Portrait in an aurora halo beside the opening statement |
+| `principles` | whoami | Wraps the "How I work" paragraphs; each bold opening line becomes a card heading, with a doodle (`partials/lab/about/principle-N.svg`, in order) |
+| `off-clock` | whoami | The house scene (doodles, parrot, spring) and the parrot button (`p`) |
+| `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."`. `role` picks the hover icon (`partials/lab/hw/`) |
+| `projects keys` | Homelab | Wraps the Six Projects table and draws each row as a card with its writeup illustration; links to the writeup once one is published with that `project:` |
+| `resource-plan cap` | Homelab | Wraps the Resource Plan table and draws each row as a bar against the memory cap |
+| `rules file` | Homelab | Wraps the Operating Constraints list as `$ cat /etc/lab/rules.conf` |
 | `proof items="Label :: file.jpg :: alt \| ..."` | Resume | Thumbnails at the bottom of a card that open a popup viewer (`assets/js/proof.js`). Images live in the page bundle |
-| `network-diagram` | Homelab | Inline SVG network diagram. Edit the labels in the shortcode file |
+| `network-diagram` | Homelab | Inline SVG network diagram with traffic flowing on the links. Generic by design: no addresses or hostnames. Edit the labels in the shortcode file |
 | `vm-loop` | Homelab | Inline SVG of the vulnerability management loop, from inventory to verified fix. Edit the stage labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |
 | `wip title` | Homelab | Work-in-progress block |
@@ -257,9 +288,12 @@ Both rely on `layouts/_default/_markup/render-heading.html`; the theme's own hoo
 ## Adding content
 
 ```bash
-hugo new content writeups/network-segmentation.md
-hugo new content blog/some-new-post.md
+hugo new content writeups/network-segmentation/index.md
+hugo new content blog/some-new-post/index.md
 ```
+
+The archetypes (`archetypes/writeups.md`, `archetypes/blog.md`) fill in the front matter the lab pages
+read. Step by step, with the screenshot checklist: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
 
 When the first post is published, set `showRecent = true` under `[homepage]` in `params.toml` to bring
 back the recent posts list.

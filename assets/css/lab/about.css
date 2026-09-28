@@ -5,9 +5,22 @@
    tokens set there, falling back to the dark values. */
 
 /* portrait and opening line (shortcodes/intro.html): the site's own intro
-   block from 60-pages.css, unchanged, at the width it had before the spotlight
-   theme (the theme's text column), so the line length stays the same */
-.lab .intro-block { max-width: 39rem; }
+   block (60-pages.css) in a glass card across the full width, with a
+   $ whoami prompt over the text. The photo keeps its original 16rem size. */
+.lab .intro-block {
+  grid-template-columns: 16rem minmax(0, 1fr); gap: 2.6rem; margin: 1.6rem 0 2.6rem; padding: 1.8rem 2rem;
+  border-radius: 1rem; border: 1px solid rgba(var(--glass-edge)); background: rgba(var(--glass));
+  backdrop-filter: blur(14px) saturate(130%); -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 8px 30px -18px rgba(60, 41, 125, .35);
+}
+.lab .intro-block__text::before {
+  content: "$ whoami"; content: "$ whoami" / "";
+  display: block; margin-bottom: .7rem; font: 500 .85rem var(--mono); color: var(--lx-teal, #5EEAD4);
+}
+.lab .intro-block__text p { font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.65; max-width: 40rem; color: rgb(var(--body)); }
+@media (max-width: 720px) {
+  .lab .intro-block { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.3rem 1.2rem 1.5rem; }
+}
 
 /* how I work (shortcodes/principles.html): text cards, no icons */
 .lab .prins { display: flex; flex-direction: column; gap: .8rem; }
@@ -15,26 +28,37 @@
 .lab .prin h3 { margin: 0 0 .3rem; font-size: 1.15rem; }
 .lab .prin p { margin: 0; font-size: .93rem; }
 
-/* off the clock (shortcodes/off-clock.html): the featured scene, always playing */
+/* off the clock (shortcodes/off-clock.html, partials/lab/about/home.svg):
+   the featured scene, always playing. The two of you on a porch swing under
+   string lights, both doodles, and the parrot on its stand. */
 .lab .homefig { margin: 0 0 1.2rem; padding: 1.2rem 1.2rem .8rem; }
 .lab .home { width: 100%; height: auto; display: block; color: var(--lx-violet, #B7A6F7); overflow: visible; }
 .lab .home * { transform-box: fill-box; }
+/* groups placed with a transform attribute keep the drawing's own origin */
+.lab .home [transform] { transform-box: view-box; transform-origin: 0 0; }
 .lab .home .sq { font: 500 13px var(--mono); fill: #ece8fa; stroke: none; }
 html:not(.dark) .lab .home .sq { fill: #1c1a2c; }
+.lab .swing { transform-origin: 50% 0%; animation: lx-swing 4s ease-in-out infinite; }
+@keyframes lx-swing { 0%, 100% { transform: rotate(2.5deg); } 50% { transform: rotate(-2.5deg); } }
+.lab .bulb { animation: lx-glow 2.4s ease-in-out infinite; }
+.lab .b1 { animation-delay: .8s; }
+.lab .b2 { animation-delay: 1.6s; }
+@keyframes lx-glow { 50% { opacity: .35; } }
+.lab .heart { transform-origin: 50% 100%; animation: lx-rise 3.4s ease-out infinite; }
+@keyframes lx-rise { 0% { transform: translateY(18px) scale(.4); opacity: 0; } 20%, 80% { opacity: 1; } 100% { transform: translateY(-14px) scale(1); opacity: 0; } }
+.lab .lean { transform-origin: 50% 100%; animation: lx-lean 5s ease-in-out infinite; }
+@keyframes lx-lean { 0%, 40%, 100% { transform: rotate(0); } 55%, 85% { transform: rotate(-9deg); } }
 .lab .tail { transform-origin: 0% 100%; animation: lx-wag .35s ease-in-out infinite alternate; }
 .lab .t2 { animation-duration: .5s; }
 @keyframes lx-wag { from { transform: rotate(-14deg); } to { transform: rotate(14deg); } }
-.lab .dog1 { animation: lx-hop 2.8s ease-in-out infinite; }
-@keyframes lx-hop { 0%, 70%, 100% { transform: none; } 80% { transform: translateY(-6px); } }
+.lab .dogS .head { transform-origin: 70% 90%; animation: lx-tilt 4.6s ease-in-out infinite; }
+.lab .dogL .head { transform-origin: 20% 90%; animation: lx-tilt 6s ease-in-out infinite 1.2s; }
+@keyframes lx-tilt { 0%, 60%, 100% { transform: rotate(0); } 68%, 84% { transform: rotate(-10deg); } }
 .lab .parrot { transform-origin: 50% 100%; animation: lx-parrot 2.2s ease-in-out infinite; }
 @keyframes lx-parrot { 50% { transform: rotate(-4deg); } }
 .lab .squawk { transform-origin: 0% 100%; }
 .lab .squawk.pop { animation: lx-popb .35s ease-out; }
 @keyframes lx-popb { 0% { transform: scale(.6); } 70% { transform: scale(1.08); } 100% { transform: scale(1); } }
-.lab .rip { transform-origin: center; animation: lx-ripple 3s ease-out infinite; }
-.lab .r2 { animation-delay: 1.5s; }
-@keyframes lx-ripple { 0% { transform: scale(.4); opacity: 1; } 100% { transform: scale(3.4); opacity: 0; } }
-html:not(.dark) .lab .home ellipse[fill="#0f2f33"] { fill: #d5f5f0; }
 .lab .parrot__btn {
   display: inline-flex; align-items: center; gap: .5rem; min-height: 2.4rem; margin-top: .4rem; padding: 0 .8rem;
   border-radius: .5rem; border: 1px dashed rgba(183, 166, 247, .55); background: none; color: rgb(var(--ink)); font: 500 .8rem var(--mono); cursor: pointer;

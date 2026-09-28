@@ -79,8 +79,6 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Education and Competitions {.h-minor}
 
-{{< ctf-next >}}
-
 {{< xp >}}
 
 {{< job company="Western Governors University" dates="2017 to 2021" location="Online" positions="B.S. Network Operations and Security" >}}

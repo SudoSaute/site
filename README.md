@@ -274,7 +274,7 @@ How to write a writeup or a post: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
 | `vm-loop` | Homelab | Inline SVG of the vulnerability management loop, from inventory to verified fix. Edit the stage labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |
 | `wip title` | Homelab | Work-in-progress block |
-| `ctf-next` | Resume | "Competing next: ..." line plus a link to /ctf, from `data/ctf.yaml`. Hidden in print, gone when /ctf is off |
+| `ctf-next` | (unused) | "Competing next: ..." line plus a link to /ctf, from `data/ctf.yaml`. Hidden in print, gone when /ctf is off. Taken off the resume as redundant; add `{{< ctf-next >}}` back under Education and Competitions to restore it |
 | `ctf-link "text"` | Writeups | Link to /ctf that falls back to plain text when /ctf is off |
 
 `pipeline` also takes `ctf="true"` (Home): it appends the next CTF from `data/ctf.yaml` as `Queued`, then `Live now`, and drops it once the event ends.

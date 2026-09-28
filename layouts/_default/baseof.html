@@ -13,7 +13,7 @@
   lang="{{ with site.Params.isoCode | default (site.Language.Locale | default `en`) }}{{- . -}}{{ end }}"
   dir="{{ cond (site.Params.rtl | default false) `rtl` `ltr` }}"
   class="scroll-smooth{{ if eq .Layout "ctf" }} dark{{ end }}"
-  {{ if eq .Layout "ctf" }}data-page="ctf"{{ end }}
+  {{ if eq .Layout "ctf" }}data-page="ctf"{{ else if eq .RelPermalink ("resume/" | relURL) }}data-page="resume"{{ end }}
   {{- with $lab }} data-room="lab" data-lab="{{ . }}"{{ end }}
   {{- if $spot }} data-spot{{ end }}
   data-default-appearance="{{ if and $lab site.Params.labDefaultDark }}dark{{ else }}{{ site.Params.defaultAppearance | default `light` }}{{ end }}"

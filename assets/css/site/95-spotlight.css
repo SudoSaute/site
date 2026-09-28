@@ -98,6 +98,20 @@ html.dark[data-room="lab"] {
 :where(html[data-room="lab"]) .aurora-text.scrambling { font-family: var(--mono); color: rgb(var(--p500)) !important; }
 :where(html[data-room="lab"]) .aurora-text.settling { transition: color .9s ease; }
 @keyframes lx-aurora { to { background-position: 300% 0; } }
+/* Resume keeps its own design, but its page title takes the same aurora
+   colours as the lab page titles (no scramble). data-page="resume" is set in
+   baseof.html. */
+html[data-page="resume"] #single_header h1 {
+  background: linear-gradient(90deg, #B7A6F7, #9F7BE8, #E483C3, #5EEAD4, #B7A6F7);
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; animation: lx-aurora 9s linear infinite;
+}
+html[data-page="resume"]:not(.dark) #single_header h1 {
+  background-image: linear-gradient(90deg, #4B349D, #8E2F74 35%, #0F766E 70%, #4B349D);
+}
+@media (prefers-reduced-motion: reduce) { html[data-page="resume"] #single_header h1 { animation: none; } }
+@media print { html[data-page="resume"] #single_header h1 { background: none; color: #000; } }
+
 /* a blog post keeps the theme's article layout; only its title joins in */
 html[data-lab="post"] #main-content article > header h1 {
   background: linear-gradient(90deg, #B7A6F7, #9F7BE8, #E483C3, #5EEAD4); -webkit-background-clip: text; background-clip: text; color: transparent;

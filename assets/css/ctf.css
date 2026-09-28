@@ -263,7 +263,7 @@ html[data-page="ctf"] body { background: transparent !important; }
 
 /* ======================= 2 · the menu bar on /ctf ======================= */
 
-/* Blacked out, quiet lowercase labels */
+/* Blacked out, quiet mono labels, capitalised as on every other page */
 html[data-page="ctf"] .site-nav__bar,
 html[data-page="ctf"] .site-nav__social::before {
   background: var(--nav);
@@ -279,7 +279,7 @@ html[data-page="ctf"] .site-nav__link,
 html[data-page="ctf"] .site-nav__icon,
 html[data-page="ctf"] .site-nav__social-link {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.02em; text-transform: lowercase;
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.02em;
   color: color-mix(in srgb, var(--head) calc(var(--lit, 0) * 100%), var(--dim));
 }
 html[data-page="ctf"] .site-nav__link:hover,
@@ -317,7 +317,7 @@ html[data-page="ctf"] .site-nav #mobile-menu-dialog {
   box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8) !important;
 }
 html[data-page="ctf"] #mobile-menu-dialog a span {
-  font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 400; font-size: 1.15rem; text-transform: lowercase;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 400; font-size: 1.15rem;
   color: color-mix(in srgb, var(--head) calc(var(--lit, 0) * 100%), var(--dim)) !important;
   transition: color 0.12s;
 }

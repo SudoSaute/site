@@ -4,22 +4,10 @@
    assets/css/site/95-spotlight.css. Light-mode label colours use the --lx-*
    tokens set there, falling back to the dark values. */
 
-/* portrait and opening line (shortcodes/intro.html) */
-.lab .lintro { display: grid; grid-template-columns: 16rem minmax(0, 1fr); gap: 2.4rem; align-items: center; margin-top: 1.4rem; }
-.lab .lintro__frame { position: relative; border-radius: 1.2rem; isolation: isolate; }
-.lab .lintro__frame::before {
-  content: ""; position: absolute; inset: -14px; border-radius: 1.6rem; z-index: -1; opacity: .55;
-  background: conic-gradient(from 200deg, #B7A6F7, #E483C3, #5EEAD4, #9F7BE8, #B7A6F7);
-  filter: blur(22px); animation: lx-halo 12s linear infinite;
-}
-html:not(.dark) .lab .lintro__frame::before { opacity: .4; }
-@keyframes lx-halo { to { filter: blur(22px) hue-rotate(360deg); } }
-.lab .lintro__img, .lab .lintro__frame picture { display: block; width: 100%; height: auto; border-radius: 1.2rem; }
-.lab .lintro__img { border: 1px solid rgba(183, 166, 247, .4); }
-.lab .lintro__placeholder { display: grid; place-items: center; aspect-ratio: 4 / 5; border-radius: 1.2rem; border: 1px dashed rgba(183, 166, 247, .5); color: rgb(var(--muted)); }
-.lab .lintro__placeholder svg { width: 2.6rem; }
-.lab .lintro__txt p { margin: 0; font: 400 clamp(1.25rem, 2.4vw, 1.6rem)/1.5 var(--display); color: rgb(var(--ink)); }
-@media (max-width: 760px) { .lab .lintro { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; } .lab .lintro__frame { max-width: 15rem; } }
+/* portrait and opening line (shortcodes/intro.html): the site's own intro
+   block from 60-pages.css, unchanged, at the width it had before the spotlight
+   theme (the theme's text column), so the line length stays the same */
+.lab .intro-block { max-width: 39rem; }
 
 /* how I work (shortcodes/principles.html): text cards, no icons */
 .lab .prins { display: flex; flex-direction: column; gap: .8rem; }

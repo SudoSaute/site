@@ -262,7 +262,7 @@ How to write a writeup or a post: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
 | `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |
 | `connect-mini url label` | whoami | `> connect --linkedin` sign-off card at the end of the page |
-| `intro image alt` | whoami | Portrait in an aurora halo beside the opening statement |
+| `intro image alt` | whoami | Portrait beside the opening statement |
 | `principles` | whoami | Wraps the "How I work" paragraphs; each bold opening line becomes a card heading |
 | `off-clock` | whoami | The house scene (doodles, parrot, spring) and the parrot button (`p`) |
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."`. `role` picks the hover icon (`partials/lab/hw/`) |

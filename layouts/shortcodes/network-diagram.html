@@ -1,7 +1,8 @@
 {{/*
   Lab network as inline SVG, drawn for the spotlight theme: OPNsense in the
   middle as the only path between the four segments, traffic flowing along
-  the links, and the Malware segment with no uplink. Colours come from
+  the links, the Malware segment with no uplink, and the Microsoft cloud
+  (Sentinel and Defender) reached outbound only. Colours come from
   assets/css/lab/homelab.css (light mode swaps to light boxes with dark text).
   Deliberately generic: no addresses, hostnames or topology specifics.
   Edit labels here as the lab changes.
@@ -9,8 +10,8 @@
 <figure class="fig glass lit not-prose">
   <div class="fig__scroll" tabindex="0" role="group" aria-label="Network diagram, scrolls sideways on small screens">
     <svg class="net doo" viewBox="0 0 720 300" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="net-t net-d" focusable="false">
-<title id="net-t">Lab network</title><desc id="net-d">OPNsense sits in the middle and is the only path between four segments: Management on the onboard NIC, Corporate and SOC on the Intel I350, and Malware with no uplink. Corporate sends logs to the SOC through one allowed rule, and Security Onion watches Corporate from a mirrored port.</desc>
-<path class="nflow" d="M180 70C250 70 245 125 300 125M420 150h120M180 230C250 230 245 175 300 175" stroke-dasharray="5 8"/>
+<title id="net-t">Lab network</title><desc id="net-d">OPNsense sits in the middle and is the only path between four segments: Management on the onboard NIC, Corporate and SOC on the Intel I350, and Malware with no uplink. Corporate sends logs to the collectors in SOC, and OPNsense allows only outbound traffic to the Microsoft cloud. Malware and Management never connect to it.</desc>
+<path class="nflow" d="M180 70C250 70 245 125 300 125M420 150h120M180 230C250 230 245 175 300 175M420 118C475 118 485 60 540 60" stroke-dasharray="5 8"/>
 <path class="nflow nflow--r" d="M300 150H180" stroke-dasharray="5 8"/>
 <path d="M420 185C440 185 445 230 468 230" stroke-dasharray="5 8" opacity=".3"/><circle cx="480" cy="230" r="11" stroke="#E483C3" fill="#0d0b19"/><path d="M472 222l16 16" stroke="#E483C3"/>
 <path class="nlog" d="M120 190C120 270 600 270 600 190" stroke="#5EEAD4" stroke-dasharray="3 7" stroke-width="2"/>
@@ -18,9 +19,10 @@
 <text x="360" y="145" text-anchor="middle" class="nt">OPNsense</text><text x="360" y="166" text-anchor="middle" class="ns">only path</text>
 <rect x="40" y="40" width="140" height="60" rx="12" fill="#15122a"/><text x="110" y="66" text-anchor="middle" class="nt">Management</text><text x="110" y="86" text-anchor="middle" class="ns">onboard NIC</text>
 <rect x="40" y="120" width="140" height="60" rx="12" fill="#15122a"/><text x="110" y="146" text-anchor="middle" class="nt">Corporate</text><text x="110" y="166" text-anchor="middle" class="ns">VLAN 10, the defended</text>
-<rect x="540" y="120" width="140" height="60" rx="12" fill="#15122a"/><text x="610" y="146" text-anchor="middle" class="nt">SOC</text><text x="610" y="166" text-anchor="middle" class="ns">VLAN 20, the watchers</text>
+<rect x="540" y="120" width="140" height="60" rx="12" fill="#15122a"/><text x="610" y="146" text-anchor="middle" class="nt">SOC</text><text x="610" y="166" text-anchor="middle" class="ns">VLAN 20, collectors</text>
+<rect x="540" y="30" width="140" height="60" rx="12" fill="#15122a" stroke-dasharray="6 5"/><text x="610" y="56" text-anchor="middle" class="nt">Microsoft cloud</text><text x="610" y="76" text-anchor="middle" class="ns">outbound only</text>
 <rect x="40" y="200" width="140" height="60" rx="12" fill="#15122a" stroke="#E483C3"/><text x="110" y="226" text-anchor="middle" class="nt">Malware</text><text x="110" y="246" text-anchor="middle" class="ns">VLAN 30, no uplink</text>
-<text x="360" y="285" text-anchor="middle" class="ns" fill="#5EEAD4">logs to the SIEM over one allowed rule, plus a mirrored port for Security Onion</text>
+<text x="360" y="285" text-anchor="middle" class="ns" fill="#5EEAD4">logs go to the SOC collectors, then out to the cloud; malware and management never reach it</text>
 </svg>
   </div>
 </figure>

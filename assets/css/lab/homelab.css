@@ -48,6 +48,7 @@ html:not(.dark) .lab .lspec__tags li { border-color: rgba(93, 66, 190, .4); }
 .lab .net { width: 100%; min-width: 560px; height: auto; color: var(--lx-violet, #B7A6F7); display: block; }
 .lab .net .nt { font: 600 15px var(--display); fill: #ece8fa; stroke: none; }
 .lab .net .ns { font: 400 10px var(--mono); fill: #a49cc4; stroke: none; }
+.lab .net .ns--sm { font-size: 8.5px; }
 .lab .net text[fill="#5EEAD4"] { fill: #5EEAD4; }
 .lab .nflow { animation: lx-nflow 1.4s linear infinite; }
 .lab .nflow--r { animation-direction: reverse; }
@@ -77,7 +78,7 @@ html:not(.dark) .lab .net text[fill="#5EEAD4"] { fill: #0F766E; }
 
 /* project panels in "tools" style: a security glyph over the project's
    tools, each a tag with its logo (one colour) where the tool has one */
-.lab .proj--kit { grid-template-columns: 11rem minmax(0, 1fr); }
+.lab .proj--kit { grid-template-columns: 12rem minmax(0, 1fr); }
 .lab .proj--kit .stage { aspect-ratio: auto; align-self: stretch; min-height: 7rem; padding: .8rem .6rem; flex-direction: column; gap: .6rem; }
 .lab .kit__glyph { display: block; line-height: 0; color: var(--lx-magenta, #E483C3); }
 .lab .kit__glyph svg { width: 2.9rem; height: 2.9rem; }
@@ -90,7 +91,13 @@ html:not(.dark) .lab .net text[fill="#5EEAD4"] { fill: #0F766E; }
 .lab .kit__m svg { width: .95rem; height: .95rem; flex: none; fill: currentColor; }
 html:not(.dark) .lab .kit__m { background: rgba(255, 255, 255, .75); border-color: rgba(93, 66, 190, .3); }
 .lab .proj--kit:hover .kit__glyph { filter: drop-shadow(0 0 6px rgba(228, 131, 195, .45)); }
-@media (max-width: 760px) { .lab .proj--kit { grid-template-columns: 9rem minmax(0, 1fr); } .lab .kit__m { font-size: .6rem; } }
+/* long product names ("Defender for Office 365") fit on one line on
+   desktop and wrap on phones */
+@media (max-width: 760px) {
+  .lab .proj--kit { grid-template-columns: 9rem minmax(0, 1fr); }
+  .lab .proj--kit .stage { padding: .8rem .3rem; }
+  .lab .kit__m { font-size: .6rem; white-space: normal; height: auto; min-height: 1.6rem; padding: .25rem .4rem; line-height: 1.2; text-align: center; }
+}
 @media (prefers-reduced-motion: reduce) { .lab .proj--kit:hover .kit__glyph { filter: none; } }
 
 /* resource plan (shortcodes/resource-plan.html) */

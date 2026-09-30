@@ -15,17 +15,19 @@
        style: "tools" (default) draws each card's panel as a security glyph
        (layouts/partials/lab/kit/<key>.svg) over the tools the project uses:
        logos from assets/img/logos/ where the tool has one, a name tag where
-       it does not. "art" switches back to the writeup illustrations
+       it does not. Each entry is "slug" (the logo, labelled with its <title>),
+       "slug:Label" (the logo with your own label, for a product under one
+       vendor mark) or "text:Label" (a name tag only). "art" switches back to the writeup illustrations
        (layouts/partials/art/). The tool list per project is $kits below. */ -}}
 {{- $keys := split (.Get "keys" | default "") "," -}}
 {{- $style := .Get "style" | default "tools" -}}
 {{- $kits := dict
-      "siem"   (slice "elastic" "kibana" "text:Security Onion")
-      "atomic" (slice "text:Atomic Red Team" "elastic")
-      "phish"  (slice "text:REMnux" "python")
-      "ir"     (slice "hackthebox" "cyberdefenders" "text:TheHive")
-      "intel"  (slice "text:ATT&CK" "elastic")
-      "rules"  (slice "text:Sigma" "text:YARA" "elastic")
+      "siem"   (slice "microsoft:Sentinel" "microsoft:Defender XDR" "microsoft-azure:Azure Arc")
+      "atomic" (slice "text:Atomic Red Team" "microsoft:Defender for Endpoint")
+      "phish"  (slice "microsoft:Defender for Office 365" "text:REMnux" "python")
+      "ir"     (slice "hackthebox" "cyberdefenders" "microsoft:Defender XDR")
+      "intel"  (slice "text:ATT&CK" "microsoft:Threat analytics")
+      "rules"  (slice "text:KQL" "text:YARA" "microsoft:Sentinel")
 -}}
 {{- $rows := slice -}}
 {{- range split (trim .Inner "\n ") "\n" -}}
@@ -52,7 +54,9 @@
         {{- range $kit }}
           {{- if hasPrefix . "text:" }}
         <span class="kit__m kit__m--txt">{{ strings.TrimPrefix "text:" . }}</span>
-          {{- else }}{{ with resources.Get (printf "img/logos/%s.svg" .) }}
+          {{- else }}
+          {{- $parts := split . ":" }}{{ $label := delimit (after 1 $parts) ":" }}
+          {{- with resources.Get (printf "img/logos/%s.svg" (index $parts 0)) }}
             {{- $svg := .Content }}
             {{- $name := replaceRE `(?s).*?<title>(.*?)</title>.*` "$1" $svg }}
             {{- $svg = replaceRE `<title>.*?</title>` "" $svg }}
@@ -60,7 +64,7 @@
             {{- $svg = replaceRE `(?s)<metadata>.*?</metadata>` "" $svg }}
             {{- $svg = replaceRE ` xmlns:[a-z0-9]+="[^"]*"` "" $svg }}
             {{- $svg = replace $svg `role="img" ` "" }}
-        <span class="kit__m">{{ $svg | safeHTML }}{{ $name }}</span>
+        <span class="kit__m">{{ $svg | safeHTML }}{{ $label | default $name }}</span>
           {{- end }}{{ end }}
         {{- end }}
       </span>

@@ -77,18 +77,18 @@ flowchart LR
 
 ## Detection
 
-**Sigma**
+**KQL** (Sentinel analytics rule or Defender custom detection)
+
+```kql
+
+```
+
+**Sigma source** (optional, when the rule was converted from one)
 
 ```yaml
 title:
 logsource:
 detection:
-```
-
-**ES|QL / KQL equivalent**
-
-```text
-
 ```
 
 <!-- SCREENSHOT (required): the rule firing or a passing rule test. -->

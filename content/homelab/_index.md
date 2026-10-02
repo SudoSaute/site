@@ -156,7 +156,7 @@ The numbers are my own allowances. OPNsense with Suricata, the domain controller
 
 
 {{< wip title="Still cooking" >}}
-I am building the lab and documenting it as it lands. Sanitized configs, Sysmon settings and detection rules go up on [GitHub](https://github.com/labwithchristian) alongside it.
+I am building the lab and documenting it as it lands. Sanitized configs, Sysmon settings and detection rules go up on [GitHub](https://github.com/SudoSaute) alongside it.
 
 The finished projects live in [Writeups]({{< ref "writeups" >}}).
 {{< /wip >}}

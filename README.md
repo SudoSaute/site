@@ -7,7 +7,7 @@ See `DEPLOYMENT-SOP.md` for the domain, DNS and certificate setup.
 ## Local development
 
 ```bash
-git clone --recurse-submodules https://github.com/labwithchristian/site.git
+git clone --recurse-submodules https://github.com/SudoSaute/site.git
 cd site
 hugo server --buildDrafts
 ```

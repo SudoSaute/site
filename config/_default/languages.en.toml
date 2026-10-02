@@ -19,7 +19,7 @@ copyright = "&copy; 2026 Christian Carrasco"
   bio = "10+ years across enterprise IT operations, security, and service delivery. Incident and problem management, cloud and infrastructure, compliance and control testing, and vulnerability management. Building a lab in public and documenting it as I go. Bilingual, English and Spanish."
   links = [
     { linkedin = "https://linkedin.com/in/cybercc" },
-    { github = "https://github.com/labwithchristian" },
+    { github = "https://github.com/SudoSaute" },
     { email = "mailto:hello@christiancarrasco.dev" },
     { rss = "/index.xml" },
   ]

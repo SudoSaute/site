@@ -52,7 +52,7 @@ If the parrot ever learns a new word worth sharing, you'll hear about it here fi
 
 ## What you'll find here
 
-The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building, and sanitized configs and playbooks land on [GitHub](https://github.com/labwithchristian) as the build grows.
+The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building, and sanitized configs and playbooks land on [GitHub](https://github.com/SudoSaute) as the build grows.
 
 {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
 Thanks for stopping by. Let's connect!

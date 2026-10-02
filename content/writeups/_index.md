@@ -15,7 +15,7 @@ The long form: how I worked a problem, what I decided and the evidence behind it
 - CTF postmortems and lessons learned, after each event closes
 - Coursework and projects from the [lab]({{< ref "homelab" >}})
 
-Configs and detection rules go on [GitHub](https://github.com/labwithchristian).
+Configs and detection rules go on [GitHub](https://github.com/SudoSaute).
 
 ## What's planned
 

@@ -49,7 +49,7 @@
       {{- with .Params.tools }}<dt>Tools</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
       {{- with .Params.repo }}
       {{- $url := cond (hasPrefix . "http") . (printf "https://%s" .) }}
-      <dt>Artifacts</dt><dd><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "https://" (strings.TrimPrefix "github.com/labwithchristian/" .) }}</a></dd>
+      <dt>Artifacts</dt><dd><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "https://" (strings.TrimPrefix "github.com/SudoSaute/" .) }}</a></dd>
       {{- end }}
     </dl>
   </div>

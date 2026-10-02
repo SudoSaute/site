@@ -32,7 +32,7 @@ about redirect rules or HSTS headers again. For a security portfolio, that is a 
 
 | Item | Check |
 |---|---|
-| GitHub account | `labwithchristian` |
+| GitHub account | `SudoSaute` |
 | Git installed | `git --version` |
 | Hugo **extended** v0.166.0+ | `hugo version` must show `+extended`. The standard build fails on this theme. |
 | Project unzipped | From `site.zip` |
@@ -66,11 +66,11 @@ No edits needed. These are set to `.dev` already:
 
 1. On GitHub, create a **new public repository** named `site`.
    - Do **not** initialize with README, .gitignore, or licence. The project has them.
-   - Do **not** name it `labwithchristian.github.io`. That is a different publishing mode and complicates
+   - Do **not** name it `SudoSaute.github.io`. That is a different publishing mode and complicates
      adding a second repo later for your lab artifacts.
    - Must be **public** for Pages on the free tier.
 
-2. The GitHub handle is already set to `labwithchristian` in
+2. The GitHub handle is already set to `SudoSaute` in
    `config/_default/languages.en.toml` and on the whoami page. Nothing to edit.
 
 3. Push:
@@ -81,7 +81,7 @@ git init
 git add .
 git commit -m "Initial site"
 git branch -M main
-git remote add origin https://github.com/labwithchristian/site.git
+git remote add origin https://github.com/SudoSaute/site.git
 git push -u origin main
 ```
 
@@ -100,7 +100,7 @@ workflow checks submodules out automatically.
 2. **Source** -> **GitHub Actions**. Do not pick "Deploy from a branch"; Hugo needs a build step.
 3. **Actions** tab. The workflow should be running from your push. Wait for green, 1 to 2 minutes.
    If it did not fire: Actions -> "Build, check and deploy" -> Run workflow.
-4. Open `https://labwithchristian.github.io/site/` and confirm the site renders.
+4. Open `https://SudoSaute.github.io/site/` and confirm the site renders.
 
 **Do this before touching DNS.** It separates "the build works" from "DNS and certificates work," so
 that if something breaks later you know which half to look at. Styling may look slightly off at this
@@ -120,7 +120,7 @@ Delete any placeholder records Cloudflare created at registration, then add:
 | A | `@` | `185.199.109.153` | **DNS only** |
 | A | `@` | `185.199.110.153` | **DNS only** |
 | A | `@` | `185.199.111.153` | **DNS only** |
-| CNAME | `www` | `labwithchristian.github.io` | **DNS only** |
+| CNAME | `www` | `SudoSaute.github.io` | **DNS only** |
 
 ### The proxy setting is the whole ballgame
 

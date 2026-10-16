@@ -192,8 +192,8 @@ Event states come from the dates: **upcoming** before `start`, **live** until `e
 **results** once `result` is filled in. The page recomputes them in the browser every second, and the
 daily build keeps the resume and homepage in step.
 
-**Adding an event:** copy the Huntress entry at the top of `events`, newest first, and confirm the
-start and end times (with their time zone offset) from the registration email.
+**Adding an event:** add it at the top of `events`, newest first, with `name`, `org`, `tag`, `season`,
+`start`, `end`, `crew`, `format`, `focus` and `url`, and confirm the start and end times (with their time zone offset) from the registration email.
 
 **When an event closes:**
 
@@ -259,7 +259,7 @@ How to write a writeup or a post: [CONTENT-GUIDE.md](CONTENT-GUIDE.md).
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
 | `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges. The status word picks the icon: a steaming pan for anything else, a lidded stockpot for `Ongoing` or `Continuous`, and a cold pan on an unlit burner for `Planned`, `Queued` or `Target`. Only the first two move. On Homelab it draws spotlight rows instead (pan, or a dashed ring for queued) |
 | `xp` | Resume | Wrapper that stacks `job` cards |
-| `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
+| `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. A certification can add a status and a note: `Name ~ active ~ Lifetime`, `Name ~ progress ~ Target Nov 2026` or `Name ~ held ~ 2019 to 2022`. Active chips get a light fill, in-progress chips a dashed edge and a clock, and previously held chips go grey (`assets/css/site/52-cert-status.css`); Home and the Resume group them in Active, In progress and Previously held rows. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |
 | `connect-mini url label` | whoami | `> connect --linkedin` sign-off card at the end of the page |
 | `intro image alt` | whoami | Portrait beside the opening statement |

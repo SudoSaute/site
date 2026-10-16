@@ -11,7 +11,7 @@ on:
   # /ctf event states, the resume's "Competing next" line and the homepage's
   # What's Cooking row are all worked out from data/ctf.yaml at build time.
   # 13:15 UTC is 9:15 am US Eastern in daylight time (8:15 am in winter), just
-  # after events that open at 9 am Eastern, such as Huntress CTF 2026.
+  # after events that open at 9 am Eastern.
   # GitHub pauses scheduled runs after 60 days without a push; any commit (or
   # "Run workflow") turns them back on.
   schedule:

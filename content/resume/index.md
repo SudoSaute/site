@@ -48,7 +48,7 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< /job >}}
 
 {{< job company="Cigna HealthCare" dates="2014 to 2019" location="Hybrid · Doral, FL" >}}
-{{< role title="System Administrator" tags="Active Directory, CMS, Disaster Recovery, Endpoint Detection and Response, Exchange, Group Policy, HIPAA, MDM" >}}
+{{< role title="Technical Support Analyst" tags="Active Directory, CMS, Disaster Recovery, Endpoint Detection and Response, Exchange, Group Policy, HIPAA, MDM" >}}
 - Level 3 escalation point for a support team of four serving roughly 350 employees in a HIPAA-regulated environment.
 - Administered Active Directory and Azure AD, Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step.
 - Built the standard PXE images and SOPs behind onboarding and offboarding, and deployed endpoint detection and antivirus agents.
@@ -67,7 +67,7 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Certifications {.h-minor}
 
-{{< certs class="certs--wide" groups="Security :: EC-Council Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+ | In progress :: ISC2 CISSP - Target November 2026" >}}
+{{< certs class="certs--wide" groups="Active :: LPI Linux Essentials ~ active ~ Lifetime, Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024 | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019" >}}
 
 ## Compliance and Frameworks {.h-minor}
 

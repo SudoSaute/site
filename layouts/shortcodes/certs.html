@@ -1,8 +1,15 @@
 {{- /* Groups separated by |, fields by ::
-       "Security :: CEH, CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner" */ -}}
-{{- /* seal="false" drops the certificate icon, for lists that aren't certs. */ -}}
+       "Security :: CEH, CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner"
+     Each item may carry a status and a note after ~ :
+       "LPI Linux Essentials ~ active ~ Lifetime"
+       "ISC2 CISSP ~ progress ~ Target Nov 2026"
+       "CompTIA Security+ ~ held ~ 2019 to 2022"
+     Status is active, progress or held (styles in assets/css/site/52-cert-status.css);
+     an item without one renders as a plain chip.
+     seal="false" drops the certificate icon, for lists that aren't certs. */ -}}
 {{- $groups := split (.Get "groups") "|" -}}
 {{- $seal := ne (.Get "seal") "false" -}}
+{{- $words := dict "active" "active" "progress" "in progress" "held" "previously held" -}}
 <div class="certs not-prose my-8{{ if not $seal }} certs--plain{{ end }}{{ with .Get "class" }} {{ . }}{{ end }}">
   {{- range $groups -}}
     {{- $parts := split (trim . " ") "::" -}}
@@ -11,18 +18,30 @@
         <span class="certs__label">{{ trim (index $parts 0) " " }}</span>
         <ul class="certs__list">
           {{- range split (index $parts 1) "," -}}
-            {{- $c := trim . " " -}}
-            {{- $c = trim (strings.TrimPrefix "*" $c) " " -}}
-            <li class="certs__item">
+            {{- $f := split (trim (strings.TrimPrefix "*" (trim . " ")) " ") "~" -}}
+            {{- $name := trim (index $f 0) " " -}}
+            {{- $state := "" }}{{ if ge (len $f) 2 }}{{ $state = trim (index $f 1) " " }}{{ end -}}
+            {{- $note := "" }}{{ if ge (len $f) 3 }}{{ $note = trim (index $f 2) " " }}{{ end -}}
+            <li class="certs__item{{ with $state }} certs__item--{{ . }}{{ end }}">
               {{- if $seal }}
+                {{- if eq $state "progress" }}
+              <svg class="certs__seal" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5" stroke-dasharray="2.6 2.8"/>
+                <path d="M12 7.8V12l2.8 1.8"/>
+              </svg>
+                {{- else }}
               <svg class="certs__seal" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                    stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="9" r="6"/>
                 <path d="M9.2 14.3 8 22l4-2.2L16 22l-1.2-7.7"/>
                 <path d="m9.8 9 1.6 1.7L14.4 7"/>
               </svg>
+                {{- end }}
               {{- end }}
-              <span>{{ $c }}</span>
+              <span class="certs__name">{{ $name }}</span>
+              {{- with $note }}<span class="certs__when">{{ . }}</span>{{ end }}
+              {{- with index $words $state }}<span class="sr-only"> ({{ . }})</span>{{ end }}
             </li>
           {{- end -}}
         </ul>

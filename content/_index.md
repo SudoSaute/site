@@ -69,7 +69,7 @@ AWS security audits, Entra ID, DNS and SSL certificates, and Dynatrace monitorin
 SOC triage, lead LogRhythm SIEM administrator, and detection alert enhancements mapped to MITRE ATT&CK.
 {{< /timeline-item >}}
 
-{{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
+{{< timeline-item dates="2014 to 2019" role="Technical Support Analyst" company="Cigna HealthCare" >}}
 Grew from level 1 support to the team's level 3 escalation point, with identity and access management and CMS and HIPAA audit evidence along the way.
 {{< /timeline-item >}}
 
@@ -81,7 +81,7 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## Certifications & Education
 
-{{< certs groups="Security :: EC-Council Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+ | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
+{{< certs class="certs--wide" groups="Active :: LPI Linux Essentials ~ active ~ Lifetime, Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024 | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019 | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
 
 ## What's Cooking
 

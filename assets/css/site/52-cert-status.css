@@ -1,0 +1,40 @@
+/* --- Certification status (shortcodes/certs.html) ---
+   Rows are grouped by status: Active, In progress, Previously held.
+   active:   the usual chip with a light fill.
+   progress: dashed edge, a clock in place of the seal, the target month.
+   held:     neutral and quieter, with the years it was valid.
+   Each chip also carries its status as screen reader text. */
+.certs__when {
+  margin-left: 0.1rem;
+  padding-left: 0.45rem;
+  border-left: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  font: 500 0.68rem/1.2 var(--font-mono);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.certs__item--active { background-color: rgba(var(--color-primary-400), 0.12); }
+.dark .certs__item--active {
+  color: rgb(var(--color-primary-200));
+  background-color: rgba(var(--color-primary-400), 0.14);
+}
+
+.certs__item--progress { border-style: dashed; }
+.certs__item--progress .certs__when { color: rgb(var(--color-secondary-700)); }
+.dark .certs__item--progress .certs__when { color: rgb(var(--color-secondary-300)); }
+
+.certs__item--held {
+  color: rgb(var(--color-neutral-600));
+  border-color: rgba(var(--color-neutral-400), 0.55);
+}
+.certs__item--held .certs__seal { opacity: 0.45; }
+.dark .certs__item--held {
+  color: rgb(var(--color-neutral-300));
+  border-color: rgba(var(--color-neutral-400), 0.35);
+}
+
+/* Phones: the wide label column (certs--wide) stacks like the narrow one.
+   Two classes so it wins over .certs--wide in 60-pages.css. */
+@media (max-width: 560px) {
+  .certs.certs--wide .certs__group { grid-template-columns: 1fr; }
+}

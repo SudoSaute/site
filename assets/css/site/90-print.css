@@ -83,6 +83,10 @@
   .certs__list { column-gap: 5pt; row-gap: 0; }
   .certs__item:not(:last-child)::after { content: ","; }
   .certs__seal { display: none; }
+  .certs__when { margin-left: 3pt; padding: 0; border: 0; font: inherit; color: #444 !important; }
+  .certs__when::before { content: "("; }
+  .certs__when::after { content: ")"; }
+  .certs__item--active, .certs__item--held { background: none !important; }
 
   /* whoami portrait: the nebula glow is a blurred gradient, which prints as a
      muddy grey box. The photo itself is kept. */

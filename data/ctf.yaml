@@ -1,5 +1,5 @@
 # CTF record: the single source for the /ctf page, the "Competing next" line on
-# the resume, and the Huntress row in the homepage's What's Cooking list.
+# the resume, and the CTF row in the homepage's What's Cooking list.
 #
 # Scope: timed, scored competitions only. Practice platforms (retired Hack The
 # Box Sherlocks, CyberDefenders) belong to the homelab and writeups, not here.
@@ -31,26 +31,6 @@ module_names:
 module_strong: 70
 
 events:
-  - id: huntress-2026
-    name: Huntress CTF 2026
-    org: Huntress
-    note: Cybersecurity Awareness Month
-    tag: "2026.O"
-    season: October 2026
-    # Start confirmed: 1 October, 9:00 am US Eastern. The end still assumes
-    # 31 October at 11:59 pm Eastern; adjust if Huntress says otherwise.
-    start: "2026-10-01T09:00:00-04:00"
-    end: "2026-10-31T23:59:00-04:00"
-    crew: solo
-    format: daily challenge drops
-    focus: [malware, forensics, osint, scripting]
-    url: https://ctf.huntress.com/
-    handle: ""
-    result: ""
-    proof_url: ""
-    proof_label: ""
-    writeup_url: ""
-
   - id: ncl-spring-2020
     name: NCL Individual Game
     org: National Cyber League

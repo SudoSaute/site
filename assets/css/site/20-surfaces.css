@@ -61,45 +61,7 @@ html[data-astral="true"].dark .rounded-md.border {
   background-color: rgba(var(--color-neutral-800), 0.4);
 }
 
-/* --- Background pattern legibility ---
-   The pattern SVGs are drawn in neutral gray. On a light ground they need to be
-   darkened and the canvas overlay pulled back, or they vanish. On dark grounds
-   they need lifting instead. Alpha is preserved by brightness(), so the strokes
-   stay as subtle as they were drawn. */
-
-html:not(.dark) #background-canvas img {
-  filter: brightness(0.42);
-}
-
-html.dark #background-canvas img {
-  filter: brightness(1.45);
-}
-
-/* Patterns that carry their own colour (aurora) must not be re-tinted.
-   Set `backgroundTinted = true` in params.toml alongside them. */
-html[data-bg-tinted="true"] #background-canvas img { filter: none; }
-
-html[data-bg-tinted="true"]:not(.dark) #background-canvas > div {
-  background-color: rgba(var(--color-neutral), 0.62) !important;
-}
-
-html[data-bg-tinted="true"].dark #background-canvas > div {
-  background-color: rgba(var(--color-page-dark, var(--color-neutral-800)), 0.7) !important;
-}
-
-/* Non-astral light: theme default is a 75% wash, too heavy for these patterns */
-html:not(.dark) #background-canvas > div {
-  background-color: rgba(var(--color-neutral), 0.5) !important;
-}
-
-html[data-astral="true"]:not(.dark) #background-canvas > div {
-  background-color: rgba(var(--color-neutral-50), 0.5) !important;
-}
-
-html[data-astral="true"].dark #background-canvas > div,
-html[data-astral="true"] .dark #background-canvas > div {
-  background-color: rgba(var(--color-neutral-900), 0.55) !important;
-}
+/* The background itself (linen and the sifting specks) lives in 21-background.css. */
 
 /* Light-ground glass: lift cards above the page rather than tinting them darker */
 html[data-astral="true"]:not(.dark) article.group,

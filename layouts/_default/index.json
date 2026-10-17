@@ -1,0 +1,28 @@
+{{- /* Search index for the theme's search box (themes/blowfish/assets/js/search.js).
+       Same as the theme's version with three changes: the homepage is titled
+       "Home" instead of the full site title, top-level pages are labelled
+       "Page" instead of repeating the site title as their section, and empty
+       tag pages are left out. */ -}}
+{{- $index := slice -}}
+{{- range site.Pages -}}
+  {{- if .Params.excludeFromSearch -}}{{- continue -}}{{- end -}}
+  {{- if and (in (slice "taxonomy" "term") .Kind) (eq (len .Pages) 0) -}}{{- continue -}}{{- end -}}
+  {{- $title := cond .IsHome "Home" .Title -}}
+  {{- $section := "Page" -}}
+  {{- if and .Section (not .IsHome) -}}
+    {{- with site.GetPage "section" .Section -}}{{- $section = .Title -}}{{- end -}}
+  {{- end -}}
+  {{- $item := dict
+      "title" ($title | emojify | safeJS)
+      "section" ($section | emojify | safeJS)
+      "summary" (.Summary | plainify | htmlUnescape | safeJS)
+      "content" (.Plain | safeJS)
+      "permalink" .RelPermalink
+      "externalUrl" .Params.externalUrl
+      "type" .Type -}}
+  {{- if .Date -}}
+    {{- $item = merge $item (dict "date" (.Date | time.Format (site.Language.Params.dateFormat | default ":date_long"))) -}}
+  {{- end -}}
+  {{- $index = $index | append $item -}}
+{{- end -}}
+{{- $index | jsonify -}}

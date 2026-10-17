@@ -1,5 +1,5 @@
 /* --- Spotlight: the lab pages' theme ------------------------------------------
-   Writeups, Blog, Homelab and whoami share one look on the site's own grain background: a soft
+   Writeups, Blog, Homelab and whoami share one look on the site's own linen background: a soft
    spotlight that follows the cursor, card borders that light up where the
    cursor is, and page titles that scramble in and settle into an aurora
    gradient. Home, Resume and /ctf keep their own design, so every rule in this
@@ -8,7 +8,7 @@
    Page layouts add their own file in assets/css/lab/, loaded only on that page.
    The script is assets/js/spotlight.js.
 
-   Background: the site-wide grain canvas, exactly as on Home and Resume.
+   Background: the site-wide linen canvas (21-background.css), exactly as on Home and Resume.
 
    Colour rules of thumb:
    - Aurora stops were tuned on the dark-mode ground. Light mode swaps them for
@@ -45,8 +45,8 @@ html.dark[data-room="lab"] {
   --on-p: 19, 17, 33; --pill: 60, 41, 125, .55;
 }
 
-/* ground: no override. Lab pages use the same grain canvas, ground colour and
-   wash as Home and Resume in both modes (20-surfaces.css); the spotlight below
+/* ground: no override. Lab pages use the same linen canvas and ground colour
+   as Home and Resume in both modes (21-background.css); the spotlight below
    is the only thing layered on top. */
 
 /* the cursor spotlight (the layer is in baseof.html). Unlike the rest of this

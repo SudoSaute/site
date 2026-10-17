@@ -550,7 +550,7 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
   line-height: 1.5;
   color: rgb(var(--color-neutral-600));
 }
-.dark .resume-head__note { color: rgb(var(--color-neutral-400)); }
+.dark .resume-head__note { color: rgb(var(--color-neutral-300)); }
 
 /* Titles held at one employer, newest first */
 .job__positions {

@@ -8,3 +8,11 @@
   <a href="https://guihubie.com/" target="_blank" rel="noopener noreferrer">guihubie.com</a>.
   Thanks for building in the open.
 </p>
+{{- /* The theme's search only runs on keyup, so a query pasted with the mouse,
+       dictated, or filled by autocomplete showed no results until another key
+       was pressed. Run it on every input change as well. */}}
+<script>
+  document.addEventListener("input", function (e) {
+    if (e.target && e.target.id === "search-query" && typeof executeQuery === "function") executeQuery(e.target.value);
+  });
+</script>

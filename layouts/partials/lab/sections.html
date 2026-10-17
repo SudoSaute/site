@@ -12,9 +12,10 @@
   {{- $id := replaceRE `(?s)^.*?<span id="([^"]+)" class="anchor".*$` "$1" . -}}
   {{- $title := replaceRE `(?s)^[^>]*>(.*?)<span id=.*$` "$1" . | plainify | htmlUnescape | strings.TrimSpace -}}
   {{- $toc = $toc | append (dict "id" $id "title" $title) -}}
-  {{- $html = printf `%s<section class="sect" data-sect="%s"><h2%s</section>` $html $id . -}}
+  {{- /* Tables scroll sideways on phones, so the wrapper is a focusable, named region for keyboard users. */ -}}
+  {{- $part := replace . "<table>" (printf `<div class="tbl glass lit" tabindex="0" role="region" aria-label="%s table"><table>` ($title | htmlEscape)) -}}
+  {{- $html = printf `%s<section class="sect" data-sect="%s"><h2%s</section>` $html $id $part -}}
 {{- end -}}
-{{- $html = replace $html "<table>" `<div class="tbl glass lit"><table>` -}}
 {{- $html = replace $html "</table>" "</table></div>" -}}
 <div class="layout">
   <div class="lab-body">{{ $html | safeHTML }}</div>

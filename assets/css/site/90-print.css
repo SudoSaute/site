@@ -94,4 +94,11 @@
 
   /* Hover-only affordance, meaningless on paper. */
   .heading-anchor { display: none; }
+
+  /* Lab pages (Homelab, whoami): drop the sticky contents list and the key
+     hints bar, and run everything in one column so the cards keep a readable
+     width on paper. */
+  [data-keys], .lab .ltoc { display: none !important; }
+  .lab .layout, .lab .projs, .lab .lspecs { grid-template-columns: minmax(0, 1fr) !important; }
+  .lab .proj, .lab .lspec, .lab .pipe__row { break-inside: avoid; }
 }

@@ -60,22 +60,10 @@
       fixed background can suppress the site-wide canvas for their page.
       The layer is fixed, so its position in the DOM has no visual effect. */}}
     {{ if and (site.Params.backgroundCanvas | default false) (not (.Store.Get "suppressBackgroundCanvas")) }}
-      {{ $default := site.Store.Get "defaultBackgroundImage" }}
-      {{ $canvasURL := $default.url }}
-      {{ if not $canvasURL }}
-        {{ with $default.obj }}{{ $canvasURL = .RelPermalink }}{{ end }}
-      {{ end }}
-      {{ with $canvasURL }}
-        <div id="background-canvas" aria-hidden="true" class="pointer-events-none fixed inset-0 -z-20">
-          <img
-            src="{{ . }}"
-            alt=""
-            loading="eager"
-            decoding="async"
-            class="nozoom h-full w-full object-cover" />
-          <div class="absolute inset-0 bg-neutral/75 dark:bg-neutral-800/60"></div>
-        </div>
-      {{ end }}
+      {{/* Chef's linen with flour and spice sifting down: assets/css/site/21-background.css */}}
+      <div id="background-canvas" aria-hidden="true" class="pointer-events-none fixed inset-0 -z-20">
+        <div class="bg-sift"><i></i><i></i></div>
+      </div>
     {{ end }}
     {{- if $spot }}
     <div class="spot" aria-hidden="true"></div>

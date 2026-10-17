@@ -28,6 +28,7 @@
 .lab .ltoc a.on { background: rgba(183, 166, 247, .16); color: rgb(var(--ink)); }
 .lab .ltoc a.on span { color: var(--lx-magenta, #E483C3); }
 .lab .tbl { overflow-x: auto; margin: 1rem 0; }
+.lab .tbl:focus-visible { outline: 2px solid var(--lx-violet, #B7A6F7); outline-offset: 3px; }
 .lab .tbl table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 520px; margin: 0; }
 .lab .tbl th { text-align: left; font: 500 .72rem var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--lx-violet, #B7A6F7); padding: .7rem .9rem; border-bottom: 1px solid rgba(183, 166, 247, .25); }
 html:not(.dark) .lab .tbl th { border-bottom-color: rgba(93, 66, 190, .25); }

@@ -62,7 +62,8 @@ Every file in this folder is concatenated in filename order and loaded after the
 |---|---|
 | `00-fonts.css` | Self-hosted faces and font tokens (`--font-display`, `--font-body`, `--font-mono`) |
 | `10-typography.css` | Type scale tokens (`--step--1` to `--step-5`), headings, body copy, link underlines |
-| `20-surfaces.css` | Page background, glass surfaces, background pattern |
+| `20-surfaces.css` | Page background colour and glass surfaces |
+| `21-background.css` | The site background on every page except /ctf: Chef's linen (a herringbone twill over soft grain) with flour and spice specks sifting down. The specks stop for visitors who ask for reduced motion. Markup is `#background-canvas` in `baseof.html`; /ctf opts out with `suppressBackgroundCanvas` |
 | `30-nav.css` | Nav pill, mobile dropdown, Home icon |
 | `40-hero.css` | Hero name, role eyebrow, lead, buttons |
 | `50-home.css` | Skills marquee, highlights, career timeline, core strengths, pipeline, experience cards, certifications, connect |
@@ -71,7 +72,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `80-intro.css` | Homepage intro overlay |
 | `85-transitions.css` | The "lights out" transition into /ctf (flicker, black, power on) and "monitor off" on the way out (collapse to a line, then a dot). Cross-document view transitions: Chrome, Edge, Safari 18.2+; other browsers load the page normally. Off for reduced motion |
 | `90-print.css` | Print and Save as PDF layout, mainly for the resume |
-| `95-spotlight.css` | The lab pages' shared theme (see Lab pages below): tokens, cursor spotlight (the grain background is the same as Home and Resume), lit card borders, aurora titles, illustration motion, light-mode contrast fixes and the keyboard status bar. Every rule is scoped to `html[data-room="lab"]` |
+| `95-spotlight.css` | The lab pages' shared theme (see Lab pages below): tokens, cursor spotlight (the linen background is the same as Home and Resume), lit card borders, aurora titles, illustration motion, light-mode contrast fixes and the keyboard status bar. Every rule is scoped to `html[data-room="lab"]` |
 
 Colors come from the scheme in `assets/css/schemes/nebula-stone.css` (`colorScheme` in `params.toml`).
 Use its variables, for example `rgb(var(--color-primary-600))`, rather than hex values, so light and

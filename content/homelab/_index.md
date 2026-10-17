@@ -8,11 +8,11 @@ showTableOfContents: true
 showWordCount: false
 ---
 
-A blue team lab on one repurposed workstation: a small corporate network, the tools that watch it, and an isolated segment for malware. I follow keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) because it maps out the work, which leaves my time for finding gaps, refreshing concepts and building up skills like Python. Every piece feeds a project below. The security stack will be Microsoft's. Sentinel and Defender XDR are what many SOCs run, and they line up with SC-200, which I study for after the CISSP.
+A blue team lab on one repurposed workstation: a small corporate network, the tools that watch it, and an isolated segment for malware. I follow keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) because it maps out the work, which leaves my time for finding gaps, refreshing concepts and building up skills like Python. Every piece feeds a project below. The security stack will be Microsoft's. Sentinel and Defender XDR are what many SOCs run, so that is the stack I want real hands-on time with.
 
 ## Build Status
 
-{{< pipeline items="Lab foundation :: In progress :: Proxmox and OPNsense first, then the three segments and the corporate network | Microsoft security stack :: Planned :: Sentinel, Defender XDR and Entra, starting with SC-200 study after the CISSP | Portfolio projects :: Planned :: Six projects from the roadmap, plus vulnerability management, each ending in a writeup" >}}
+{{< pipeline items="Lab foundation :: In progress :: Proxmox and OPNsense first, then the three segments and the corporate network | Microsoft security stack :: Planned :: Sentinel, Defender XDR and Entra, starting after the CISSP | Portfolio projects :: Planned :: Six projects from the roadmap, plus vulnerability management, each ending in a writeup" >}}
 
 I call the lab done when each project has a published writeup, not when every tool is installed.
 {.callout}
@@ -68,7 +68,7 @@ Suricata only sees traffic that crosses the firewall, not traffic between hosts 
 
 ## What Runs Where
 
-I keep the roadmap's projects and change the tools under them. OPNsense stands in for pfSense, since it was already running and does the same job. The security stack is Microsoft's: Sentinel in the Defender portal as the SIEM, and Defender XDR across endpoints, identity and email. Many SOCs run this stack, and it is the one SC-200 tests. None of it is running yet. The table is the plan.
+I keep the roadmap's projects and change the tools under them. OPNsense stands in for pfSense, since it was already running and does the same job. The security stack is Microsoft's: Sentinel in the Defender portal as the SIEM, and Defender XDR across endpoints, identity and email. Many SOCs run this stack, which is why I picked it. None of it is running yet. The table is the plan.
 
 | Segment | Tool | Role |
 |---|---|---|

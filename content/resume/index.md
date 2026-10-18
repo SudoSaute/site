@@ -14,14 +14,14 @@ build:
 
 {{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
 
-Keeping Systems Resilient. Keeping Threats Out.
+<h2>Keeping Systems Resilient. Keeping Threats Out.</h2>
 
-IT operations and cybersecurity professional with 10+ years of
+<br>IT operations and cybersecurity professional with 10+ years of
 experience across enterprise infrastructure, incident response, SIEM engineering, and security controls.
 
-From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations and supporting HIPAA-regulated infrastructure at Cigna, I bridge the gap between keeping systems running, identifying threats, and implementing controls that stand up to scrutiny.
+<br>From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations and supporting HIPAA-regulated infrastructure at Cigna, I bridge the gap between keeping systems running, identifying threats, and implementing controls that stand up to scrutiny.
 
-My work spans security operations, AWS security, and control frameworks including NIST SP 800-53, PCI DSS, HIPAA, CMS, and ISO 27001, with a focus on practical implementation, measurable outcomes, and evidence that demonstrates effectiveness.
+<br>My work spans security operations, AWS security, and control frameworks including NIST SP 800-53, PCI DSS, HIPAA, CMS, and ISO 27001, with a focus on practical implementation, measurable outcomes, and evidence that demonstrates effectiveness.
 
 {{< /resume-head >}}
 

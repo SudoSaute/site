@@ -14,7 +14,7 @@ build:
 
 {{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
 
-<h2>Keeping Systems Resilient. Keeping Threats Out.</h2>
+<h1>Keeping Systems Resilient. Keeping Threats Out.</h1>
 
 <br>IT operations and cybersecurity professional with 10+ years of
 experience across enterprise infrastructure, incident response, SIEM engineering, and security controls.

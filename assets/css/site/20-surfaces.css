@@ -61,7 +61,7 @@ html[data-astral="true"].dark .rounded-md.border {
   background-color: rgba(var(--color-neutral-800), 0.4);
 }
 
-/* The background itself (linen and the sifting specks) lives in 21-background.css. */
+/* The background itself (Chef's linen) lives in 21-background.css. */
 
 /* Light-ground glass: lift cards above the page rather than tinting them darker */
 html[data-astral="true"]:not(.dark) article.group,

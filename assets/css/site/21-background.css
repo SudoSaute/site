@@ -1,14 +1,12 @@
-/* --- Site background: Chef's linen, with flour and spice sifting down ---
+/* --- Site background: Chef's linen ---
    The layer is #background-canvas in layouts/_default/baseof.html. Every page
    gets it except /ctf, which sets suppressBackgroundCanvas and paints its own.
 
-   Base: a herringbone twill (16px tile) over a soft grain, both inline SVG.
-   Motion: two sheets of specks (.bg-sift > i) drift down and slightly sideways
-   at different speeds (24s and 41s per tile), so the pattern never lines up.
-   Visitors who ask for reduced motion get the specks standing still.
+   A herringbone twill (16px tile) over a soft grain, both inline SVG. Static:
+   nothing on the background moves.
 
-   To tune: twill strength is the stroke-opacity in the twill SVGs; speck size,
-   count and colour live in the two sift SVGs; speed is the animation duration. */
+   To tune: twill strength is the stroke-opacity in the twill SVGs (second
+   image in each block); grain strength is the slope in the grain SVG. */
 #background-canvas {
   background-color: rgb(var(--color-neutral));
   background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22 viewBox=%220 0 600 600%22%3E%0A%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%0A%3CfeColorMatrix type=%22saturate%22 values=%220%22/%3E%0A%3CfeComponentTransfer%3E%3CfeFuncA type=%22linear%22 slope=%220.10%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%0A%3Crect width=%22600%22 height=%22600%22 filter=%22url(%23g)%22/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M0 -8 L8 0 M8 0 L16 -8 M0 -4 L8 4 M8 4 L16 -4 M0 0 L8 8 M8 8 L16 0 M0 4 L8 12 M8 12 L16 4 M0 8 L8 16 M8 16 L16 8 M0 12 L8 20 M8 20 L16 12 M0 16 L8 24 M8 24 L16 16%22 fill=%22none%22 stroke=%22%235d42be%22 stroke-opacity=%220.3%22 stroke-width=%22.55%22/%3E%3C/svg%3E");
@@ -18,41 +16,4 @@
 html.dark #background-canvas {
   background-color: rgb(var(--color-neutral-800));
   background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22 viewBox=%220 0 600 600%22%3E%0A%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%0A%3CfeColorMatrix type=%22saturate%22 values=%220%22/%3E%0A%3CfeComponentTransfer%3E%3CfeFuncA type=%22linear%22 slope=%220.10%22/%3E%3C/feComponentTransfer%3E%3C/filter%3E%0A%3Crect width=%22600%22 height=%22600%22 filter=%22url(%23g)%22/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 16 16%22%3E%3Cpath d=%22M0 -8 L8 0 M8 0 L16 -8 M0 -4 L8 4 M8 4 L16 -4 M0 0 L8 8 M8 8 L16 0 M0 4 L8 12 M8 12 L16 4 M0 8 L8 16 M8 16 L16 8 M0 12 L8 20 M8 20 L16 12 M0 16 L8 24 M8 24 L16 16%22 fill=%22none%22 stroke=%22%23b7a6f7%22 stroke-opacity=%220.17%22 stroke-width=%22.55%22/%3E%3C/svg%3E");
-}
-
-.bg-sift {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.bg-sift > i {
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  top: -420px;
-  bottom: 0;
-  will-change: transform;
-}
-
-.bg-sift > i:first-child {
-  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22 viewBox=%220 0 300 300%22%3E%3Cg fill=%22%235d42be%22 fill-opacity=%220.28%22%3E%3Ccircle cx=%2271.4%22 cy=%22163.3%22 r=%221.1%22/%3E%3Ccircle cx=%22181.2%22 cy=%22187.7%22 r=%220.8%22/%3E%3Ccircle cx=%224.0%22 cy=%22251.2%22 r=%221.0%22/%3E%3Ccircle cx=%2270.3%22 cy=%22298.7%22 r=%221.2%22/%3E%3Ccircle cx=%22250.9%22 cy=%22142.9%22 r=%221.3%22/%3E%3Ccircle cx=%2245.2%22 cy=%22190.5%22 r=%221.6%22/%3E%3Ccircle cx=%22157.0%22 cy=%22222.4%22 r=%221.4%22/%3E%3Ccircle cx=%2219.2%22 cy=%22227.5%22 r=%221.3%22/%3E%3Ccircle cx=%2290.4%22 cy=%229.3%22 r=%221.6%22/%3E%3Ccircle cx=%22141.8%22 cy=%22215.6%22 r=%221.6%22/%3E%3Ccircle cx=%22214.2%22 cy=%22276.3%22 r=%221.1%22/%3E%3Ccircle cx=%22240.3%22 cy=%22133.4%22 r=%221.6%22/%3E%3Ccircle cx=%22263.7%22 cy=%2229.2%22 r=%220.8%22/%3E%3Ccircle cx=%2265.1%22 cy=%22289.6%22 r=%221.1%22/%3E%3Ccircle cx=%22188.0%22 cy=%2290.3%22 r=%221.2%22/%3E%3Ccircle cx=%22115.8%22 cy=%22105.3%22 r=%221.3%22/%3E%3C/g%3E%3C/svg%3E") 0 0 / 300px 300px;
-  animation: bg-sift-a 24s linear infinite;
-}
-
-.bg-sift > i + i {
-  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22420%22 viewBox=%220 0 420 420%22%3E%3Cg fill=%22%23cd59a6%22 fill-opacity=%220.22%22%3E%3Ccircle cx=%22261.6%22 cy=%22311.6%22 r=%221.5%22/%3E%3Ccircle cx=%22395.8%22 cy=%22310.8%22 r=%221.6%22/%3E%3Ccircle cx=%2212.2%22 cy=%22195.6%22 r=%221.6%22/%3E%3Ccircle cx=%22272.6%22 cy=%22378.4%22 r=%220.8%22/%3E%3Ccircle cx=%22197.0%22 cy=%22103.6%22 r=%221.2%22/%3E%3Ccircle cx=%22241.1%22 cy=%225.5%22 r=%220.9%22/%3E%3Ccircle cx=%22117.4%22 cy=%22384.9%22 r=%221.5%22/%3E%3Ccircle cx=%2267.0%22 cy=%22334.8%22 r=%220.8%22/%3E%3Ccircle cx=%22259.3%22 cy=%2253.2%22 r=%220.7%22/%3E%3Ccircle cx=%22366.0%22 cy=%2288.0%22 r=%220.9%22/%3E%3C/g%3E%3C/svg%3E") 0 0 / 420px 420px;
-  animation: bg-sift-b 41s linear infinite;
-}
-
-html.dark .bg-sift > i:first-child { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22 viewBox=%220 0 300 300%22%3E%3Cg fill=%22%23ece8fa%22 fill-opacity=%220.3%22%3E%3Ccircle cx=%2271.4%22 cy=%22163.3%22 r=%221.1%22/%3E%3Ccircle cx=%22181.2%22 cy=%22187.7%22 r=%220.8%22/%3E%3Ccircle cx=%224.0%22 cy=%22251.2%22 r=%221.0%22/%3E%3Ccircle cx=%2270.3%22 cy=%22298.7%22 r=%221.2%22/%3E%3Ccircle cx=%22250.9%22 cy=%22142.9%22 r=%221.3%22/%3E%3Ccircle cx=%2245.2%22 cy=%22190.5%22 r=%221.6%22/%3E%3Ccircle cx=%22157.0%22 cy=%22222.4%22 r=%221.4%22/%3E%3Ccircle cx=%2219.2%22 cy=%22227.5%22 r=%221.3%22/%3E%3Ccircle cx=%2290.4%22 cy=%229.3%22 r=%221.6%22/%3E%3Ccircle cx=%22141.8%22 cy=%22215.6%22 r=%221.6%22/%3E%3Ccircle cx=%22214.2%22 cy=%22276.3%22 r=%221.1%22/%3E%3Ccircle cx=%22240.3%22 cy=%22133.4%22 r=%221.6%22/%3E%3Ccircle cx=%22263.7%22 cy=%2229.2%22 r=%220.8%22/%3E%3Ccircle cx=%2265.1%22 cy=%22289.6%22 r=%221.1%22/%3E%3Ccircle cx=%22188.0%22 cy=%2290.3%22 r=%221.2%22/%3E%3Ccircle cx=%22115.8%22 cy=%22105.3%22 r=%221.3%22/%3E%3C/g%3E%3C/svg%3E"); }
-html.dark .bg-sift > i + i { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22420%22 viewBox=%220 0 420 420%22%3E%3Cg fill=%22%23e483c3%22 fill-opacity=%220.26%22%3E%3Ccircle cx=%22261.6%22 cy=%22311.6%22 r=%221.5%22/%3E%3Ccircle cx=%22395.8%22 cy=%22310.8%22 r=%221.6%22/%3E%3Ccircle cx=%2212.2%22 cy=%22195.6%22 r=%221.6%22/%3E%3Ccircle cx=%22272.6%22 cy=%22378.4%22 r=%220.8%22/%3E%3Ccircle cx=%22197.0%22 cy=%22103.6%22 r=%221.2%22/%3E%3Ccircle cx=%22241.1%22 cy=%225.5%22 r=%220.9%22/%3E%3Ccircle cx=%22117.4%22 cy=%22384.9%22 r=%221.5%22/%3E%3Ccircle cx=%2267.0%22 cy=%22334.8%22 r=%220.8%22/%3E%3Ccircle cx=%22259.3%22 cy=%2253.2%22 r=%220.7%22/%3E%3Ccircle cx=%22366.0%22 cy=%2288.0%22 r=%220.9%22/%3E%3C/g%3E%3C/svg%3E"); }
-
-@keyframes bg-sift-a { to { transform: translate3d(60px, 300px, 0); } }
-@keyframes bg-sift-b { to { transform: translate3d(-80px, 420px, 0); } }
-
-@media (prefers-reduced-motion: reduce) {
-  /* Same selectors as the animated rules above so this wins on specificity. */
-  .bg-sift > i:first-child,
-  .bg-sift > i + i { animation: none; }
 }

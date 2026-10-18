@@ -63,7 +63,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `00-fonts.css` | Self-hosted faces and font tokens (`--font-display`, `--font-body`, `--font-mono`) |
 | `10-typography.css` | Type scale tokens (`--step--1` to `--step-5`), headings, body copy, link underlines |
 | `20-surfaces.css` | Page background colour and glass surfaces |
-| `21-background.css` | The site background on every page except /ctf: Chef's linen (a herringbone twill over soft grain) with flour and spice specks sifting down. The specks stop for visitors who ask for reduced motion. Markup is `#background-canvas` in `baseof.html`; /ctf opts out with `suppressBackgroundCanvas` |
+| `21-background.css` | The site background on every page except /ctf: Chef's linen, a static herringbone twill over soft grain. Markup is `#background-canvas` in `baseof.html`; /ctf opts out with `suppressBackgroundCanvas` |
 | `30-nav.css` | Nav pill, mobile dropdown, Home icon |
 | `40-hero.css` | Hero name, role eyebrow, lead, buttons |
 | `50-home.css` | Skills marquee, highlights, career timeline, core strengths, pipeline, experience cards, certifications, connect |

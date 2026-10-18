@@ -23,7 +23,7 @@ navSocial = ["linkedin", "github"]   # author links (languages.en.toml) shown at
 
 defaultFeaturedImage = ""
 defaultBackgroundImage = "img/patterns/grain.svg"   # theme fallback only; the site background is assets/css/site/21-background.css
-backgroundCanvas = true   # draws #background-canvas (linen and sifting specks) on every page except /ctf
+backgroundCanvas = true   # draws #background-canvas (Chef's linen) on every page except /ctf
 astral = true
 headingFont = "fraunces"
 homeSpotlight = true     # the cursor spotlight on Home and Resume too (the lab pages always have it)

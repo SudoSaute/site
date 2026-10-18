@@ -492,6 +492,22 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
   color: rgb(var(--color-neutral-700));
 }
 .dark .resume-head__summary p { color: rgb(var(--color-neutral-300)); }
+.resume-head__summary p + p { margin-top: 0.9rem; }
+
+/* Optional hook line above the summary (hook="..." on the shortcode). Same
+   size and face as the minor section headings, so it reads as a headline
+   under the page title rather than a second title. */
+.resume-head__hook {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  letter-spacing: var(--font-display-tracking);
+  text-wrap: balance;
+  color: rgb(var(--color-neutral-900));
+}
+.dark .resume-head__hook { color: rgb(var(--color-neutral-100)); }
 
 .resume-facts {
   display: grid;

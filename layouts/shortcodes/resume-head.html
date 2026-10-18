@@ -1,9 +1,12 @@
 {{- /*
   Top of the resume page: summary, quick facts, and actions.
 
-    {{< resume-head facts="Experience :: Ten plus years | Languages :: English and Spanish" >}}
+    {{< resume-head facts="Experience :: Ten plus years | Languages :: English and Spanish" hook="One bold line." >}}
     Summary paragraph in Markdown.
     {{< /resume-head >}}
+
+  hook is optional: a one-line headline above the summary, sized like the
+  "Experience" heading (not a second page title). Leave it out to hide it.
 
   No download by default: the resume is tailored to each role, so the action
   is "Request a tailored resume", which opens LinkedIn, with a one-line note
@@ -14,6 +17,7 @@
   browser starts with name, role and links.
 */ -}}
 {{- $facts := .Get "facts" | default "" -}}
+{{- $hook := .Get "hook" | default "" -}}
 {{- $offerPdf := eq (.Get "download") "on" -}}
 {{- $pdf := .Page.Resources.GetMatch "*.pdf" -}}
 {{- $author := site.Params.Author -}}
@@ -34,6 +38,9 @@
       {{ delimit $links "  ·  " }}
     </p>
   </div>
+  {{- with $hook }}
+  <p class="resume-head__hook">{{ . }}</p>
+  {{- end }}
   <div class="resume-head__summary">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
   {{- with $facts }}
     <dl class="resume-facts">

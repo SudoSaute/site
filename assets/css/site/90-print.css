@@ -35,6 +35,8 @@
 
   .resume-head { margin: 0 0 4pt; }
   .resume-head__summary p { font-size: 9.75pt !important; line-height: 1.45; color: #111 !important; }
+  .resume-head__summary p + p { margin-top: 3pt; }
+  .resume-head__hook { margin: 0 0 3pt; font-size: 12pt; color: #111 !important; }
   .resume-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6pt; margin-top: 5pt; }
   .resume-facts__item { padding: 0; border: 0; background: none !important; }
   .resume-facts dt { font-size: 7pt; color: #444 !important; }

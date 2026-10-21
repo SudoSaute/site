@@ -2,7 +2,7 @@
 title: "Christian Carrasco · Security & IT Operations Strategist"
 heroRole: "Security & IT Operations Strategist"
 heroCaption: "Christian Carrasco"
-heroLead: "Ten plus years keeping enterprise systems running and defensible, from a HIPAA-regulated healthcare environment and a SOC to leading incident management as a consultant for the world's largest car manufacturer."
+heroLead: "Ten plus years keeping enterprise systems running and defensible on Microsoft identity, from a HIPAA-regulated healthcare environment and a SOC to leading incident management as a consultant for the world's largest car manufacturer."
 heroButtons:
   - label: "View resume"
     url: "/resume/"
@@ -14,7 +14,7 @@ heroButtons:
 
 ## Skills & Tools
 
-{{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, text:ServiceNow, vmware, cisco, wireshark, text:LogRhythm, linux, ubuntu" speed="45" >}}
+{{< logos items="microsoft-azure, microsoft, text:Active Directory, text:Exchange, aws, dynatrace, pagerduty, text:ServiceNow, text:LogRhythm, wireshark, cisco, linux" speed="45" >}}
 
 ## Highlights
 
@@ -44,9 +44,9 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 
 {{< strength icon="list-check" title="IT Service Management (ITSM)" items="Incident, Problem, Change, Service Delivery & SLAs" >}}
 
-{{< strength icon="worktree" title="IT Leadership & Operations" items="Team Leadership, Runbooks & Process" >}}
+{{< strength icon="worktree" title="IT Leadership & Operations" items="Team Leadership, Runbooks & Process, Cloud & Monitoring" >}}
 
-{{< strength icon="cloud" title="Infrastructure & Cloud" items="Cloud & Infrastructure, Monitoring & Observability" >}}
+{{< strength icon="microsoft" title="Microsoft Identity & Security" items="Entra ID & Conditional Access, Active Directory & Exchange, Defender XDR, Sentinel & Purview in the lab" >}}
 
 {{< strength icon="shield" title="Cybersecurity" items="Security Operations, Identity & Access, Vulnerability Management, Compliance & Control Testing" >}}
 
@@ -61,7 +61,7 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 Incident management lead, SLA performance tracking, vendor contracts and budget utilization tracking, and a five-person team.
 {{< /timeline-role >}}
 {{< timeline-role title="Senior/Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
-AWS security audits, Entra ID, DNS and SSL certificates, and Dynatrace monitoring with PagerDuty alerting for client production applications.
+Entra ID Conditional Access and MFA, AWS security audits, DNS and SSL certificates, and Dynatrace monitoring with PagerDuty alerting for client production applications.
 {{< /timeline-role >}}
 {{< /timeline-item >}}
 
@@ -70,7 +70,7 @@ SOC triage, lead LogRhythm SIEM administrator, and detection alert enhancements 
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="Technical Support Analyst" company="Cigna HealthCare" >}}
-Grew from level 1 support to the team's level 3 escalation point, with identity and access management and CMS and HIPAA audit evidence along the way.
+Grew from level 1 support to the team's level 3 escalation point, running Active Directory, Azure AD and Exchange, with CMS and HIPAA audit evidence along the way.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
@@ -85,10 +85,10 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## What's Cooking
 
-{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. The five year experience requirement is already met, so what is left is the exam | Homelab buildout :: Ongoing :: A blue team lab built on the Blue Team Roadmap, working through its six portfolio projects plus vulnerability management, documented as I go" ctf="true" >}}
+{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. The five year experience requirement is already met, so what is left is the exam | Microsoft security lab :: Ongoing :: Defender XDR, Microsoft Sentinel and Purview on a Microsoft 365 E5 tenant, built on Entra ID, each project ending in a writeup" ctf="true" >}}
 
 ## Open to What's Next
 
 {{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-I'm open to roles in IT operations, incident management, security operations, and vulnerability management. Beyond that, I'm always glad to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
+I'm open to roles in security operations, Microsoft security and identity, incident management, and IT operations. Beyond that, I'm always glad to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
 {{< /connect >}}

@@ -1,9 +1,9 @@
-{{- /* Homelab, "The Six Projects": wraps the markdown table (Project | What it
+{{- /* Homelab, "The Projects": wraps the markdown table (Project | What it
        proves | Uses) and draws each row as a card with that project's writeup
        illustration. A project links to its writeup once one is published
        with `project:` set to the matching key.
 
-       {{< projects keys="siem,atomic,phish,ir,intel,rules" >}}
+       {{< projects keys="defend,exposure,soc,purview" >}}
        | Project | What it proves | Uses |
        |---|---|---|
        | 1. SIEM deployment and dashboards | I can ... | Corporate, ... |
@@ -28,6 +28,10 @@
       "ir"     (slice "hackthebox" "cyberdefenders" "microsoft:Defender XDR")
       "intel"  (slice "text:ATT&CK" "microsoft:Threat analytics")
       "rules"  (slice "text:KQL" "text:YARA" "microsoft:Sentinel")
+      "purview" (slice "microsoft:Purview" "microsoft:Compliance Manager" "text:DLP")
+      "defend" (slice "microsoft:Defender for Endpoint" "microsoft:Defender for Office 365" "microsoft:Defender for Identity")
+      "exposure" (slice "microsoft:Vulnerability Mgmt" "microsoft:Secure Score" "text:CISA KEV")
+      "soc"    (slice "microsoft:Sentinel" "microsoft:Defender XDR" "text:KQL")
 -}}
 {{- $rows := slice -}}
 {{- range split (trim .Inner "\n ") "\n" -}}

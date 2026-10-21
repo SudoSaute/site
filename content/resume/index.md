@@ -1,6 +1,6 @@
 ---
 title: "Resume"
-description: "Resume of Christian Carrasco: Security and IT operations strategist with ten plus years across incident management, security operations, identity and access management, and IT audit & compliance."
+description: "Resume of Christian Carrasco: security and IT operations professional, Microsoft identity in production, Defender XDR, Microsoft Sentinel and Purview in the lab."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -12,14 +12,20 @@ build:
   publishResources: false
 ---
 
-{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" hook="Keeping Systems Resilient. Keeping Threats Out." >}}
-IT operations and cybersecurity professional with 10+ years of experience across enterprise infrastructure, incident response, SIEM engineering, and security controls.
+{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" hook="Keeping Systems Resilient. Keeping Threats Out." >}}
+IT operations and cybersecurity professional with 10+ years across enterprise infrastructure, identity, incident response, and security controls, much of it on Microsoft: Entra ID, Active Directory, Exchange, and Microsoft 365.
 
-From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations and supporting HIPAA-regulated infrastructure at Cigna, I bridge the gap between keeping systems running, identifying threats, and implementing controls that stand up to scrutiny.
+From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations at TelevisaUnivision and running identity in a HIPAA-regulated environment at Cigna, I bridge keeping systems running, catching threats, and implementing controls that stand up to scrutiny.
 
-My work spans security operations, AWS security, and control frameworks including NIST SP 800-53, PCI DSS, HIPAA, CMS, and ISO 27001, with a focus on practical implementation, measurable outcomes, and evidence that demonstrates effectiveness.
+I'm now taking that into the rest of Microsoft's security stack, with Defender XDR, Microsoft Sentinel and Purview in my lab, on top of control work across NIST SP 800-53, PCI DSS, HIPAA, CMS, and ISO 27001.
 
 {{< /resume-head >}}
+
+## Microsoft Stack {.h-minor}
+
+{{< certs seal="false" class="certs--wide" groups="Used in production :: Microsoft Entra ID, Conditional Access and MFA, Active Directory, Group Policy, Exchange, Microsoft 365, Defender for Cloud Apps, Office 365 Security and Compliance | Lab roadmap :: Defender XDR, Microsoft Sentinel, Microsoft Purview, Entra ID Protection and PIM | Certified :: Microsoft Certified: Azure AI Fundamentals (AI-900)" >}}
+
+Production means I ran it at work. The lab roadmap lives on my [Homelab]({{< ref "homelab" >}}) page, with a writeup as each piece lands.
 
 ## Experience {.h-minor}
 
@@ -33,29 +39,30 @@ My work spans security operations, AWS security, and control frameworks includin
 - Led post-incident reviews and root cause analysis, turning recurring failures into runbook improvements, preventive controls, and problem records.
 - Supported the annual ISO 27001 compliance review, giving feedback on remediation plans and residual risk.
 {{< /role >}}
-{{< role title="Senior/Lead Technical Systems Analyst" dates="2021 to 2023" tags="AWS Security, AWS Shield, DNS, Dynatrace, Entra ID, IAM, PagerDuty, ServiceNow, SSL/TLS, WAF" >}}
+{{< role title="Senior/Lead Technical Systems Analyst" dates="2021 to 2023" tags="Microsoft Entra ID, Conditional Access, MFA, AWS Security, AWS Shield, WAF, DNS, SSL/TLS, Dynatrace, PagerDuty, ServiceNow" >}}
+- Administered Microsoft Entra ID across client environments: users and groups, Conditional Access, MFA and password policies, and license audits and reviews, with authentication log reviews as part of access checks.
 - Audited client AWS accounts for technical debt and exploitable misconfigurations across IAM policies and security groups, tracking remediation to closure with application teams.
 - Responded to AWS Shield DDoS detections by tuning WAF rules and CloudFront configurations to mitigate attack traffic.
-- Administered Entra ID users and groups, enforcing conditional access and MFA across client environments.
 - Owned DNS and SSL/TLS certificates across client domains, security-validating record changes before execution to prevent spoofing or hijacking.
 - Commanded high-impact production incidents from severity assignment through restoration and client communication.
 {{< /role >}}
 {{< /job >}}
 
 {{< job company="TelevisaUnivision" dates="2019 to 2020" location="Onsite then remote · Doral, FL" >}}
-{{< role title="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, ServiceNow, SIEM Engineering, SOX, Vulnerability Management" >}}
+{{< role title="Information Security Analyst" tags="LogRhythm, SIEM Engineering, Detection Rules, MITRE ATT&CK, Microsoft 365, Defender for Cloud Apps, NIST 800-53, PCI DSS, SOX, ServiceNow, Vulnerability Management" >}}
 - Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines.
 - Investigated spear-phishing campaigns aimed at senior staff and delivered end user security awareness training.
 - Lead LogRhythm administrator: built correlation rules, wrote custom parsers for malformed log sources, and mapped detection coverage to MITRE ATT&CK.
 - Planned and executed the SIEM migration onto a restructured server architecture, then validated coverage so monitoring did not silently degrade.
+- Worked in Microsoft Defender for Cloud Apps (then Cloud App Security) and the Office 365 Security and Compliance Center, whose compliance tools are now Microsoft Purview.
 - Supported SOX and PCI DSS audit and control testing.
 {{< /role >}}
 {{< /job >}}
 
 {{< job company="Cigna HealthCare" dates="2014 to 2019" location="Hybrid · Doral, FL" >}}
-{{< role title="Technical Support Analyst" tags="Active Directory, CMS, Disaster Recovery, Endpoint Detection and Response, Exchange, Group Policy, HIPAA, MDM" >}}
+{{< role title="Technical Support Analyst" tags="Active Directory, Azure AD, Exchange, Group Policy, MFA, HIPAA, CMS, Endpoint Detection and Response, MDM, Disaster Recovery" >}}
+- Administered Active Directory and Azure AD (now Microsoft Entra ID), Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step.
 - Level 3 escalation point for a support team of four serving roughly 350 employees in a HIPAA-regulated environment.
-- Administered Active Directory and Azure AD, Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step.
 - Built the standard PXE images and SOPs behind onboarding and offboarding, and deployed endpoint detection and antivirus agents.
 - Supplied access records and audit evidence through HIPAA and CMS audit cycles to business owners and internal auditors.
 {{< /role >}}
@@ -72,7 +79,7 @@ My work spans security operations, AWS security, and control frameworks includin
 
 ## Certifications {.h-minor}
 
-{{< certs class="certs--wide" groups="Active :: LPI Linux Essentials ~ active ~ Lifetime, Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024 | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019" >}}
+{{< certs class="certs--wide" groups="Active :: Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024, LPI Linux Essentials ~ active ~ Lifetime | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019" >}}
 
 ## Compliance and Frameworks {.h-minor}
 
@@ -80,7 +87,7 @@ My work spans security operations, AWS security, and control frameworks includin
 
 ## Tools and Platforms {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Sophos, Vulnerability Management, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
+{{< certs seal="false" class="certs--wide" groups="Microsoft :: Microsoft Entra ID, Conditional Access, Active Directory, Group Policy, Exchange, Microsoft 365, Microsoft Defender for Cloud Apps, Office 365 Security and Compliance (now Purview), Windows Server, Hyper-V, Microsoft Azure | Security :: LogRhythm, Sophos, Cylance, Check Point, Cisco Umbrella, Imperva, Vulnerability Management, Wireshark | Cloud :: Amazon CloudFront, Amazon Route 53, AWS Shield and WAF | Operations :: ServiceNow, Dynatrace, PagerDuty, Jenkins, KACE, Password Safe, FACETS | Infrastructure :: Linux, PXE imaging, VMware" >}}
 
 ## Education and Competitions {.h-minor}
 

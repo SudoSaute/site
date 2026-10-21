@@ -19,7 +19,7 @@ I'm Christian. For ten plus years I've worked where IT operations and security m
 
 Two tracks have run side by side for my whole career: keeping environments operating, and keeping them defensible. Most of my roles have asked for both at once, and the ones that only asked for one were the exception.
 
-Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep both current: the lab for the hands-on work, the CISSP for the breadth across risk and architecture.
+Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep both current: the lab for hands-on work on Microsoft's security stack, the CISSP for the breadth across risk and architecture.
 
 The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This page is about how I work, and who I am outside of it.
 
@@ -52,7 +52,7 @@ If the parrot ever learns a new word worth sharing, you'll hear about it here fi
 
 ## What you'll find here
 
-The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building, and sanitized configs and playbooks land on [GitHub](https://github.com/SudoSaute) as the build grows.
+The [Homelab]({{< ref "homelab" >}}) page is my Microsoft security lab: Defender XDR, Sentinel and Purview on an Entra ID foundation, and sanitized configs and playbooks land on [GitHub](https://github.com/SudoSaute) as the build grows.
 
 {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
 Thanks for stopping by. Let's connect!

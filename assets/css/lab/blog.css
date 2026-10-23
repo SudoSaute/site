@@ -84,7 +84,7 @@
 .lab .feed { display: flex; align-items: center; gap: .5rem; min-width: 0; }
 .lab .feed__n { flex: none; width: 2.6rem; font: 500 .75rem var(--mono); color: var(--lx-violet, #B7A6F7); }
 .lab .feed code {
-  flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: .4rem .6rem; border-radius: .4rem;
+  flex: 1; min-width: 0; overflow-wrap: anywhere; padding: .4rem .6rem; border-radius: .4rem;
   background: rgba(10, 9, 16, .55); border: 1px solid rgba(183, 166, 247, .22); font: 400 .76rem var(--mono); color: #cfc7f5;
 }
 .lab .feed code::before, .lab .feed code::after { content: none; }

@@ -20,6 +20,4 @@ copyright = "&copy; 2026 Christian Carrasco"
   links = [
     { linkedin = "https://linkedin.com/in/cybercc" },
     { github = "https://github.com/SudoSaute" },
-    { email = "mailto:hello@christiancarrasco.dev" },
-    { rss = "/index.xml" },
   ]

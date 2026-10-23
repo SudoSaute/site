@@ -9,8 +9,7 @@
          2. The lead post (the one marked `featured: true`, else the newest),
             quoting its first sentence
          3. The rest as a list, one doodle per post, beside "Pick for me"
-         4. Subscribe: the RSS addresses with copy buttons
-         5. A pointer to Writeups
+         4. A pointer to Writeups
 
        Doodles come from layouts/partials/doodles/: the post's `doodle:` key,
        else a doodle named after the post, else default.svg. Front matter
@@ -20,7 +19,6 @@
 {{- if not $posts }}
   {{- partial "list-default.html" . }}
 {{- else }}
-{{- .Store.Set "labSubscribe" true -}}
 {{- $lead := index (where $posts "Params.featured" true | default $posts) 0 -}}
 {{- $rest := slice }}{{ range $posts }}{{ if ne . $lead }}{{ $rest = $rest | append . }}{{ end }}{{ end -}}
 {{- $minutes := 0 }}{{ range $posts }}{{ $minutes = add $minutes .ReadingTime }}{{ end -}}
@@ -68,7 +66,7 @@
       </div>
     </section>
     {{- end }}
-    <aside class="side" aria-label="Pick a post and subscribe">
+    <aside class="side" aria-label="Pick a post">
       <div class="pick glass">
         <h2>{{ if gt (len $rest) 1 }}Pick for me{{ else }}Reading time{{ end }}</h2>
         <p>{{ len $posts }} {{ cond (eq (len $posts) 1) "post" "posts" }}, {{ $minutes }} {{ cond (eq $minutes 1) "minute" "minutes" }} of reading, about {{ cond (le $minutes 10) "one coffee" (cond (le $minutes 45) "one lunch break" "a few lunch breaks") }}.</p>
@@ -79,32 +77,11 @@
         {{- with (hugo.Data.blog).stove }}
         <p class="pick__row">{{ partial "lab/pan.svg" . }}<span>On the stove: {{ . }}</span></p>
         {{- end }}
-        <a class="pick__sub" href="#subscribe"><span>$</span> subscribe --rss</a>
       </div>
     </aside>
   </div>
 
-  {{- /* 4 · subscribe */ -}}
-  <section id="subscribe" class="sub glass lit" aria-labelledby="sub-h">
-    <div class="sub__row">
-      <div class="sub__txt">
-        <p class="sub__cmd"><b>$</b> subscribe --rss</p>
-        <h2 id="sub-h" class="sub__h">New posts, straight to your reader</h2>
-        <p class="sub__lede">No email, no account, no tracking.</p>
-      </div>
-      <div class="sub__feeds">
-        {{- with .OutputFormats.Get "rss" }}
-        <div class="feed"><span class="feed__n">blog</span><code data-url>{{ .Permalink }}</code><button type="button" class="feed__copy" data-copy aria-label="Copy the blog feed address">copy</button></div>
-        {{- end }}
-        {{- with site.Home.OutputFormats.Get "rss" }}
-        <div class="feed"><span class="feed__n">all</span><code data-url>{{ .Permalink }}</code><button type="button" class="feed__copy" data-copy aria-label="Copy the feed address for everything">copy</button></div>
-        {{- end }}
-      </div>
-    </div>
-    <details class="sub__what"><summary>What&rsquo;s RSS?</summary><p>A feed your reader app checks for you. Paste an address into NetNewsWire, Feedly or Inoreader and new posts show up on their own.</p></details>
-  </section>
-
-  {{- /* 5 · the other half */ -}}
+  {{- /* 4 · the other half */ -}}
   {{- with site.GetPage "/writeups" }}
   <aside class="xlink glass" aria-label="Writeups">
     <div class="stage">{{ partial "art/ir.svg" . }}</div>

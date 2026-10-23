@@ -8,7 +8,7 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-Short takes, three or four minutes each. Writeups show the work; the blog explains the thinking: why I chose one tradeoff over another, what I got wrong, and sometimes life outside the lab.
+I'm good at keeping systems up and bad at keeping records. Working on the second part. Here's how it's going.
 
 ## In the drafts folder
 

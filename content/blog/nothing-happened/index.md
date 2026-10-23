@@ -69,7 +69,7 @@ I will write up what I do with it, including the parts that go badly. I've alrea
 
 The foundation is going in now, and the Microsoft tenant goes on top of it. Then four projects, each ending in a writeup. Endpoint and email defense. Exposure and vulnerability management, where every finding gets an owner, a date, and somebody who follows up, because I'm still an ops person. SOC detections written in KQL. And Purview data protection and compliance.
 
-In between, the blog gets the shorter stuff, starting with why I didn't buy a used rack server.
+In between, the blog gets the shorter stuff like certification updates, or the next post "why I didn't buy a used Dell server Rack".
 
 If you do this work, follow along and skip a few of my mistakes. If you hire for it, this is a running record of how I work through a problem, which a resume can't carry. New posts land here and on LinkedIn the same day.
 

@@ -62,6 +62,14 @@
 }
 @media (max-width: 560px) { .lab .bl { grid-template-columns: 4.5rem minmax(0, 1fr); gap: .9rem; padding: .9rem; } }
 
+/* posts with a banner image show it in place of the doodle (partials/lab/banner.html) */
+.lab .lead--banner { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); }
+.lab .lead__dz--banner, .lab .bl__dz--banner { padding: 0; overflow: hidden; background: none; box-shadow: 0 10px 28px -18px rgba(23, 21, 42, .7); }
+.lab .lead__dz--banner img, .lab .bl__dz--banner img { display: block; width: 100%; height: auto; }
+.lab .bl--banner { grid-template-columns: 10rem minmax(0, 1fr); }
+@media (max-width: 900px) { .lab .lead--banner { grid-template-columns: minmax(0, 1fr); } .lab .lead__dz--banner { max-width: 32rem; } }
+@media (max-width: 560px) { .lab .bl--banner { grid-template-columns: 6.5rem minmax(0, 1fr); } }
+
 .lab .pick { padding: 1.2rem; }
 .lab .pick h2 { margin: 0 0 .35rem; font-size: 1.1rem; }
 .lab .pick p { margin: 0 0 .8rem; font-size: .9rem; color: rgb(var(--body)); }

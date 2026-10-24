@@ -1,0 +1,7 @@
+{{- /* A blog post's banner image, or false: the file named in the post's
+       `banner:` front matter, else an image called banner.* in the post's
+       folder (a page bundle). /blog/ shows it in place of the doodle. */ -}}
+{{- $r := false -}}
+{{- with .Params.banner }}{{ with $.Resources.Get . }}{{ $r = . }}{{ end }}{{ end -}}
+{{- if not $r }}{{ with .Resources.GetMatch "banner.*" }}{{ $r = . }}{{ end }}{{ end -}}
+{{- return $r -}}

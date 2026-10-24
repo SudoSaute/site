@@ -31,6 +31,8 @@
 1. `hugo new content blog/<short-name>/index.md` (or a single `blog/<short-name>.md` without images).
 2. Front matter: title, date, draft, description (the one-line argument, shown under the title and in RSS),
    tags, doodle (key; blank shows the default), featured (optional, pins it as the lead).
+   Banner: put an image named banner.png (or .jpg/.webp) in the post's folder and /blog/ shows it
+   instead of the doodle. A different file name works with `banner: "name.png"` in front matter.
 3. Write 3 to 4 minutes of reading. The first sentence becomes the lead quote. Make it count.
 4. New doodle: ask Claude with the title; it returns a key.
 5. Optional: set "On the stove" in data/blog.yaml (stove: "Next post title"); empty hides it.

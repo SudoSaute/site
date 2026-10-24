@@ -11,8 +11,10 @@
          3. The rest as a list, one doodle per post, beside "Pick for me"
          4. A pointer to Writeups
 
-       Doodles come from layouts/partials/doodles/: the post's `doodle:` key,
-       else a doodle named after the post, else default.svg. Front matter
+       Art: a post with a banner image (banner.* in its folder, or `banner:`
+       in front matter, see partials/lab/banner.html) shows that banner.
+       Otherwise its doodle, from layouts/partials/doodles/: the post's
+       `doodle:` key, else a doodle named after the post, else default.svg. Front matter
        contract: CONTENT-GUIDE.md. Styles: assets/css/lab/blog.css. */ -}}
 {{ define "main" }}
 {{- $posts := .RegularPages.ByDate.Reverse -}}
@@ -35,7 +37,8 @@
   {{- /* 2 · lead post */ -}}
   {{- with $lead }}
   {{- $first := index (findRE `^[^.!?]+[.!?]` (.Plain | strings.TrimSpace) 1) 0 }}
-  <article class="lead glass lit" data-nav>
+  {{- $ban := partial "lab/banner.html" . }}
+  <article class="lead glass lit{{ if $ban }} lead--banner{{ end }}" data-nav>
     <div>
       <span class="lead__eb">{{ partial "lab/pan.svg" . }}Worth your {{ if le .ReadingTime 10 }}{{ index $words .ReadingTime }}{{ else }}{{ .ReadingTime }}{{ end }} {{ cond (eq .ReadingTime 1) "minute" "minutes" }}</span>
       {{- with $first }}<blockquote>&ldquo;{{ . }}&rdquo;</blockquote>{{ end }}
@@ -44,7 +47,11 @@
       <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</span></div>
       <a class="btn" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">Read the post <span aria-hidden="true">&rarr;</span></a>
     </div>
+    {{- with $ban }}{{ $im := .Resize "960x webp q82" }}
+    <div class="lead__dz lead__dz--banner"><img src="{{ $im.RelPermalink }}" width="{{ $im.Width }}" height="{{ $im.Height }}" alt="" loading="eager" decoding="async"></div>
+    {{- else }}
     <div class="lead__dz">{{ partial "lab/doodle.html" . }}</div>
+    {{- end }}
   </article>
   {{- end }}
 
@@ -54,8 +61,13 @@
       <h2 id="more-h" class="sec-h">More short takes</h2>
       <div class="bls">
         {{- range . }}
-        <article class="bl glass lift hov lit" data-nav data-roll>
+        {{- $ban := partial "lab/banner.html" . }}
+        <article class="bl glass lift hov lit{{ if $ban }} bl--banner{{ end }}" data-nav data-roll>
+          {{- with $ban }}{{ $im := .Resize "400x webp q80" }}
+          <div class="bl__dz bl__dz--banner"><img src="{{ $im.RelPermalink }}" width="{{ $im.Width }}" height="{{ $im.Height }}" alt="" loading="lazy" decoding="async"></div>
+          {{- else }}
           <div class="bl__dz">{{ partial "lab/doodle.html" . }}</div>
+          {{- end }}
           <div>
             <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</span></div>
             <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

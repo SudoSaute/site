@@ -6,8 +6,8 @@
 
          1. Title, the intro from _index.md (everything above its first
             heading) and the counts
-         2. The lead post (the one marked `featured: true`, else the newest),
-            quoting its first sentence
+         2. The lead post (the one marked `featured: true`, else the newest):
+            text left, banner or doodle right
          3. The rest as a list, one doodle per post, beside "Pick for me"
          4. A pointer to Writeups
 
@@ -24,7 +24,6 @@
 {{- $lead := index (where $posts "Params.featured" true | default $posts) 0 -}}
 {{- $rest := slice }}{{ range $posts }}{{ if ne . $lead }}{{ $rest = $rest | append . }}{{ end }}{{ end -}}
 {{- $minutes := 0 }}{{ range $posts }}{{ $minutes = add $minutes .ReadingTime }}{{ end -}}
-{{- $words := slice "zero" "one" "two" "three" "four" "five" "six" "seven" "eight" "nine" "ten" -}}
 {{- $intro := index (split .Content "<h2") 0 -}}
 <div class="lab"><div class="lab__in">
   <header>
@@ -34,23 +33,23 @@
     <p class="stats"><span><b>{{ len $posts }}</b> {{ cond (eq (len $posts) 1) "post" "posts" }}</span><span><b>{{ $minutes }}</b> {{ cond (eq $minutes 1) "minute" "minutes" }} to read {{ cond (eq (len $posts) 1) "it" "them all" }}</span></p>
   </header>
 
-  {{- /* 2 · lead post */ -}}
+  {{- /* 2 · lead post: text on the left, art on the right (stacks art first on phones).
+         Tags, title, description, date and read time, button. No quote, so
+         nothing repeats. Every post that becomes the lead gets this layout. */ -}}
   {{- with $lead }}
-  {{- $first := index (findRE `^[^.!?]+[.!?]` (.Plain | strings.TrimSpace) 1) 0 }}
   {{- $ban := partial "lab/banner.html" . }}
   <article class="lead glass lit{{ if $ban }} lead--banner{{ end }}" data-nav>
-    <div>
-      <span class="lead__eb">{{ partial "lab/pan.svg" . }}Worth your {{ if le .ReadingTime 10 }}{{ index $words .ReadingTime }}{{ else }}{{ .ReadingTime }}{{ end }} {{ cond (eq .ReadingTime 1) "minute" "minutes" }}</span>
-      {{- with $first }}<blockquote>&ldquo;{{ . }}&rdquo;</blockquote>{{ end }}
-      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-      {{- with .Description }}<p class="arg">{{ . }}</p>{{ end }}
-      <div class="meta"><span>{{ .Date | time.Format "Jan 2, 2006" }}</span><span>{{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</span></div>
+    <div class="lead__body">
+      {{- with .Params.tags }}<ul class="lead__tags">{{ range . }}<li>{{ title . }}</li>{{ end }}</ul>{{ end }}
+      <h2 class="lead__t"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{- with .Description }}<p class="lead__d">{{ . }}</p>{{ end }}
+      <p class="lead__meta">{{ .Date | time.Format "Jan 2, 2006" }} &middot; {{ cond (lt .ReadingTime 1) 1 .ReadingTime }} min read</p>
       <a class="btn" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">Read the post <span aria-hidden="true">&rarr;</span></a>
     </div>
-    {{- with $ban }}{{ $im := .Resize "960x webp q82" }}
-    <div class="lead__dz lead__dz--banner"><img src="{{ $im.RelPermalink }}" width="{{ $im.Width }}" height="{{ $im.Height }}" alt="" loading="eager" decoding="async"></div>
+    {{- with $ban }}{{ $im := .Resize "1200x webp q82" }}
+    <div class="lead__art"><img src="{{ $im.RelPermalink }}" width="{{ $im.Width }}" height="{{ $im.Height }}" alt="" loading="eager" decoding="async"></div>
     {{- else }}
-    <div class="lead__dz">{{ partial "lab/doodle.html" . }}</div>
+    <div class="lead__art lead__art--doodle">{{ partial "lab/doodle.html" . }}</div>
     {{- end }}
   </article>
   {{- end }}

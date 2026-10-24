@@ -33,7 +33,7 @@
    tags, doodle (key; blank shows the default), featured (optional, pins it as the lead).
    Banner: put an image named banner.png (or .jpg/.webp) in the post's folder and /blog/ shows it
    instead of the doodle. A different file name works with `banner: "name.png"` in front matter.
-3. Write 3 to 4 minutes of reading. The first sentence becomes the lead quote. Make it count.
+3. Write 3 to 4 minutes of reading. On /blog the newest post leads with its tags, title, `description`, date and read time, so keep the description to one or two sentences.
 4. New doodle: ask Claude with the title; it returns a key.
 5. Optional: set "On the stove" in data/blog.yaml (stove: "Next post title"); empty hides it.
 6. Preview at http://localhost:1313/blog/, then publish and share exactly as for writeups (steps 9, 11, 12).

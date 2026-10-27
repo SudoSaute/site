@@ -28,7 +28,7 @@
 <div class="lab"><div class="lab__in">
   <header>
     {{- if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
-    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+    <h1 class="title aurora-text">{{ .Title }}</h1>
     {{- with $intro }}<div class="lede">{{ . | safeHTML }}</div>{{ end }}
     <p class="stats"><span><b>{{ len $posts }}</b> {{ cond (eq (len $posts) 1) "post" "posts" }}</span><span><b>{{ $minutes }}</b> {{ cond (eq $minutes 1) "minute" "minutes" }} to read {{ cond (eq (len $posts) 1) "it" "them all" }}</span></p>
   </header>

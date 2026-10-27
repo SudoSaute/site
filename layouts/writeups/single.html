@@ -21,7 +21,7 @@
         <span>{{ .ReadingTime }} min read</span>
         {{- if .Draft }}<span class="tag"><i></i>draft</span>{{ end }}
       </div>
-      <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+      <h1 class="title aurora-text">{{ .Title }}</h1>
       {{- with .Params.summary }}<p class="elede">{{ . }}</p>{{ end }}
       <div class="prose dark:prose-invert max-w-full">
         {{ .Content }}

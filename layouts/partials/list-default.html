@@ -1,7 +1,7 @@
 {{- /* The theme's list page body, shared by _default/list.html and by the
        Writeups and Blog lists while those sections have nothing published
        (layouts/writeups/list.html, layouts/blog/list.html). On a lab page
-       the title picks up the spotlight scramble and aurora. */ -}}
+       the title picks up the lab title colour (no scramble). */ -}}
 {{ $lab := partial "lab/room.html" . }}
   {{ .Scratch.Set "scope" "list" }}
   {{ $enableToc := .Params.showTableOfContents | default (site.Params.list.showTableOfContents | default false) }}
@@ -22,7 +22,7 @@
     {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
       {{ partial "breadcrumbs.html" . }}
     {{ end }}
-      <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral{{ if $lab }} aurora-text{{ end }}"{{ if $lab }} data-scramble{{ end }}>
+      <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral{{ if $lab }} aurora-text{{ end }}">
         {{ .Title | emojify }}
       </h1>
       <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">

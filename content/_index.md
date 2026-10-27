@@ -85,11 +85,11 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## Certifications & Education
 
-{{< certs class="certs--wide" groups="Active :: LPI Linux Essentials ~ active ~ Lifetime, Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024 | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019 | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
+{{< certs class="certs--wide" groups="Active :: LPI Linux Essentials ~ active ~ Lifetime, Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024 | In progress :: ISC2 SSCP ~ progress ~ Target Nov 2026, ISC2 CISSP ~ progress ~ Target Dec 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019 | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
 
 ## What's Cooking
 
-{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. The five year experience requirement is already met, so what is left is the exam | Microsoft security lab :: Ongoing :: Defender XDR, Microsoft Sentinel and Purview on a Microsoft 365 E5 tenant, built on Entra ID, each project ending in a writeup" ctf="true" >}}
+{{< pipeline items="ISC2 CISSP :: In progress :: Targeting December 2026. The five year experience requirement is already met, so what is left is the exam | Microsoft security lab :: Ongoing :: Defender XDR, Microsoft Sentinel and Purview on a Microsoft 365 E5 tenant, built on Entra ID, each project ending in a writeup" ctf="true" >}}
 
 ## Open to What's Next
 

@@ -11,7 +11,7 @@
 <div class="lab"><div class="lab__in">
   <header>
     {{- if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}{{ partial "breadcrumbs.html" . }}{{ end }}
-    <h1 class="title aurora-text" data-scramble>{{ .Title }}</h1>
+    <h1 class="title aurora-text">{{ .Title }}</h1>
     {{- with $intro }}<div class="lede">{{ . | safeHTML }}</div>{{ end }}
   </header>
   {{ partial "lab/sections.html" (dict "page" . "prompt" "ls ~/homelab" "body" (printf "<h2%s" $body)) }}

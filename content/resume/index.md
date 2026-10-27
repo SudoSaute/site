@@ -12,7 +12,7 @@ build:
   publishResources: false
 ---
 
-{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" hook="Keeping *systems* resilient. Keeping *threats* out." >}}
+{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target December 2026" hook="Keeping *systems* resilient. Keeping *threats* out." >}}
 IT operations and cybersecurity professional with 10+ years across enterprise infrastructure, identity, incident response, and security controls, much of it on Microsoft: Entra ID, Active Directory, Exchange, and Microsoft 365.
 
 From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations at TelevisaUnivision and running identity in a HIPAA-regulated environment at Cigna, I bridge keeping systems running, catching threats, and implementing controls that stand up to scrutiny.
@@ -79,7 +79,7 @@ Production means I ran it at work. The lab roadmap lives on my [Homelab]({{< ref
 
 ## Certifications {.h-minor}
 
-{{< certs class="certs--wide" groups="Active :: Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024, LPI Linux Essentials ~ active ~ Lifetime | In progress :: ISC2 SSCP ~ progress ~ Target Oct 2026, ISC2 CISSP ~ progress ~ Target Nov 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019" >}}
+{{< certs class="certs--wide" groups="Active :: Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024, LPI Linux Essentials ~ active ~ Lifetime | In progress :: ISC2 SSCP ~ progress ~ Target Nov 2026, ISC2 CISSP ~ progress ~ Target Dec 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019, CompTIA Project+ ~ held ~ 2019, CompTIA Cloud Essentials+ ~ held ~ 2019" >}}
 
 ## Compliance and Frameworks {.h-minor}
 

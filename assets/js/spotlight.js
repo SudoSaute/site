@@ -10,7 +10,9 @@
  * already in its final colours.
  *
  * 1. Cursor spotlight and lit card borders (mouse and trackpad only)
- * 2. Title scramble, the same effect as the hero name on the homepage
+ * 2. Title scramble, the same effect as the hero name on the homepage. Only
+ *    titles with data-scramble get it: whoami (layouts/_default/about.html).
+ *    Homelab, Writeups and Blog titles are static.
  * 3. Status bar keys: j/k move, r random, t lights, s subscribe, p parrot,
  *    ? help, Escape closes help. Ignored while typing or with a modifier.
  * 4. Writeups filters (skill and tool)

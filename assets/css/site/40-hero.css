@@ -172,3 +172,84 @@ html.dark .cta-btn:focus-visible { outline-color: rgb(var(--color-primary-200));
   .cta-btn, .cta-btn__arrow { transition: none; }
   .cta-btn:hover, .cta-btn:hover .cta-btn__arrow { transform: none; }
 }
+
+/* --- Status pill (layouts/partials/home/landing.html) ---
+   The author photo and "Open to new roles", in a box built like the nav bar
+   (30-nav.css): same border, translucent fill, blur and shadow, light and dark. */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 auto 1.6rem;
+  padding: 0.3rem 1.05rem 0.3rem 0.3rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--color-primary-300), 0.6);
+  background-color: rgba(var(--color-primary-100), 0.82);
+  box-shadow: 0 10px 28px -20px rgba(var(--color-primary-700), 0.5);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgb(var(--color-neutral-800));
+}
+.hero-status__face {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(var(--color-neutral-50), 0.9);
+}
+.hero-status__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  animation: hero-status-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hero-status-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.08); }
+}
+html.dark .hero-status {
+  border-color: rgba(var(--color-primary-400), 0.55);
+  background-color: rgba(var(--color-primary-700), 0.85);
+  box-shadow: 0 10px 32px -16px rgba(var(--color-primary-500), 0.45);
+  color: rgb(var(--color-neutral-50));
+}
+html.dark .hero-status__face { box-shadow: 0 0 0 2px rgba(var(--color-primary-300), 0.7); }
+html.dark .hero-status__dot { background: #4ade80; }
+
+/* --- Statement (heroStatement in content/_index.md) ---
+   League Gothic capitals with the *emphasised* words in Newsreader italic. */
+.hero-statement {
+  margin: 1.5rem auto 0;
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: clamp(2.2rem, 5.2vw, 3.6rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: rgb(var(--color-neutral-900));
+}
+.hero-statement__line { display: block; }
+.hero-statement em {
+  font-family: var(--font-news);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.8em;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: rgb(var(--color-primary-600));
+}
+html.dark .hero-statement { color: rgb(var(--color-neutral-50)); }
+html.dark .hero-statement em { color: rgb(var(--color-primary-300)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-status__dot { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .hero-status { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}

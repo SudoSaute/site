@@ -2,6 +2,10 @@
 title: "Christian Carrasco · Security & IT Operations Strategist"
 heroRole: "Security & IT Operations Strategist"
 heroCaption: "Christian Carrasco"
+heroStatus: "Open to new roles"
+heroStatement:
+  - "Keeping *systems* resilient."
+  - "Keeping *threats* out."
 heroLead: "Ten plus years keeping enterprise systems running and defensible on Microsoft identity, from a HIPAA-regulated healthcare environment and a SOC to leading incident management as a consultant for the world's largest car manufacturer."
 heroButtons:
   - label: "View resume"

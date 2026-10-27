@@ -20,6 +20,8 @@
   data-auto-appearance="{{ site.Params.autoSwitchAppearance | default `true` }}"
   {{ if site.Params.astral }}data-astral="true"{{ end }}
   {{ with site.Params.headingFont }}data-heading-font="{{ . }}"{{ end }}
+  {{ with site.Params.headlineStyle }}data-headline="{{ . }}"{{ end }}
+  {{ with site.Params.subheadFont }}data-subhead="{{ . }}"{{ end }}
   {{ if site.Params.backgroundTinted }}data-bg-tinted="true"{{ end }}>
   {{- partial "head.html" . -}}
   {{- partialCached "init.html" . -}}

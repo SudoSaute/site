@@ -6,7 +6,8 @@
     {{< /resume-head >}}
 
   hook is optional: a one-line headline above the summary, sized like the
-  "Experience" heading (not a second page title). Leave it out to hide it.
+  "Experience" heading (not a second page title). *word* sets that word in
+  the serif italic, like the Home statement. Leave it out to hide it.
 
   No download by default: the resume is tailored to each role, so the action
   is "Request a tailored resume", which opens LinkedIn, with a one-line note
@@ -39,7 +40,7 @@
     </p>
   </div>
   {{- with $hook }}
-  <p class="resume-head__hook">{{ . }}</p>
+  <p class="resume-head__hook">{{ . | markdownify }}</p>
   {{- end }}
   <div class="resume-head__summary">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
   {{- with $facts }}

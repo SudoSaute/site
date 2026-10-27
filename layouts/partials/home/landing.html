@@ -32,6 +32,16 @@
   {{ end }}
   <section class="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
     <div class="mx-auto max-w-4xl text-center">
+      {{/* Status pill: the author photo and heroStatus, in a box styled like
+           the nav bar (styles in assets/css/site/40-hero.css). */}}
+      {{ with .Params.heroStatus }}
+        {{ $ava := resources.Get (site.Params.Author.image | default "img/author-avatar.jpg") }}
+        <p class="hero-status landing-rise landing-rise-1">
+          {{ with $ava }}{{ with .Resize "96x96 webp q82" }}<img class="hero-status__face" src="{{ .RelPermalink }}" width="48" height="48" alt="" decoding="async">{{ end }}{{ end }}
+          <span class="hero-status__dot" aria-hidden="true"></span>
+          <span class="hero-status__text">{{ . }}</span>
+        </p>
+      {{ end }}
       {{ with .Params.heroCaption | default .Site.Params.Author.name }}
         <h1 class="hero-name landing-rise landing-rise-1" data-scramble="{{ . }}">
           <span class="hero-name__text">{{ . | markdownify }}</span>
@@ -44,6 +54,12 @@
           <span class="hero-role__rule" aria-hidden="true"></span>
           <span class="hero-role__text">{{ . | emojify }}</span>
           <span class="hero-role__rule" aria-hidden="true"></span>
+        </p>
+      {{ end }}
+      {{/* Statement: one line per sentence. *word* turns into the serif italic. */}}
+      {{ with .Params.heroStatement }}
+        <p class="hero-statement landing-rise landing-rise-2">
+          {{ range . }}<span class="hero-statement__line">{{ . | markdownify }}</span> {{ end }}
         </p>
       {{ end }}
       {{ with .Params.heroLead }}

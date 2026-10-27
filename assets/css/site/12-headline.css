@@ -1,0 +1,84 @@
+/* --- Headline type -------------------------------------------------------------
+   Two layers, both off on /ctf:
+     1. Page titles (h1), the Home statement and the Resume hook: League Gothic
+        capitals, in solid brand purple instead of the shifting aurora gradient.
+        The Home name (.hero-name) keeps Fraunces and its animation.
+     2. Everything below the title (section headings h2, card and job titles h3,
+        role titles h4): the subhead face set by subheadFont in params.toml,
+        which baseof.html puts on <html> as data-subhead. "oswald" is the
+        one that ships (League Gothic's cousin, in normal case).
+   The mono labels (highlight and strength labels, eyebrows) stay mono.
+   ------------------------------------------------------------------------------ */
+
+/* 1. page titles */
+html[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name) {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+/* solid purple: the same purple as the Home name in light, lavender in dark */
+html[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name),
+html[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name).aurora-text {
+  background: none !important;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  color: rgb(var(--color-primary-600)) !important;
+  animation: none !important;
+}
+html.dark[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name),
+html.dark[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name).aurora-text {
+  color: rgb(var(--color-primary-300)) !important;
+}
+/* while spotlight.js scrambles a title in, it uses the mono face; keep that */
+html[data-headline] #main-content h1.aurora-text.scrambling { font-family: var(--font-mono); text-transform: none; }
+
+/* Resume hook: mirrors the Home statement (40-hero.css .hero-statement) at the
+   hook's own size: ink capitals, the *emphasised* words in purple serif italic */
+html[data-headline] .resume-head__hook {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: rgb(var(--color-neutral-900));
+}
+html[data-headline] .resume-head__hook em {
+  font-family: var(--font-news);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.8em;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: rgb(var(--color-primary-600));
+}
+html.dark[data-headline] .resume-head__hook { color: rgb(var(--color-neutral-50)); }
+html.dark[data-headline] .resume-head__hook em { color: rgb(var(--color-primary-300)); }
+
+/* whoami is a command, so its title stays lower case */
+html[data-headline][data-lab="about"]:not([data-page="ctf"]) #main-content h1:not(.hero-name) { text-transform: none; letter-spacing: 0.01em; }
+
+/* 2. subheads */
+html[data-subhead="oswald"]  { --font-sub: "Oswald", "Arial Narrow", sans-serif;                --sub-w: 500; --sub-w3: 500; --sub-track: 0;        --sub-scale: 1.04; }
+
+html[data-subhead]:not([data-page="ctf"]) #main-content h2,
+html[data-subhead]:not([data-page="ctf"]) #main-content :is(h3, h4):not(.highlight__label):not(.strength__title):not(.label) {
+  font-family: var(--font-sub);
+  font-synthesis: none;
+  letter-spacing: var(--sub-track);
+}
+html[data-subhead]:not([data-page="ctf"]) #main-content h2 { font-weight: var(--sub-w); line-height: 1.08; }
+html[data-subhead]:not([data-page="ctf"]) #main-content :is(h3, h4):not(.highlight__label):not(.strength__title):not(.label) { font-weight: var(--sub-w3); line-height: 1.2; }
+html[data-subhead]:not([data-page="ctf"]) #main-content :is(.prose, .article-content, .max-w-prose) > h2 { font-size: calc(var(--step-3) * var(--sub-scale)); }
+html[data-subhead][data-room="lab"] #main-content .lab h2.lead__t { font-size: clamp(2rem, 3.6vw, 2.6rem); line-height: 1.04; }
+
+/* headline-like pieces that are not heading tags: Home highlight figures,
+   Homelab build-step titles, network diagram labels */
+html[data-subhead] .highlight__figure { font-family: var(--font-sub); font-weight: var(--sub-w); letter-spacing: 0; font-synthesis: none; }
+html[data-subhead] .lab .pipe__row b { font-family: var(--font-sub); font-weight: var(--sub-w3); letter-spacing: var(--sub-track); font-synthesis: none; }
+html[data-subhead] .lab .net .nt { font-family: var(--font-sub); font-weight: var(--sub-w3); }

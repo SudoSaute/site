@@ -12,7 +12,7 @@ build:
   publishResources: false
 ---
 
-{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" hook="Keeping Systems Resilient. Keeping Threats Out." >}}
+{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" hook="Keeping *systems* resilient. Keeping *threats* out." >}}
 IT operations and cybersecurity professional with 10+ years across enterprise infrastructure, identity, incident response, and security controls, much of it on Microsoft: Entra ID, Active Directory, Exchange, and Microsoft 365.
 
 From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations at TelevisaUnivision and running identity in a HIPAA-regulated environment at Cigna, I bridge keeping systems running, catching threats, and implementing controls that stand up to scrutiny.

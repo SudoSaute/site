@@ -95,5 +95,7 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 ## Open to What's Next
 
 {{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-I'm open to roles in security operations, cybersecurity compliance and GRC, Microsoft security and identity, incident management, and IT operations. Beyond that, I'm always glad to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
+I'm open to roles in security operations, cybersecurity compliance and GRC, Microsoft security and identity, incident management, and IT operations. Beyond that, I'm always glad to meet new people, swap ideas, or talk shop.
+
+LinkedIn is the easiest place to find me, so come say hi!
 {{< /connect >}}

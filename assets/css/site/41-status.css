@@ -169,6 +169,16 @@ html.dark .st-card__roles li { color: rgb(var(--color-neutral-100)); }
 html.dark .st-card__k { color: rgb(var(--color-primary-200)); }
 html.dark .st-card__roles li::before { border-color: rgb(var(--color-primary-300)); }
 
+/* short laptop screens: a tighter card so the sticky contents list still fits */
+@media (max-height: 820px) {
+  .st-card { margin-bottom: 1.1rem; padding: 0.85rem 1rem 0.9rem; }
+  .st-card__top { margin-bottom: 0.65rem; }
+  .st-card .st-face--lg { width: 2.4rem; height: 2.4rem; }
+  .st-card__roles { gap: 0.2rem; }
+  .st-card__roles li { font-size: 0.82rem; }
+  .st-card__cta { margin-top: 0.75rem; padding: 0.55rem 0.8rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .st-dot::after, .st-ring__halo, .st-ring__halo::after, .st-card::before { animation: none !important; }
   .st-ring__face { transition: none !important; }

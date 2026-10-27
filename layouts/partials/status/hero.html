@@ -1,0 +1,17 @@
+{{- /* Home hero status, above the name. heroStatusStyle = "ring" in
+       params.toml shows your photo in a turning ring with the status tag;
+       without it, the original pill (40-hero.css). Styles: 41-status.css. */ -}}
+{{- $s := partial "status/data.html" . -}}
+{{- if eq (site.Params.heroStatusStyle | default "") "ring" }}
+<a class="st-ring landing-rise landing-rise-1" href="{{ $s.href }}" aria-label="{{ $s.text }}: see what I am looking for">
+  <span class="st-ring__halo" aria-hidden="true"></span>
+  {{ with $s.faceL }}<img class="st-ring__face" src="{{ . }}" width="128" height="128" alt="" decoding="async">{{ end }}
+  <span class="st-ring__tag"><span class="st-dot" aria-hidden="true"></span>{{ $s.text }}</span>
+</a>
+{{- else }}
+<p class="hero-status landing-rise landing-rise-1">
+  {{ with $s.face }}<img class="hero-status__face" src="{{ . }}" width="48" height="48" alt="" decoding="async">{{ end }}
+  <span class="hero-status__dot" aria-hidden="true"></span>
+  <span class="hero-status__text">{{ $s.text }}</span>
+</p>
+{{- end -}}

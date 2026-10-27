@@ -1,0 +1,178 @@
+/* Availability ("Open to new roles", heroStatus and heroStatusRoles in
+   content/_index.md). Markup: layouts/partials/status/.
+     ring  Home: your photo in a slowly turning ring above the name, with the
+           status tag on its edge (heroStatusStyle = "ring" in params.toml;
+           remove it to go back to the pill in 40-hero.css)
+     card  Resume: a status card above the contents list, in view while the
+           page scrolls (resumeStatusCard = true in params.toml)
+   The green dot is the shared signal. Both hold still for reduced motion. */
+
+:root { --st-ok: 22, 163, 74; --st-ring: #4B349D, #8E2F74, #0F766E, #16a34a, #4B349D; }
+html.dark { --st-ok: 74, 222, 128; --st-ring: #B7A6F7, #E483C3, #5EEAD4, #4ade80, #B7A6F7; }
+@property --st-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes st-turn { to { --st-a: 360deg; } }
+
+/* ---- shared pieces ---- */
+.st-dot {
+  position: relative;
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: rgb(var(--st-ok));
+}
+.st-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgb(var(--st-ok));
+  animation: st-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes st-ping { 0% { transform: scale(1); opacity: 0.55; } 75%, 100% { transform: scale(2.8); opacity: 0; } }
+.st-face { position: relative; display: inline-flex; flex: none; border-radius: 9999px; }
+.st-face img { display: block; width: 100%; height: 100%; border-radius: inherit; object-fit: cover; margin: 0; }
+.st-face--lg { width: 3.4rem; height: 3.4rem; }
+.st-dot--badge {
+  position: absolute;
+  right: -0.05rem;
+  bottom: -0.05rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  box-shadow: 0 0 0 2px rgb(var(--color-primary-50));
+}
+html.dark .st-dot--badge { box-shadow: 0 0 0 2px rgb(var(--color-primary-800)); }
+.st-face--lg .st-dot--badge { width: 0.8rem; height: 0.8rem; right: 0.05rem; bottom: 0.05rem; }
+
+/* ---- ring: portrait with a live ring above the name ---- */
+.st-ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 7.4rem;
+  height: 7.4rem;
+  margin: 0 auto 2.6rem;
+  border-radius: 9999px;
+  text-decoration: none;
+}
+.st-ring__halo, .st-ring__halo::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(from var(--st-a), var(--st-ring));
+  animation: st-turn 9s linear infinite;
+}
+.st-ring__halo { border-radius: 9999px; }
+.st-ring__halo::after { content: ""; inset: 0.6rem; filter: blur(18px); opacity: 0.45; z-index: -1; transition: opacity 0.3s ease; }
+.st-ring__face {
+  position: relative;
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+  margin: 0;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 0.22rem rgb(var(--color-primary-50));
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.st-ring__tag {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.42rem 0.85rem 0.42rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--color-primary-300), 0.7);
+  background-color: rgb(var(--color-primary-50));
+  box-shadow: 0 10px 24px -14px rgba(var(--color-primary-800), 0.6);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: rgb(var(--color-neutral-900));
+}
+.st-ring:hover .st-ring__face { transform: scale(1.04); }
+.st-ring:hover .st-ring__halo::after { opacity: 0.85; }
+.st-ring:focus-visible { outline: 2px solid rgb(var(--color-primary-600)); outline-offset: 6px; }
+html.dark .st-ring__face { box-shadow: 0 0 0 0.22rem rgb(var(--color-neutral-800)); }
+html.dark .st-ring__tag { border-color: rgba(var(--color-primary-400), 0.6); background-color: rgb(var(--color-primary-800)); color: rgb(var(--color-neutral-50)); }
+@media (max-width: 640px) { .st-ring { width: 6.4rem; height: 6.4rem; } }
+
+/* ---- card: Resume side column ---- */
+.st-card {
+  position: relative;
+  isolation: isolate;
+  max-width: 19rem;
+  margin: 0 0 1.75rem;
+  padding: 1.1rem 1.15rem 1.15rem;
+  border-radius: 1.15rem;
+  background-color: rgba(var(--color-primary-50), 0.85);
+  box-shadow: 0 24px 48px -32px rgba(var(--color-primary-800), 0.55);
+}
+.st-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--st-a), var(--st-ring));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: st-turn 8s linear infinite;
+}
+.st-card__top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.95rem; }
+.st-card .st-face--lg { width: 2.9rem; height: 2.9rem; }
+.st-card__k { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(var(--color-neutral-600)); }
+.st-card__t { display: block; margin-top: 0.15rem; white-space: nowrap; font-family: var(--font-sub, inherit); font-size: 1.15rem; font-weight: 500; line-height: 1.1; color: rgb(var(--color-neutral-900)); }
+.st-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.05rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.8rem;
+  background-color: rgb(var(--color-primary-600));
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+}
+.st-card__cta:hover { background-color: rgb(var(--color-primary-700)); }
+.st-card__cta:focus-visible { outline: 2px solid rgb(var(--color-primary-600)); outline-offset: 2px; }
+html.dark .st-card { background-color: rgba(var(--color-primary-800), 0.75); box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.6); }
+html.dark .st-card .st-dot--badge { box-shadow: 0 0 0 2px rgb(var(--color-primary-800)); }
+html.dark .st-card__t { color: rgb(var(--color-neutral-50)); }
+html.dark .st-card__cta { background-color: rgb(var(--color-primary-300)); color: rgb(var(--color-primary-900)) !important; }
+html.dark .st-card__cta:hover { background-color: rgb(var(--color-primary-200)); }
+.st-card__roles { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+.st-card__roles li { position: relative; margin: 0; padding-inline-start: 1.3rem; font-size: 0.88rem; line-height: 1.35; color: rgb(var(--color-neutral-800)); }
+.st-card__roles li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.28em;
+  width: 0.42rem;
+  height: 0.72rem;
+  border: solid rgb(var(--color-primary-600));
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+}
+html.dark .st-card__roles li { color: rgb(var(--color-neutral-100)); }
+html.dark .st-card__k { color: rgb(var(--color-primary-200)); }
+html.dark .st-card__roles li::before { border-color: rgb(var(--color-primary-300)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .st-dot::after, .st-ring__halo, .st-ring__halo::after, .st-card::before { animation: none !important; }
+  .st-ring__face { transition: none !important; }
+}
+@media print {
+  .st-ring, .st-card { display: none !important; }
+}

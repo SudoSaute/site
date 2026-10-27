@@ -3,6 +3,7 @@ title: "Christian Carrasco · Security & IT Operations Strategist"
 heroRole: "Security & IT Operations Strategist"
 heroCaption: "Christian Carrasco"
 heroStatus: "Open to new roles"
+heroStatusRoles: ["Security operations", "Microsoft security and identity", "Incident management", "IT operations"]   # the Resume status card
 heroStatement:
   - "Keeping *systems* resilient."
   - "Keeping *threats* out."

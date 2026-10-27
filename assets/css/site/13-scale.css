@@ -1,0 +1,14 @@
+/* Reading size. Nearly every size on the site (text, spacing, card padding and
+   column widths) is in rem, so raising the root size on bigger screens scales
+   the whole page together, like a browser zoom: larger type and wider columns,
+   less empty margin. Phones keep the 16px default. /ctf and print are untouched.
+   To go back, delete this file. */
+@media screen and (min-width: 768px) {
+  html:not([data-page="ctf"]) { font-size: 106.25%; }   /* 17px */
+}
+@media screen and (min-width: 1280px) {
+  html:not([data-page="ctf"]) { font-size: 112.5%; }    /* 18px */
+}
+@media screen and (min-width: 1680px) {
+  html:not([data-page="ctf"]) { font-size: 118.75%; }   /* 19px */
+}

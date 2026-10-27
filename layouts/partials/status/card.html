@@ -1,0 +1,12 @@
+{{- /* Resume status card at the top of the side column (layouts/partials/toc.html),
+       in view with the contents list while the page scrolls. resumeStatusCard
+       in params.toml turns it on. Styles: 41-status.css. */ -}}
+{{- $s := partial "status/data.html" . -}}
+<section class="st-card" aria-label="Availability">
+  <div class="st-card__top">
+    <span class="st-face st-face--lg">{{ with $s.faceL }}<img src="{{ . }}" width="56" height="56" alt="" decoding="async">{{ end }}<span class="st-dot st-dot--badge" aria-hidden="true"></span></span>
+    <span><span class="st-card__k">Status</span><span class="st-card__t">{{ $s.text }}</span></span>
+  </div>
+  {{ with $s.roles }}<ul class="st-card__roles">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+  {{ with $s.linkedin }}<a class="st-card__cta" href="{{ . }}" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span aria-hidden="true">→</span></a>{{ end }}
+</section>

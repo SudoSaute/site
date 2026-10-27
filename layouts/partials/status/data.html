@@ -1,0 +1,17 @@
+{{- /* Shared availability data for the status partials. Text and roles come
+       from content/_index.md (heroStatus, heroStatusRoles). */ -}}
+{{- $h := site.Home -}}
+{{- $face := "" -}}{{- $faceL := "" -}}
+{{- with resources.Get (site.Params.Author.image | default "img/author-avatar.jpg") -}}
+  {{- $face = (.Resize "96x96 webp q82").RelPermalink -}}
+  {{- $faceL = (.Resize "256x256 webp q85").RelPermalink -}}
+{{- end -}}
+{{- $li := "" -}}
+{{- range site.Params.Author.links }}{{ with .linkedin }}{{ $li = . }}{{ end }}{{ end -}}
+{{- return (dict
+  "text" ($h.Params.heroStatus | default "Open to new roles")
+  "roles" ($h.Params.heroStatusRoles | default slice)
+  "face" $face "faceL" $faceL
+  "name" site.Params.Author.name
+  "href" ("/#open-to-whats-next" | relURL)
+  "linkedin" $li) -}}

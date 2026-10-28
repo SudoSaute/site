@@ -1,6 +1,6 @@
 ---
 title: "Homelab"
-description: "My Microsoft security lab: a small corporate network on hardware I own, defended with Defender XDR, watched with Microsoft Sentinel, and governed with Purview."
+description: "The Microsoft security lab I'm building: a small corporate network on hardware I own, to be defended with Defender XDR, watched with Microsoft Sentinel, and governed with Purview."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -8,7 +8,7 @@ showTableOfContents: true
 showWordCount: false
 ---
 
-A Microsoft security lab on one repurposed workstation. On-prem, it's a small corporate network: a domain controller, Windows and Linux endpoints, and a firewall. In the cloud, it's a Microsoft 365 E5 and Azure tenant. Defender XDR protects the endpoints, mailboxes and domain controller, Microsoft Sentinel is the SOC's SIEM, and Purview covers data protection and compliance.
+A Microsoft security lab on one repurposed workstation, being built in the open. On-prem, it will be a small corporate network: a domain controller, Windows and Linux endpoints, and a firewall. In the cloud, a Microsoft 365 E5 and Azure tenant. Once the tenant is live, Defender XDR will protect the endpoints, mailboxes and domain controller, Microsoft Sentinel will be the SOC's SIEM, and Purview will cover data protection and compliance.
 
 Security leads the lab, with the SOC and compliance close behind. Identity runs underneath all of it: it's where most of my production experience is, so it's the foundation, not the headline.
 

@@ -73,6 +73,16 @@
 
 .site-nav__link:hover { background-color: rgba(var(--color-primary-200), 0.7); color: rgb(var(--color-primary-800)); }
 
+/* Tablets: the centred bar and the profile pill at the top right overlapped
+   between about 768 and 900px wide. Tighter links make room, and the bar
+   moves left on the narrowest tablets so the pill always has space. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-nav__link { padding: 0.45rem 0.55rem; font-size: 0.82rem; }
+}
+@media (min-width: 768px) and (max-width: 919px) {
+  .site-nav { justify-content: flex-start; }
+}
+
 .site-nav__link.is-current {
   background-color: rgb(var(--color-primary-200));
   color: rgb(var(--color-primary-900));

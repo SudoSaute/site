@@ -1,6 +1,6 @@
 ---
 title: "Resume"
-description: "Resume of Christian Carrasco: security and IT operations professional, Microsoft identity in production, Defender XDR, Microsoft Sentinel and Purview in the lab."
+description: "Resume of Christian Carrasco: IT operations and security professional with Microsoft identity in production, compliance support across audits, and Defender XDR, Microsoft Sentinel and Purview on the lab roadmap."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -12,12 +12,12 @@ build:
   publishResources: false
 ---
 
-{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Microsoft Identity and Security Operations | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target December 2026" hook="Keeping *systems* resilient. Keeping *threats* out." >}}
-IT operations and cybersecurity professional with 10+ years across enterprise infrastructure, identity, incident response, and security controls, much of it on Microsoft: Entra ID, Active Directory, Exchange, and Microsoft 365.
+{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: Security, Identity and IT Operations | Languages :: English and Spanish - Fluent | Studying :: SSCP and CISSP · Nov and Dec 2026" hook="Keeping *systems* resilient. Keeping *threats* out." >}}
+Ten plus years in enterprise IT, split between keeping production running and keeping it secure. I've led major incident management for Toyota Motor North America's production applications, run the SIEM in TelevisaUnivision's security operations center, and administered identity and access across Microsoft environments: Entra ID, Conditional Access, Active Directory, Exchange and Microsoft 365.
 
-From commanding high-impact incidents at Toyota Motor North America to leading SIEM operations at TelevisaUnivision and running identity in a HIPAA-regulated environment at Cigna, I bridge keeping systems running, catching threats, and implementing controls that stand up to scrutiny.
+Compliance has been part of that work from the IT side. I've supported audits and control testing, supplied access records and audit evidence, and helped see findings through to remediation across HIPAA, PCI DSS, ISO 27001 and NIST CSF. It's an area I enjoy and want to go deeper in, so I'm studying for it: the SSCP in November and the CISSP in December.
 
-I'm now taking that into the rest of Microsoft's security stack, with Defender XDR, Microsoft Sentinel and Purview in my lab, on top of control work across NIST SP 800-53, PCI DSS, HIPAA, CMS, and ISO 27001.
+In my homelab I'm building out Defender XDR, Microsoft Sentinel and Purview, with a compliance project on the roadmap.
 
 {{< /resume-head >}}
 
@@ -49,22 +49,22 @@ Production means I ran it at work. The lab roadmap lives on my [Homelab]({{< ref
 {{< /job >}}
 
 {{< job company="TelevisaUnivision" dates="2019 to 2020" location="Onsite then remote · Doral, FL" >}}
-{{< role title="Information Security Analyst" tags="LogRhythm, SIEM Engineering, Detection Rules, MITRE ATT&CK, Microsoft 365, Defender for Cloud Apps, NIST 800-53, PCI DSS, SOX, ServiceNow, Vulnerability Management" >}}
+{{< role title="Information Security Analyst" tags="LogRhythm, SIEM Engineering, Detection Rules, MITRE ATT&CK, Microsoft 365, Defender for Cloud Apps, NIST CSF, PCI DSS, ServiceNow, Vulnerability Management" >}}
 - Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines.
 - Investigated spear-phishing campaigns aimed at senior staff and delivered end user security awareness training.
 - Lead LogRhythm administrator: built correlation rules, wrote custom parsers for malformed log sources, and mapped detection coverage to MITRE ATT&CK.
 - Planned and executed the SIEM migration onto a restructured server architecture, then validated coverage so monitoring did not silently degrade.
 - Worked in Microsoft Defender for Cloud Apps (then Cloud App Security) and the Office 365 Security and Compliance Center, whose compliance tools are now Microsoft Purview.
-- Supported SOX and PCI DSS audit and control testing.
+- Supported PCI DSS audit and control testing.
 {{< /role >}}
 {{< /job >}}
 
 {{< job company="Cigna HealthCare" dates="2014 to 2019" location="Hybrid · Doral, FL" >}}
-{{< role title="Technical Support Analyst" tags="Active Directory, Azure AD, Exchange, Group Policy, MFA, HIPAA, CMS, Endpoint Detection and Response, MDM, Disaster Recovery" >}}
+{{< role title="Technical Support Analyst" tags="Active Directory, Azure AD, Exchange, Group Policy, MFA, HIPAA, Endpoint Detection and Response, MDM, Disaster Recovery" >}}
 - Administered Active Directory and Azure AD (now Microsoft Entra ID), Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step.
 - Level 3 escalation point for a support team of four serving roughly 350 employees in a HIPAA-regulated environment.
 - Built the standard PXE images and SOPs behind onboarding and offboarding, and deployed endpoint detection and antivirus agents.
-- Supplied access records and audit evidence through HIPAA and CMS audit cycles to business owners and internal auditors.
+- Supplied access records and audit evidence through HIPAA audit cycles to business owners and internal auditors.
 {{< /role >}}
 {{< /job >}}
 
@@ -83,7 +83,7 @@ Production means I ran it at work. The lab roadmap lives on my [Homelab]({{< ref
 
 ## Compliance and Frameworks {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Regulatory :: CMS, HIPAA, ISO 27001, PCI DSS, SOX | Frameworks :: ITIL v4, MITRE ATT&CK, NIST 800-53, NIST CSF | Practice :: Control design and operating effectiveness testing, User access reviews, Formal risk acceptance, Findings tracked to closure in ServiceNow, Audit evidence" >}}
+{{< certs seal="false" class="certs--wide" groups="Regulatory :: CMS, HIPAA, ISO 27001, PCI DSS | Frameworks :: ITIL v4, MITRE ATT&CK, NIST CSF | Hands-on support :: Control testing, User access reviews, Risk acceptance on exceptions, Findings tracked to closure in ServiceNow, Audit evidence" >}}
 
 ## Tools and Platforms {.h-minor}
 

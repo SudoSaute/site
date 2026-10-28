@@ -7,7 +7,7 @@ heroStatusRoles: ["Security operations", "Cybersecurity compliance and GRC", "Mi
 heroStatement:
   - "Keeping *systems* resilient."
   - "Keeping *threats* out."
-heroLead: "Ten plus years keeping enterprise systems running and defensible on Microsoft identity, from a HIPAA-regulated healthcare environment and a SOC to leading incident management as a consultant for the world's largest car manufacturer."
+heroLead: "Ten plus years keeping enterprise systems running and secure: leading major incident management for Toyota Motor North America, SIEM work in a security operations center, and identity and access on Microsoft, with a growing focus on compliance."
 heroButtons:
   - label: "View resume"
     url: "/resume/"
@@ -29,8 +29,8 @@ heroButtons:
 Five years managing high-impact production incidents at Toyota Motor North America, the last three leading a five-person team.
 {{< /highlight >}}
 
-{{< highlight figure="5" label="Audit domains" icon="scale-balanced" >}}
-CMS, HIPAA, ISO 27001, PCI DSS, SOX, with controls tested against NIST 800-53 and CSF.
+{{< highlight figure="3" label="Audits supported" icon="scale-balanced" >}}
+Supported from the IT and security side across HIPAA, ISO 27001 and PCI DSS, including control testing against NIST CSF.
 {{< /highlight >}}
 
 {{< highlight figure="3" label="Industries" icon="globe" >}}
@@ -47,13 +47,13 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 
 {{< strengths >}}
 
-{{< strength icon="list-check" title="IT Service Management (ITSM)" items="Incident, Problem, Change, Service Delivery & SLAs" >}}
+{{< strength icon="list-check" title="ITSM & Operations Leadership" items="Major Incident, Problem & Change, SLAs & Service Delivery, Team Leadership, Runbooks & Monitoring" >}}
 
-{{< strength icon="worktree" title="IT Leadership & Operations" items="Team Leadership, Runbooks & Process, Cloud & Monitoring" >}}
+{{< strength icon="microsoft" title="Microsoft Identity & Security" items="Entra ID & Conditional Access, Active Directory & Exchange, Defender XDR · Sentinel · Purview (lab build)" >}}
 
-{{< strength icon="microsoft" title="Microsoft Identity & Security" items="Entra ID & Conditional Access, Active Directory & Exchange, Defender XDR, Sentinel & Purview in the lab" >}}
+{{< strength icon="shield" title="Security Operations" items="SIEM & Alert Triage, Phishing Investigation, Vulnerability Management, Identity & Access" >}}
 
-{{< strength icon="shield" title="Cybersecurity" items="Security Operations, Identity & Access, Vulnerability Management, Compliance & Control Testing" >}}
+{{< strength icon="scale-balanced" title="Compliance Support" items="Audit Evidence & Access Reviews, Control Testing Support, Remediation Tracking, Studying SSCP & CISSP" >}}
 
 {{< /strengths >}}
 
@@ -75,7 +75,7 @@ SOC triage, lead LogRhythm SIEM administrator, and detection alert enhancements 
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="Technical Support Analyst" company="Cigna HealthCare" >}}
-Grew from level 1 support to the team's level 3 escalation point, running Active Directory, Azure AD and Exchange, with CMS and HIPAA audit evidence along the way.
+Grew from level 1 support to the team's level 3 escalation point, running Active Directory, Azure AD and Exchange, with HIPAA audit evidence along the way.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
@@ -90,7 +90,7 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## What's Cooking
 
-{{< pipeline items="ISC2 CISSP :: In progress :: Targeting December 2026. The five year experience requirement is already met, so what is left is the exam | Microsoft security lab :: Ongoing :: Defender XDR, Microsoft Sentinel and Purview on a Microsoft 365 E5 tenant, built on Entra ID, each project ending in a writeup" ctf="true" >}}
+{{< pipeline items="ISC2 SSCP :: In progress :: Exam in November 2026, with the CISSP right after | ISC2 CISSP :: In progress :: Targeting December 2026. The five year experience requirement is already met, so what is left is the exam | Microsoft security lab :: Ongoing :: Building Defender XDR, Microsoft Sentinel and Purview on a Microsoft 365 E5 tenant, on an Entra ID foundation, each project ending in a writeup" ctf="true" >}}
 
 ## Open to What's Next
 

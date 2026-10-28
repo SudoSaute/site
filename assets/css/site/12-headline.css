@@ -33,8 +33,10 @@ html.dark[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name)
 html.dark[data-headline]:not([data-page="ctf"]) #main-content h1:not(.hero-name).aurora-text {
   color: rgb(var(--color-primary-300)) !important;
 }
-/* while spotlight.js scrambles a title in, it uses the mono face; keep that */
-html[data-headline] #main-content h1.aurora-text.scrambling { font-family: var(--font-mono); text-transform: none; }
+/* while spotlight.js scrambles a title in (whoami), it stays in the headline
+   face; unsettled letters are dim and soft, then land at full strength */
+html[data-headline] #main-content h1.aurora-text.scrambling { font-family: var(--font-headline); }
+html[data-headline] #main-content h1.aurora-text .scr-c { opacity: 0.32; filter: blur(0.6px); }
 
 /* Resume hook: mirrors the Home statement (40-hero.css .hero-statement) at the
    hook's own size: ink capitals, the *emphasised* words in purple serif italic */

@@ -51,28 +51,39 @@
   }
 
   /* ---- 2 · title scramble ----------------------------------------------- */
+  /* The title resolves left to right in its own face (League Gothic with
+     headlineStyle on): unsettled letters are random letters of the same case,
+     shown dim, so nothing jumps between fonts when it lands. */
   var title = document.querySelector("[data-scramble]");
   if (title && !reduced) {
-    var GLYPHS = "!<>-_\\/[]{}=+*^?#01ABCDEF";
-    var target = title.textContent.trim(), frame = 0, total = 22;
+    var POOL = { lower: "abcdefghijklmnopqrstuvwxyz", upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", digit: "0123456789" };
+    var target = title.textContent.trim(), frame = 0, total = 24;
+    var pick = function (ch) {
+      var set = /[0-9]/.test(ch) ? POOL.digit : (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) ? POOL.upper : POOL.lower;
+      return set[Math.floor(Math.random() * set.length)];
+    };
+    var esc = function (ch) { return ch === "&" ? "&amp;" : ch === "<" ? "&lt;" : ch === ">" ? "&gt;" : ch; };
     title.style.minWidth = title.offsetWidth + "px";
+    title.setAttribute("aria-label", target);
     title.classList.add("scrambling");
     var iv = setInterval(function () {
       var out = "";
       for (var c = 0; c < target.length; c++) {
-        if (target[c] === " ") { out += " "; continue; }
+        var ch = target[c];
+        if (ch === " " || !/[A-Za-z0-9]/.test(ch)) { out += esc(ch); continue; }
         var settleAt = (c / target.length) * total * 0.72;
-        out += frame > settleAt + 3 ? target[c] : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        out += frame > settleAt + 3 ? esc(ch) : '<span class="scr-c" aria-hidden="true">' + pick(ch) + "</span>";
       }
-      title.textContent = out;
+      title.innerHTML = out;
       if (++frame > total) {
         clearInterval(iv);
         title.textContent = target;
         title.classList.add("settling");
         title.classList.remove("scrambling");
+        title.removeAttribute("aria-label");
         title.style.minWidth = "";
       }
-    }, 40);
+    }, 42);
   }
 
   /* ---- 3 · status bar ---------------------------------------------------- */

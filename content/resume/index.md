@@ -79,7 +79,7 @@ Production means I ran it at work. The lab roadmap lives on my [Homelab]({{< ref
 
 ## Certifications {.h-minor}
 
-{{< certs class="certs--wide" groups="Active :: Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024, LPI Linux Essentials ~ active ~ Lifetime, CompTIA Project+ ~ active ~ Lifetime, CompTIA Cloud Essentials+ ~ active ~ Lifetime | In progress :: ISC2 SSCP ~ progress ~ Target Nov 2026, ISC2 CISSP ~ progress ~ Target Dec 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019" >}}
+{{< certs class="certs--wide" groups="Active :: Microsoft Certified: Azure AI Fundamentals ~ active ~ 2024, LPI Linux Essentials ~ active ~ Lifetime, CompTIA Project+ ~ active ~ Lifetime, CompTIA Cloud Essentials+ ~ active ~ Lifetime | In progress :: ISC2 SSCP ~ progress ~ Target Nov 2026, ISC2 CISSP ~ progress ~ Target Dec 2026 | Previously held :: Cisco CCNA Routing & Switching ~ held ~ 2020 to 2023, CompTIA Security+ ~ held ~ 2019 to 2022, EC-Council Certified Ethical Hacker (CEH) ~ held ~ 2019 to 2022, AWS Certified Cloud Practitioner ~ held ~ 2019 to 2022, CompTIA A+ ~ held ~ 2018 to 2022, ITIL 4 Foundation ~ held ~ 2019 to 2023" >}}
 
 ## Compliance and Frameworks {.h-minor}
 
